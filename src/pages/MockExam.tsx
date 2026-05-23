@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Clock, ChevronLeft, ChevronRight, CheckSquare, Eye, EyeOff, AlertTriangle, Trophy, RotateCcw } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, CheckSquare, Eye, EyeOff, AlertTriangle, Trophy, RotateCcw, Download } from 'lucide-react';
 import { mockExams } from '../data/mockExams';
 import type { MockExam as MockExamType, MockExamQuestion } from '../data/mockExams';
 
@@ -27,6 +27,75 @@ function formatTime(seconds: number) {
   const s = seconds % 60;
   if (h > 0) return `${h}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+}
+
+function slugify(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+function PrintableQuestionPaper({ exam }: { exam: MockExamType | null }) {
+  if (!exam) return null;
+
+  const sectionA = exam.questions.filter(q => q.section === 'A');
+  const sectionB = exam.questions.filter(q => q.section === 'B');
+
+  const renderQuestion = (question: MockExamQuestion) => (
+    <article className="print-question" key={question.id}>
+      <div className="print-question-meta">
+        <span>Question {question.questionNumber}</span>
+        <span>{question.marks} marks</span>
+      </div>
+      <p className="print-question-topic">{question.commandWord} · {question.topic}</p>
+      <p className="print-question-text">{question.question}</p>
+      <div className="print-answer-lines" aria-hidden="true">
+        {Array.from({ length: question.marks <= 5 ? 5 : question.marks <= 10 ? 8 : question.marks <= 20 ? 12 : 16 }).map((_, i) => (
+          <div key={i} />
+        ))}
+      </div>
+    </article>
+  );
+
+  return (
+    <div className="print-paper">
+      <section className="print-cover">
+        <div className="print-kicker">25COP928 Ethics Revision</div>
+        <h1>{exam.title}</h1>
+        <div className="print-summary">
+          <span>{exam.totalMinutes} minutes</span>
+          <span>{exam.totalMarks} marks</span>
+          <span>{exam.questions.length} questions</span>
+        </div>
+        <p>{exam.description}</p>
+        <div className="print-candidate">
+          <span>Candidate name:</span>
+          <span>Student ID:</span>
+          <span>Date:</span>
+        </div>
+      </section>
+
+      <section className="print-instructions">
+        <h2>Instructions</h2>
+        <p>{exam.examTip}</p>
+        <p><strong>Section A:</strong> {exam.sectionAInstructions}</p>
+        <p><strong>Section B:</strong> {exam.sectionBInstructions}</p>
+        <p>Answer all questions unless your lecturer has instructed otherwise. Write clearly and use the mark allocation to guide depth.</p>
+      </section>
+
+      {sectionA.length > 0 && (
+        <section className="print-section">
+          <h2>Section A</h2>
+          {sectionA.map(renderQuestion)}
+        </section>
+      )}
+
+      {sectionB.length > 0 && (
+        <section className="print-section">
+          <h2>Section B</h2>
+          {sectionB.map(renderQuestion)}
+        </section>
+      )}
+    </div>
+  );
 }
 
 function QuestionView({
@@ -194,6 +263,10 @@ export default function MockExam({ onAttempt }: Props) {
   const [timerActive, setTimerActive] = useState(false);
   const [attempted, setAttempted] = useState<Set<string>>(new Set());
   const [section, setSection] = useState<'A' | 'B' | 'all'>('all');
+  const [printExam, setPrintExam] = useState<MockExamType | null>(() => {
+    const id = new URLSearchParams(window.location.search).get('mockPaper');
+    return mockExams.find(exam => exam.id === id) ?? null;
+  });
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -223,6 +296,18 @@ export default function MockExam({ onAttempt }: Props) {
     setAttempted(prev => { const n = new Set(prev); n.add(id); onAttempt(id); return n; });
   };
 
+  const downloadQuestionPaper = (exam: MockExamType) => {
+    const previousTitle = document.title;
+    setPrintExam(exam);
+    document.title = `${slugify(exam.title)}-question-paper`;
+    window.setTimeout(() => {
+      window.print();
+      window.setTimeout(() => {
+        document.title = previousTitle;
+      }, 250);
+    }, 100);
+  };
+
   const filteredQs = selectedExam
     ? section === 'all' ? selectedExam.questions : selectedExam.questions.filter(q => q.section === section)
     : [];
@@ -232,59 +317,73 @@ export default function MockExam({ onAttempt }: Props) {
 
   if (phase === 'select') {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-6 space-y-5">
-        <div>
-          <h1 style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 22, letterSpacing: '-0.02em' }}>Mock Exam Simulator</h1>
-          <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>{mockExams.length} mock papers — standard, hard, nightmare, source coverage, scenario synthesis, and command-word mastery. Full timer, mark scheme, and model answers.</p>
-        </div>
+      <>
+        <PrintableQuestionPaper exam={printExam} />
+        <div className="max-w-4xl mx-auto px-4 py-6 space-y-5">
+          <div>
+            <h1 style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 22, letterSpacing: '-0.02em' }}>Mock Exam Simulator</h1>
+            <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>{mockExams.length} mock papers — standard, hard, nightmare, source coverage, scenario synthesis, and command-word mastery. Full timer, mark scheme, and model answers.</p>
+          </div>
 
-        <div className="space-y-4">
-          {mockExams.map(exam => {
-            const color = DIFF_COLORS[exam.difficulty];
-            const secA = exam.questions.filter(q => q.section === 'A').length;
-            const secB = exam.questions.filter(q => q.section === 'B').length;
-            return (
-              <div key={exam.id} style={{ background: '#14091f', border: `1px solid ${color}30`, borderRadius: 16 }} className="p-5">
-                <div className="flex items-start justify-between gap-3 flex-wrap">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span style={{ background: `${color}20`, color, fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 20, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                        {DIFF_LABELS[exam.difficulty]}
-                      </span>
-                      <span style={{ color: '#475569', fontSize: 11 }}>{exam.totalMinutes} min · {exam.totalMarks} marks</span>
+          <div className="space-y-4">
+            {mockExams.map(exam => {
+              const color = DIFF_COLORS[exam.difficulty];
+              const secA = exam.questions.filter(q => q.section === 'A').length;
+              const secB = exam.questions.filter(q => q.section === 'B').length;
+              return (
+                <div key={exam.id} style={{ background: '#14091f', border: `1px solid ${color}30`, borderRadius: 16 }} className="p-5">
+                  <div className="flex items-start justify-between gap-3 flex-wrap">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span style={{ background: `${color}20`, color, fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 20, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                          {DIFF_LABELS[exam.difficulty]}
+                        </span>
+                        <span style={{ color: '#475569', fontSize: 11 }}>{exam.totalMinutes} min · {exam.totalMarks} marks</span>
+                      </div>
+                      <h2 style={{ color: '#f1f5f9', fontSize: 16, fontWeight: 700 }}>{exam.title}</h2>
+                      <p style={{ color: '#64748b', fontSize: 12, marginTop: 4, lineHeight: 1.5 }}>{exam.description}</p>
                     </div>
-                    <h2 style={{ color: '#f1f5f9', fontSize: 16, fontWeight: 700 }}>{exam.title}</h2>
-                    <p style={{ color: '#64748b', fontSize: 12, marginTop: 4, lineHeight: 1.5 }}>{exam.description}</p>
+                    <div className="flex gap-2 flex-wrap" style={{ flexShrink: 0 }}>
+                      <button
+                        onClick={() => downloadQuestionPaper(exam)}
+                        style={{ background: '#0f0a19', border: `1px solid ${color}40`, color, borderRadius: 10, padding: '10px 14px', fontSize: 13, fontWeight: 700 }}
+                        className="flex items-center gap-2"
+                      >
+                        <Download size={14} /> Download PDF
+                      </button>
+                      <button
+                        onClick={() => startExam(exam)}
+                        style={{ background: `${color}15`, border: `1px solid ${color}40`, color, borderRadius: 10, padding: '10px 20px', fontSize: 13, fontWeight: 700 }}
+                      >
+                        Start Paper
+                      </button>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => startExam(exam)}
-                    style={{ background: `${color}15`, border: `1px solid ${color}40`, color, borderRadius: 10, padding: '10px 20px', fontSize: 13, fontWeight: 700, flexShrink: 0 }}
-                  >
-                    Start Paper
-                  </button>
+                  <div className="flex gap-4 mt-3 flex-wrap">
+                    <span style={{ color: '#38bdf8', fontSize: 11 }}>Section A: {secA} questions</span>
+                    <span style={{ color: '#c4b5fd', fontSize: 11 }}>Section B: {secB} questions</span>
+                    <span style={{ color: '#d8b4fe', fontSize: 11 }}>Total: {exam.questions.length} questions</span>
+                  </div>
+                  <div style={{ background: `${color}08`, border: `1px solid ${color}20`, borderRadius: 8, padding: '8px 12px', marginTop: 12 }}>
+                    <span style={{ color, fontSize: 11, fontWeight: 600 }}>Exam Tip: </span>
+                    <span style={{ color: '#94a3b8', fontSize: 11 }}>{exam.examTip}</span>
+                  </div>
                 </div>
-                <div className="flex gap-4 mt-3 flex-wrap">
-                  <span style={{ color: '#38bdf8', fontSize: 11 }}>Section A: {secA} questions</span>
-                  <span style={{ color: '#c4b5fd', fontSize: 11 }}>Section B: {secB} questions</span>
-                  <span style={{ color: '#d8b4fe', fontSize: 11 }}>Total: {exam.questions.length} questions</span>
-                </div>
-                <div style={{ background: `${color}08`, border: `1px solid ${color}20`, borderRadius: 8, padding: '8px 12px', marginTop: 12 }}>
-                  <span style={{ color, fontSize: 11, fontWeight: 600 }}>Exam Tip: </span>
-                  <span style={{ color: '#94a3b8', fontSize: 11 }}>{exam.examTip}</span>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (phase === 'briefing' && selectedExam) {
     const color = DIFF_COLORS[selectedExam.difficulty];
     return (
-      <div className="max-w-3xl mx-auto px-4 py-6 space-y-5">
-        <div style={{ background: '#14091f', border: `1px solid ${color}30`, borderRadius: 16, padding: 24 }}>
+      <>
+        <PrintableQuestionPaper exam={printExam} />
+        <div className="max-w-3xl mx-auto px-4 py-6 space-y-5">
+          <div style={{ background: '#14091f', border: `1px solid ${color}30`, borderRadius: 16, padding: 24 }}>
           <div className="flex items-center gap-2 mb-4">
             <span style={{ background: `${color}20`, color, fontSize: 11, fontWeight: 800, padding: '3px 10px', borderRadius: 20 }}>
               {DIFF_LABELS[selectedExam.difficulty].toUpperCase()}
@@ -323,10 +422,17 @@ export default function MockExam({ onAttempt }: Props) {
             <span style={{ color: '#94a3b8', fontSize: 12 }}>{selectedExam.examTip}</span>
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 flex-wrap">
+            <button
+              onClick={() => downloadQuestionPaper(selectedExam)}
+              style={{ background: '#0f0a19', border: `1px solid ${color}40`, color, borderRadius: 12, padding: '12px 16px', fontSize: 13, fontWeight: 700 }}
+              className="flex items-center justify-center gap-2"
+            >
+              <Download size={15} /> Download PDF
+            </button>
             <button
               onClick={beginTimed}
-              style={{ flex: 1, background: `${color}15`, border: `1px solid ${color}40`, color, borderRadius: 12, padding: '12px', fontSize: 14, fontWeight: 700 }}
+              style={{ flex: 1, minWidth: 180, background: `${color}15`, border: `1px solid ${color}40`, color, borderRadius: 12, padding: '12px', fontSize: 14, fontWeight: 700 }}
               className="flex items-center justify-center gap-2"
             >
               <Clock size={16} /> Start Timed Exam
@@ -343,9 +449,10 @@ export default function MockExam({ onAttempt }: Props) {
             >
               Back
             </button>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 

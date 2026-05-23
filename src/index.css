@@ -11,3 +11,162 @@
   * { box-sizing: border-box; }
   #root { width: 100%; min-height: 100vh; }
 }
+
+.print-paper {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  .print-paper,
+  .print-paper * {
+    visibility: visible !important;
+  }
+
+  .print-paper {
+    display: block !important;
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    padding: 0;
+    color: #111827;
+    background: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    line-height: 1.45;
+  }
+
+  .print-cover {
+    border-bottom: 2px solid #111827;
+    padding-bottom: 10mm;
+    margin-bottom: 8mm;
+  }
+
+  .print-kicker {
+    color: #4b1d74;
+    font-size: 10pt;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 5mm;
+  }
+
+  .print-cover h1 {
+    color: #111827;
+    font-size: 22pt;
+    line-height: 1.16;
+    margin: 0 0 5mm;
+    font-weight: 800;
+  }
+
+  .print-summary {
+    display: flex;
+    gap: 4mm;
+    flex-wrap: wrap;
+    margin-bottom: 5mm;
+  }
+
+  .print-summary span {
+    border: 1px solid #9ca3af;
+    border-radius: 2mm;
+    padding: 1.5mm 3mm;
+    font-size: 9.5pt;
+    font-weight: 700;
+  }
+
+  .print-cover p,
+  .print-instructions p {
+    margin: 0 0 3mm;
+    color: #374151;
+  }
+
+  .print-candidate {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5mm;
+    margin-top: 10mm;
+  }
+
+  .print-candidate span {
+    border-bottom: 1px solid #111827;
+    padding-bottom: 6mm;
+    font-size: 9.5pt;
+    color: #374151;
+  }
+
+  .print-instructions {
+    break-after: page;
+  }
+
+  .print-instructions h2,
+  .print-section h2 {
+    color: #111827;
+    font-size: 15pt;
+    line-height: 1.2;
+    margin: 0 0 4mm;
+    font-weight: 800;
+  }
+
+  .print-section + .print-section {
+    break-before: page;
+  }
+
+  .print-question {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border-top: 1px solid #d1d5db;
+    padding-top: 5mm;
+    margin-bottom: 8mm;
+  }
+
+  .print-question-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 6mm;
+    color: #111827;
+    font-size: 11pt;
+    font-weight: 800;
+    margin-bottom: 1.5mm;
+  }
+
+  .print-question-topic {
+    color: #4b5563;
+    font-size: 9.5pt;
+    font-weight: 700;
+    margin: 0 0 3mm;
+  }
+
+  .print-question-text {
+    color: #111827;
+    font-size: 11pt;
+    line-height: 1.55;
+    margin: 0 0 5mm;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
+  .print-answer-lines {
+    display: grid;
+    gap: 6.5mm;
+    margin-top: 5mm;
+  }
+
+  .print-answer-lines div {
+    border-bottom: 1px solid #d1d5db;
+    min-height: 1px;
+  }
+}
