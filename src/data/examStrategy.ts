@@ -235,14 +235,60 @@ export const examStrategy = {
     { item: 'I used precise examples/cases where relevant', weight: 10 },
     { item: 'My answer is proportionate to the mark allocation and timed realistically', weight: 10 },
   ],
+  timedMarkingChecklist: [
+    {
+      phase: 'Before Writing',
+      time: 'First 60-90 seconds',
+      checks: [
+        'Circle the command word and translate it into the answer shape',
+        'Write the mark split in the margin: 6 marks = 2+2+2 or 3+3',
+        'Pick the governing framework before writing: law, code, ethical theory, governance, or mixed',
+        'Choose one case hook only if it directly earns marks',
+      ],
+    },
+    {
+      phase: 'During Writing',
+      time: 'Main answer time',
+      checks: [
+        'Every paragraph starts with a mark-earning point, not background',
+        'Use name -> explain -> apply -> impact for each developed point',
+        'For scenarios, quote or paraphrase facts from the scenario so the marker sees application',
+        'For longer answers, add one limitation or counterargument before the conclusion',
+      ],
+    },
+    {
+      phase: 'Last 30 Seconds',
+      time: 'Per question',
+      checks: [
+        'Add a one-sentence conclusion if missing',
+        'Check statute/section numbers: GDPR Art. 17/22/33/34, CMA s.1/s.3/s.3ZA/s.3A',
+        'Check you did not answer a different question from the one asked',
+        'If short on time, bullet the remaining mark points clearly rather than writing prose',
+      ],
+    },
+    {
+      phase: 'Whole Paper Review',
+      time: 'Final 8-10 minutes',
+      checks: [
+        'Patch missing conclusions first',
+        'Add one named case to any broad answer that lacks evidence',
+        'Correct any obvious overstatements such as "always illegal" or "always lawful"',
+        'Make sure every answer has at least one applied sentence tied to the scenario',
+      ],
+    },
+  ],
   finalCram: [
     {
-      heading: 'Write From Memory First',
-      items: ['GDPR 7 principles: Lawfulness/Fairness/Transparency, Purpose Limitation, Data Minimisation, Accuracy, Storage Limitation, Integrity/Confidentiality, Accountability', 'CMA: s.1 unauthorised access, s.3 unauthorised modification/impairment, s.3ZA serious damage, s.3A making/supplying tools', 'Attack lifecycle: reconnaissance, scanning, gaining access, maintaining access, covering tracks', 'PTLN: Proportionate, Transparent, Legitimate purpose, Necessary'],
+      heading: 'Last 24 Hours',
+      items: ['Morning: one closed-book brain dump of all frameworks, then repair only what you missed', 'Midday: complete one 40-mark synthesis plan and one 20-mark answer under time', 'Afternoon: drill weak weeks only; do not reread everything passively', 'Evening: review model-answer differences and memorise five case hooks', 'Final hour: sleep-prep mode; only flashcards, no new material'],
+    },
+    {
+      heading: 'Memory Dump First',
+      items: ['GDPR 7 principles: Lawfulness/Fairness/Transparency, Purpose Limitation, Data Minimisation, Accuracy, Storage Limitation, Integrity/Confidentiality, Accountability', 'CMA: s.1 unauthorised access, s.3 unauthorised modification/impairment, s.3ZA serious damage, s.3A making/supplying tools', 'Attack lifecycle: reconnaissance, scanning, gaining access, maintaining access, covering tracks', 'IP pillars: copyright, patents, trade marks, design rights', 'PTLN: Proportionate, Transparent, Legitimate purpose, Necessary'],
     },
     {
       heading: 'Automatic Case Hooks',
-      items: ['Cambridge Analytica: consent, third-party sharing, purpose limitation, trust', 'Post Office Horizon: data accuracy, accountability diffusion, operational harm', 'Frances Haugen: escalation, public interest, algorithmic harm', 'Sam\'s First Day: neurodiversity, onboarding design, manager assumptions', 'Bybit/Lazarus: supply chain, attack lifecycle, cross-border enforcement gap'],
+      items: ['Frances Haugen: escalation, public interest, algorithmic harm', 'Cambridge Analytica: consent, third-party sharing, purpose limitation, trust', 'Infopaq: 11-word extract, originality, AI/RAG copyright risk', 'Aerotel/Macrossan: software patents need technical contribution', 'Post Office Horizon: data accuracy, accountability diffusion, operational harm', 'Sam\'s First Day: neurodiversity, onboarding design, manager assumptions', 'Bybit/Lazarus: supply chain, attack lifecycle, cross-border enforcement gap'],
     },
     {
       heading: 'Near-Perfect Additions',

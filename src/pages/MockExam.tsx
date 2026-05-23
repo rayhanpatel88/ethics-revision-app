@@ -235,7 +235,7 @@ export default function MockExam({ onAttempt }: Props) {
       <div className="max-w-4xl mx-auto px-4 py-6 space-y-5">
         <div>
           <h1 style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 22, letterSpacing: '-0.02em' }}>Mock Exam Simulator</h1>
-          <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>3 full mock papers — Standard, Hard, and Nightmare Mode. Full timer, mark scheme, and model answers.</p>
+          <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>{mockExams.length} mock papers — standard, hard, nightmare, source coverage, scenario synthesis, and command-word mastery. Full timer, mark scheme, and model answers.</p>
         </div>
 
         <div className="space-y-4">

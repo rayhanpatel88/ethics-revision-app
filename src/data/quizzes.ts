@@ -580,4 +580,32 @@ export const quizQuestions: QuizQuestion[] = [
     wrongExplanations: ['Silence is not reliable evidence of wellbeing.', 'Demanding diagnosis is intrusive and may be discriminatory.', 'Exclusion removes opportunity rather than providing support.'],
     difficulty: 'medium', examRelevance: 'high'
   },
+  // ===== WEEK 1 SOURCE VERIFICATION ADDITIONS =====
+  {
+    id: 'q-064', week: 'week1', topic: 'BCS Code', type: 'mcq',
+    question: 'In a conflict between employer loyalty and public safety, which BCS duty should carry the most weight?',
+    options: ['Duty to relevant authority, because the employer pays the salary', 'Duty to the profession, because reputation matters most', 'Public interest, because it is the paramount professional duty', 'Professional competence only, because ethics is optional'],
+    correctIndex: 2,
+    explanation: 'The BCS Code places public interest at the top of the professional hierarchy. Employer/client duties are real, but they cannot override public health, privacy, security or wellbeing.',
+    wrongExplanations: ['Employer loyalty is subordinate to public interest.', 'Professional reputation matters, but public interest is the higher duty.', 'Competence is not enough if a professional ignores foreseeable public harm.'],
+    difficulty: 'easy', examRelevance: 'high'
+  },
+  {
+    id: 'q-065', week: 'week1', topic: 'Professional Judgement', type: 'best-response',
+    question: 'Which answer best shows Week 1 professional judgement rather than just theory description?',
+    options: ['Utilitarianism is about consequences and deontology is about rules', 'The developer should document the risk, raise it internally, and if ignored escalate proportionately because public interest and avoid-harm duties override silent compliance', 'Ethics is subjective so the developer can choose any response', 'The developer should obey management unless the action is already criminal'],
+    correctIndex: 1,
+    explanation: 'Top Week 1 answers move from theory/code to action: document, escalate, protect public interest, and explain why employer loyalty does not end the analysis.',
+    wrongExplanations: ['This describes theories but does not apply them to professional action.', 'Professional ethics is reasoned and structured, not arbitrary subjectivity.', 'Professional codes require more than waiting for criminal illegality.'],
+    difficulty: 'medium', examRelevance: 'high'
+  },
+  {
+    id: 'q-066', week: 'week1', topic: 'Ethics vs Compliance', type: 'scenario',
+    question: 'A system is legally compliant but predictably harms a vulnerable minority of users. What is the strongest Week 1 critique?',
+    options: ['No critique is possible because legality settles ethics', 'The system may still be professionally unethical because compliance is a floor, not a ceiling, and public interest/avoid-harm duties require more', 'The system is only a copyright problem', 'The developer should ignore the minority because most users benefit'],
+    correctIndex: 1,
+    explanation: 'Week 1 is built around the distinction between law, ethics, governance, professionalism and compliance. Legal compliance does not exhaust professional responsibility where foreseeable harm remains.',
+    wrongExplanations: ['Law and ethics are not identical.', 'No IP issue is described.', 'A crude majority-benefit answer misses minority harm, rights, dignity and professional duties.'],
+    difficulty: 'medium', examRelevance: 'high'
+  },
 ];

@@ -186,6 +186,31 @@ export default function Strategy() {
         </div>
       </div>
 
+      {/* Timed marking checklist */}
+      <div style={{ background: 'rgba(56,189,248,0.06)', border: '1px solid rgba(56,189,248,0.2)', borderRadius: 14 }} className="p-5">
+        <div className="flex items-center gap-2" style={{ color: '#38bdf8', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>
+          <Timer size={13} /> Timed Answer Marking Checklist
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {examStrategy.timedMarkingChecklist.map(section => (
+            <div key={section.phase} style={{ background: '#0f0a19', border: '1px solid #1e3a5f', borderRadius: 10, padding: '12px 14px' }}>
+              <div className="flex items-center justify-between gap-3 flex-wrap" style={{ marginBottom: 8 }}>
+                <div style={{ color: '#7dd3fc', fontSize: 13, fontWeight: 800 }}>{section.phase}</div>
+                <div style={{ color: '#64748b', fontSize: 11, fontWeight: 700 }}>{section.time}</div>
+              </div>
+              <div className="space-y-2">
+                {section.checks.map(check => (
+                  <div key={check} className="flex items-start gap-2">
+                    <CheckCircle size={11} style={{ color: '#38bdf8', flexShrink: 0, marginTop: 2 }} />
+                    <p style={{ color: '#cbd5e1', fontSize: 11, lineHeight: 1.45 }}>{check}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Self-grading */}
       <div style={{ background: 'rgba(255,106,168,0.06)', border: '1px solid rgba(255,106,168,0.2)', borderRadius: 14 }} className="p-5">
         <div className="flex items-center justify-between gap-3 flex-wrap" style={{ marginBottom: 12 }}>
