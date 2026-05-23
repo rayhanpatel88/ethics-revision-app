@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>25COP928 — Professionalism, Ethics & Cyber Security · MSc Distinction Revision Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #070d1a;
+  --bg2:      #0c1526;
+  --bg3:      #101d32;
+  --bg4:      #16263f;
+  --bg5:      #1c3050;
+  --purple:   #8b5cf6;
+  --purple2:  #6d28d9;
+  --purple-l: #c4b5fd;
+  --cyan:     #22d3ee;
+  --cyan-l:   #a5f3fc;
+  --gold:     #f59e0b;
+  --gold-l:   #fde68a;
+  --red:      #f87171;
+  --red-l:    #fee2e2;
+  --green:    #34d399;
+  --green-l:  #d1fae5;
+  --text:     #e2e8f0;
+  --text2:    #94a3b8;
+  --text3:    #64748b;
+  --border:   rgba(139,92,246,0.18);
+  --border2:  rgba(34,211,238,0.15);
+  --serif:    'Cormorant Garamond', Georgia, serif;
+  --sans:     'DM Sans', system-ui, sans-serif;
+  --mono:     'JetBrains Mono', monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  font-size:15px;
+  line-height:1.75;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── LAYOUT ── */
+.page-wrap{max-width:1000px;margin:0 auto;padding:0 1.5rem 4rem;}
+
+/* ── COVER ── */
+.cover{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:flex-start;
+  padding:4rem 3rem;
+  position:relative;
+  overflow:hidden;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+  page-break-after:always;
+}
+.cover-grid{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(139,92,246,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139,92,246,0.04) 1px, transparent 1px);
+  background-size:50px 50px;
+  pointer-events:none;
+}
+.cover-orb{
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
+  filter:blur(80px);
+  opacity:0.25;
+}
+.cover-orb.a{width:500px;height:500px;background:var(--purple2);top:-100px;right:-100px;}
+.cover-orb.b{width:350px;height:350px;background:var(--cyan);bottom:-80px;left:-60px;opacity:0.12;}
+.cover-badge{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--purple-l);
+  background:rgba(139,92,246,0.12);
+  border:1px solid rgba(139,92,246,0.3);
+  padding:5px 14px;
+  border-radius:4px;
+  margin-bottom:2rem;
+  display:inline-block;
+}
+.cover h1{
+  font-family:var(--serif);
+  font-size:5rem;
+  font-weight:700;
+  line-height:1.0;
+  color:var(--text);
+  margin-bottom:1rem;
+  position:relative;
+}
+.cover h1 span{color:var(--purple-l);}
+.cover-subtitle{
+  font-family:var(--serif);
+  font-size:1.6rem;
+  font-style:italic;
+  color:var(--text2);
+  margin-bottom:2.5rem;
+  max-width:600px;
+}
+.cover-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:3rem;}
+.cover-tag{
+  font-family:var(--sans);
+  font-size:11.5px;
+  font-weight:500;
+  padding:4px 12px;
+  border-radius:20px;
+  border:1px solid;
+}
+.cover-tag.p{border-color:rgba(139,92,246,0.4);color:var(--purple-l);background:rgba(139,92,246,0.08);}
+.cover-tag.c{border-color:rgba(34,211,238,0.3);color:var(--cyan-l);background:rgba(34,211,238,0.06);}
+.cover-tag.g{border-color:rgba(245,158,11,0.3);color:var(--gold-l);background:rgba(245,158,11,0.06);}
+.cover-meta{
+  font-family:var(--sans);
+  font-size:12px;
+  color:var(--text3);
+  border-top:1px solid var(--border);
+  padding-top:1.5rem;
+  display:flex;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+.cover-meta strong{color:var(--text2);}
+
+/* ── SECTION DIVIDER ── */
+.section-break{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:3rem 0 2rem;
+}
+.section-break-line{flex:1;height:1px;background:var(--border);}
+.section-break-label{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  color:var(--text3);
+  white-space:nowrap;
+}
+
+/* ── CHAPTER HEADER ── */
+.chapter{
+  padding:2.5rem 0 0;
+  border-top:1px solid var(--border);
+  margin-bottom:2rem;
+}
+.chapter-num{
+  font-family:var(--mono);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  color:var(--purple);
+  margin-bottom:0.5rem;
+  display:block;
+}
+.chapter h2{
+  font-family:var(--serif);
+  font-size:2.4rem;
+  font-weight:700;
+  color:var(--text);
+  line-height:1.15;
+  margin-bottom:0.5rem;
+}
+.chapter-tagline{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.05rem;
+  color:var(--text2);
+  margin-bottom:1.5rem;
+}
+
+/* ── SUBSECTION ── */
+.sub-head{
+  font-family:var(--sans);
+  font-size:10.5px;
+  font-weight:700;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--cyan);
+  border-bottom:1px solid var(--border2);
+  padding-bottom:7px;
+  margin:2rem 0 1.25rem;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.sub-head::before{
+  content:'';
+  width:18px;
+  height:2px;
+  background:var(--cyan);
+  flex-shrink:0;
+}
+
+/* ── PROSE ── */
+p{color:var(--text2);font-size:14.5px;line-height:1.8;margin-bottom:1rem;}
+p strong{color:var(--text);font-weight:600;}
+p em{color:var(--purple-l);font-style:italic;}
+
+/* ── CALLOUT BOXES ── */
+.callout{
+  border-radius:8px;
+  padding:1.1rem 1.4rem;
+  margin:1.25rem 0;
+  border-left:3px solid;
+  position:relative;
+}
+.callout-label{
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+  display:block;
+}
+.callout p,.callout li{font-size:13.5px;line-height:1.7;}
+.callout ul,.callout ol{padding-left:1.1rem;margin-top:6px;}
+.callout li{margin-bottom:5px;}
+.callout strong{color:var(--text)!important;}
+
+.callout-exam{background:rgba(245,158,11,0.07);border-color:var(--gold);}
+.callout-exam .callout-label{color:var(--gold);}
+.callout-distinction{background:rgba(139,92,246,0.08);border-color:var(--purple);}
+.callout-distinction .callout-label{color:var(--purple-l);}
+.callout-danger{background:rgba(248,113,113,0.07);border-color:var(--red);}
+.callout-danger .callout-label{color:var(--red);}
+.callout-success{background:rgba(52,211,153,0.07);border-color:var(--green);}
+.callout-success .callout-label{color:var(--green);}
+.callout-info{background:rgba(34,211,238,0.07);border-color:var(--cyan);}
+.callout-info .callout-label{color:var(--cyan);}
+.callout-memory{background:rgba(139,92,246,0.06);border:1px solid var(--border);border-left:3px solid var(--purple-l);}
+.callout-memory .callout-label{color:var(--purple-l);}
+
+/* ── TABLES ── */
+.tbl-wrap{overflow-x:auto;margin:1.25rem 0;border-radius:8px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:13px;}
+thead{background:var(--bg4);}
+thead th{
+  padding:10px 14px;
+  text-align:left;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color:var(--purple-l);
+  border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+tbody tr{border-bottom:1px solid rgba(139,92,246,0.08);}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:rgba(139,92,246,0.04);}
+tbody td{padding:9px 14px;color:var(--text2);vertical-align:top;line-height:1.55;}
+tbody td strong{color:var(--text);}
+td.accent-cell{color:var(--cyan);font-weight:500;}
+td.warn-cell{color:var(--gold);font-weight:500;}
+td.danger-cell{color:var(--red);}
+
+/* ── GRID CARDS ── */
+.card-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.25rem 0;}
+.card-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.25rem 0;}
+.card-grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0.75rem;margin:1.25rem 0;}
+.card{
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1.1rem 1.25rem;
+}
+.card h4{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:13px;
+  color:var(--text);
+  margin-bottom:6px;
+}
+.card p{font-size:13px;color:var(--text2);margin-bottom:0;}
+.card-accent-top{border-top:2px solid var(--purple);}
+.card-accent-top.cyan{border-top-color:var(--cyan);}
+.card-accent-top.gold{border-top-color:var(--gold);}
+.card-accent-top.red{border-top-color:var(--red);}
+.card-accent-top.green{border-top-color:var(--green);}
+
+/* ── STAT ROWS ── */
+.stat-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:9px 0;
+  border-bottom:1px solid rgba(139,92,246,0.08);
+  font-size:13.5px;
+}
+.stat-row:last-child{border-bottom:none;}
+.stat-label{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--purple);min-width:110px;flex-shrink:0;}
+.stat-value{color:var(--text2);}
+.stat-value strong{color:var(--text);}
+
+/* ── STEP FLOW ── */
+.steps{margin:1.25rem 0;}
+.step{display:flex;gap:1rem;margin-bottom:1.1rem;position:relative;}
+.step::before{content:'';position:absolute;left:17px;top:36px;bottom:-12px;width:1px;background:var(--border);}
+.step:last-child::before{display:none;}
+.step-num{
+  flex-shrink:0;width:36px;height:36px;border-radius:50%;
+  background:var(--bg4);border:1px solid var(--purple);
+  color:var(--purple-l);font-family:var(--mono);font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+}
+.step-body{flex:1;}
+.step-title{font-family:var(--sans);font-weight:600;font-size:14px;color:var(--text);margin-bottom:3px;}
+.step-desc{font-size:13.5px;color:var(--text2);}
+.step-tag{font-family:var(--mono);font-size:11px;color:var(--cyan);background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.2);padding:2px 8px;border-radius:3px;display:inline-block;margin-top:4px;}
+
+/* ── BADGES ── */
+.badge{display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:3px;letter-spacing:0.03em;white-space:nowrap;}
+.badge-p{background:rgba(139,92,246,0.15);color:var(--purple-l);border:1px solid rgba(139,92,246,0.3);}
+.badge-c{background:rgba(34,211,238,0.1);color:var(--cyan-l);border:1px solid rgba(34,211,238,0.25);}
+.badge-g{background:rgba(245,158,11,0.1);color:var(--gold-l);border:1px solid rgba(245,158,11,0.25);}
+.badge-r{background:rgba(248,113,113,0.1);color:var(--red);border:1px solid rgba(248,113,113,0.25);}
+.badge-gr{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.25);}
+
+/* ── HIGHLIGHT QUOTE ── */
+.pull-quote{
+  border-left:3px solid var(--purple);
+  padding:0.75rem 1.5rem;
+  margin:1.5rem 0;
+  background:var(--bg3);
+  border-radius:0 8px 8px 0;
+}
+.pull-quote p{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:1.15rem;
+  color:var(--text);
+  margin-bottom:0;
+  line-height:1.6;
+}
+.pull-quote cite{display:block;font-family:var(--sans);font-size:12px;color:var(--text3);margin-top:6px;}
+
+/* ── TOC ── */
+.toc-section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem 2.5rem;margin:2rem 0;}
+.toc-title{font-family:var(--serif);font-size:1.5rem;color:var(--text);margin-bottom:1.5rem;display:flex;align-items:center;gap:12px;}
+.toc-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 2rem;}
+.toc-item{display:flex;align-items:baseline;gap:10px;padding:5px 0;border-bottom:1px dotted rgba(139,92,246,0.12);}
+.toc-num{font-family:var(--mono);font-size:10px;color:var(--purple);font-weight:700;flex-shrink:0;min-width:32px;}
+.toc-link{font-family:var(--sans);font-size:13px;color:var(--text2);text-decoration:none;}
+.toc-link:hover{color:var(--purple-l);}
+
+/* ── EXEC OVERVIEW ── */
+.exec-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.5rem 0;}
+.exec-pillar{
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:1.25rem;
+  position:relative;
+  overflow:hidden;
+}
+.exec-pillar::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--purple),var(--cyan));
+}
+.exec-pillar h4{font-family:var(--sans);font-size:13px;font-weight:600;color:var(--text);margin-bottom:6px;}
+.exec-pillar ul{list-style:none;padding:0;}
+.exec-pillar li{font-size:12.5px;color:var(--text2);padding:3px 0;border-bottom:1px solid rgba(139,92,246,0.06);}
+.exec-pillar li:last-child{border-bottom:none;}
+.exec-pillar li::before{content:'→ ';color:var(--cyan);font-family:var(--mono);}
+
+/* ── CASE CARD ── */
+.case-card{
+  background:var(--bg2);
+  border:1px solid var(--border);
+  border-radius:12px;
+  overflow:hidden;
+  margin-bottom:1.5rem;
+}
+.case-header{
+  background:var(--bg4);
+  padding:1rem 1.5rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:8px;
+  border-bottom:1px solid var(--border);
+}
+.case-header h3{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--text);}
+.case-body{padding:1.25rem 1.5rem;}
+.case-row{display:grid;grid-template-columns:120px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid rgba(139,92,246,0.07);font-size:13.5px;}
+.case-row:last-child{border-bottom:none;}
+.case-key{font-family:var(--sans);font-weight:600;font-size:12px;color:var(--purple-l);text-transform:uppercase;letter-spacing:0.04em;padding-top:1px;}
+.case-val{color:var(--text2);}
+
+/* ── CIA TRIAD ── */
+.cia-triangle{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  gap:1px;
+  margin:1.25rem 0;
+}
+.cia-node{
+  flex:1;
+  padding:1.25rem;
+  text-align:center;
+  background:var(--bg3);
+  border:1px solid var(--border);
+}
+.cia-node:first-child{border-radius:10px 0 0 10px;}
+.cia-node:last-child{border-radius:0 10px 10px 0;}
+.cia-letter{
+  font-family:var(--serif);
+  font-size:2.5rem;
+  font-weight:700;
+  line-height:1;
+  margin-bottom:4px;
+}
+.cia-node.conf .cia-letter{color:var(--purple-l);}
+.cia-node.integ .cia-letter{color:var(--cyan);}
+.cia-node.avail .cia-letter{color:var(--gold);}
+.cia-word{font-family:var(--sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--text2);margin-bottom:8px;}
+.cia-desc{font-size:12.5px;color:var(--text3);}
+
+/* ── ETHICS COMPARE ── */
+.ethics-bar{
+  display:flex;
+  gap:1px;
+  border-radius:8px;
+  overflow:hidden;
+  margin:1rem 0;
+  border:1px solid var(--border);
+}
+.ethics-col{
+  flex:1;
+  padding:14px;
+  background:var(--bg3);
+}
+.ethics-col h5{
+  font-family:var(--sans);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--border);
+}
+.ethics-col.util h5{color:var(--green);}
+.ethics-col.deon h5{color:var(--purple-l);}
+.ethics-col.virtue h5{color:var(--gold);}
+.ethics-col.conseq h5{color:var(--cyan);}
+.ethics-col ul{list-style:none;padding:0;}
+.ethics-col li{font-size:12.5px;color:var(--text2);padding:3px 0;}
+.ethics-col li::before{content:'· ';color:var(--text3);}
+
+/* ── LEADERSHIP TABLE SPECIAL ── */
+.ls-row{display:grid;grid-template-columns:120px 1fr 1fr;gap:10px;padding:9px 0;border-bottom:1px solid rgba(139,92,246,0.08);font-size:13px;align-items:start;}
+.ls-row:last-child{border-bottom:none;}
+.ls-style{font-family:var(--sans);font-weight:600;color:var(--text);}
+.ls-good{color:var(--green);font-size:12.5px;}
+.ls-bad{color:var(--red);font-size:12.5px;}
+.ls-head{display:grid;grid-template-columns:120px 1fr 1fr;gap:10px;padding:8px 0;font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text3);border-bottom:1px solid var(--border);}
+
+/* ── GLOSSARY ── */
+.gloss-item{padding:8px 0;border-bottom:1px solid rgba(139,92,246,0.07);display:grid;grid-template-columns:200px 1fr;gap:12px;font-size:13.5px;}
+.gloss-item:last-child{border-bottom:none;}
+.gloss-term{font-family:var(--sans);font-weight:600;color:var(--purple-l);}
+.gloss-def{color:var(--text2);}
+
+/* ── MEMORY AID ── */
+.memory-box{
+  background:var(--bg3);
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:1rem 1.25rem;
+  margin:1rem 0;
+}
+.memory-box h5{
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:8px;
+}
+.mnemonic{
+  font-family:var(--serif);
+  font-size:1.35rem;
+  font-weight:700;
+  color:var(--text);
+  letter-spacing:0.04em;
+  margin-bottom:4px;
+}
+.mnemonic-expand{font-size:13px;color:var(--text2);}
+.mnemonic-expand span{color:var(--gold);font-weight:600;}
+
+/* ── EXAM ZONE ── */
+.exam-zone{
+  background:linear-gradient(135deg,rgba(245,158,11,0.05),rgba(139,92,246,0.05));
+  border:1px solid rgba(245,158,11,0.2);
+  border-radius:12px;
+  padding:1.5rem 2rem;
+  margin:1.5rem 0;
+}
+.exam-zone h4{
+  font-family:var(--serif);
+  font-size:1.1rem;
+  font-weight:700;
+  color:var(--gold);
+  margin-bottom:1rem;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.weak-strong{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.75rem;}
+.weak{background:rgba(248,113,113,0.06);border:1px solid rgba(248,113,113,0.2);border-radius:8px;padding:1rem;}
+.strong{background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.2);border-radius:8px;padding:1rem;}
+.weak h5{font-size:11px;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--red);margin-bottom:8px;}
+.strong h5{font-size:11px;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--green);margin-bottom:8px;}
+.weak li,.strong li{font-size:13px;color:var(--text2);padding:3px 0;}
+
+/* ── QUICK REF CHEAT SHEET ── */
+.cheat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem 1.5rem;margin:0.75rem 0;}
+.cheat-title{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;}
+.cheat-items{display:flex;flex-wrap:wrap;gap:6px;}
+.cheat-item{
+  font-family:var(--mono);
+  font-size:11.5px;
+  padding:3px 10px;
+  border-radius:3px;
+  background:var(--bg4);
+  border:1px solid var(--border);
+  color:var(--text2);
+}
+
+/* ── INTERCEPT / DIVIDER ── */
+.mid-divider{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin:2rem 0;
+}
+.mid-divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);}
+.mid-divider-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--purple);
+  box-shadow:0 0 8px var(--purple);
+}
+
+/* ── HR ── */
+hr{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:700px){
+  .card-grid,.card-grid-3,.card-grid-4,.toc-grid,.exec-grid,.weak-strong{grid-template-columns:1fr;}
+  .cover h1{font-size:3rem;}
+  .ethics-bar{flex-direction:column;}
+  .cia-triangle{flex-direction:column;}
+  .cia-node:first-child{border-radius:10px 10px 0 0;}
+  .cia-node:last-child{border-radius:0 0 10px 10px;}
+  .gloss-item,.ls-row,.ls-head{grid-template-columns:1fr;}
+  .case-row{grid-template-columns:1fr;}
+}
+
+/* ── PRINT / PDF ── */
+@media print{
+  body{background:white;color:#000;}
+  .cover{page-break-after:always;}
+  .chapter{page-break-before:auto;}
+}
+</style>
+</head>
+<body>
+<!-- ═══════════════════════════════════════════ -->
+<!--  COVER PAGE                                -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-orb a"></div>
+  <div class="cover-orb b"></div>
+  <span class="cover-badge">MSc · Module 25COP928 · Distinction-Level Preparation</span>
+  <h1>Ethics, <span>Cyber</span><br>&amp; the Law</h1>
+  <p class="cover-subtitle">Professionalism, Ethics and Cyber Security — Complete Examination Revision Handbook</p>
+  <div class="cover-tags">
+    <span class="cover-tag p">Professional Ethics</span>
+    <span class="cover-tag c">Data Privacy &amp; GDPR</span>
+    <span class="cover-tag g">Intellectual Property</span>
+    <span class="cover-tag p">Information Governance</span>
+    <span class="cover-tag c">Cyber Security Law</span>
+    <span class="cover-tag g">Red Teaming</span>
+    <span class="cover-tag p">Workplace Monitoring</span>
+    <span class="cover-tag c">Leadership &amp; Identity</span>
+    <span class="cover-tag g">AI Governance</span>
+    <span class="cover-tag p">BCS / ACM Codes</span>
+  </div>
+  <div class="cover-meta">
+    <span><strong>Exam Date:</strong> 9 June 2025</span>
+    <span><strong>Target:</strong> 90%+ Distinction</span>
+    <span><strong>Sections:</strong> 13 Complete</span>
+    <span><strong>Version:</strong> Elite Edition</span>
+  </div>
+</div>
+
+<div class="page-wrap">
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  TABLE OF CONTENTS                         -->
+<!-- ═══════════════════════════════════════════ -->
+<div style="padding-top:3rem;">
+<div class="toc-section">
+  <div class="toc-title">Table of Contents</div>
+  <div class="toc-grid">
+    <div>
+      <div class="toc-item"><span class="toc-num">§EX</span><a href="#exec" class="toc-link">Executive Overview — What This Module Is Really Testing</a></div>
+      <div class="toc-item"><span class="toc-num">§01</span><a href="#s1" class="toc-link">Professionalism, Ethics &amp; Codes of Conduct</a></div>
+      <div class="toc-item"><span class="toc-num">§02</span><a href="#s2" class="toc-link">Data Privacy &amp; Data Protection</a></div>
+      <div class="toc-item"><span class="toc-num">§03</span><a href="#s3" class="toc-link">Intellectual Property in Computing</a></div>
+      <div class="toc-item"><span class="toc-num">§04</span><a href="#s4" class="toc-link">Information Governance</a></div>
+      <div class="toc-item"><span class="toc-num">§05</span><a href="#s5" class="toc-link">Cyber Security &amp; Ethical Hacking</a></div>
+      <div class="toc-item"><span class="toc-num">§06</span><a href="#s6" class="toc-link">Red Teaming &amp; Adversarial Thinking</a></div>
+    </div>
+    <div>
+      <div class="toc-item"><span class="toc-num">§07</span><a href="#s7" class="toc-link">Workplace Monitoring &amp; Employment Ethics</a></div>
+      <div class="toc-item"><span class="toc-num">§08</span><a href="#s8" class="toc-link">Humanism, Leadership &amp; Professional Identity</a></div>
+      <div class="toc-item"><span class="toc-num">§09</span><a href="#s9" class="toc-link">Exam Preparation Zone</a></div>
+      <div class="toc-item"><span class="toc-num">§10</span><a href="#s10" class="toc-link">Ultra-Condensed Revision Sheets</a></div>
+      <div class="toc-item"><span class="toc-num">§11</span><a href="#s11" class="toc-link">Case Study Compendium</a></div>
+      <div class="toc-item"><span class="toc-num">§12</span><a href="#s12" class="toc-link">MSc-Level Glossary</a></div>
+      <div class="toc-item"><span class="toc-num">§13</span><a href="#s13" class="toc-link">Final Distinction Insights</a></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  EXECUTIVE OVERVIEW                        -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="exec">
+<div class="chapter">
+  <span class="chapter-num">§ EXECUTIVE OVERVIEW</span>
+  <h2>What Is This Module <em>Really</em> Testing?</h2>
+  <p class="chapter-tagline">The hidden architecture beneath the curriculum — and how to master it.</p>
+</div>
+
+<p>25COP928 is not merely an IT law module. It is fundamentally a course in <strong>responsible technological power</strong>. Every topic — from GDPR compliance to penetration testing ethics — is a lens through which the same core question is examined: <em>Who bears responsibility when digital systems cause harm, and how should professionals respond?</em></p>
+
+<div class="pull-quote">
+  <p>"The most dangerous technologist is not the most skilled hacker — it is the competent professional who has never been taught to question the ethics of their work."</p>
+  <cite>— Module Philosophy</cite>
+</div>
+
+<div class="sub-head">The Six Tensions That Run Through Every Topic</div>
+
+<div class="exec-grid">
+  <div class="exec-pillar">
+    <h4>Law vs. Morality</h4>
+    <ul>
+      <li>Legal ≠ ethical</li>
+      <li>GDPR compliance ≠ genuine respect for privacy</li>
+      <li>CMA compliance ≠ ethical hacking</li>
+      <li>IP ownership ≠ fair use</li>
+    </ul>
+  </div>
+  <div class="exec-pillar">
+    <h4>Innovation vs. Risk</h4>
+    <ul>
+      <li>AI training data vs. copyright</li>
+      <li>Surveillance tech vs. employee dignity</li>
+      <li>Pen testing vs. CMA liability</li>
+      <li>OSINT vs. privacy rights</li>
+    </ul>
+  </div>
+  <div class="exec-pillar">
+    <h4>Corporate Interest vs. Public Good</h4>
+    <ul>
+      <li>Facebook profit vs. user safety</li>
+      <li>NHS data access vs. patient privacy</li>
+      <li>TikTok data use vs. national security</li>
+      <li>Amazon data power vs. market fairness</li>
+    </ul>
+  </div>
+  <div class="exec-pillar">
+    <h4>Individual Rights vs. Organisational Power</h4>
+    <ul>
+      <li>Employee monitoring vs. privacy</li>
+      <li>Whistleblowing vs. loyalty</li>
+      <li>Data subject rights vs. business data needs</li>
+      <li>Professional codes vs. employer pressure</li>
+    </ul>
+  </div>
+  <div class="exec-pillar">
+    <h4>Accountability vs. Diffusion</h4>
+    <ul>
+      <li>Post Office: who was responsible?</li>
+      <li>AI decisions: who is liable?</li>
+      <li>Supply chain attacks: who bears risk?</li>
+      <li>Controller vs. processor liability</li>
+    </ul>
+  </div>
+  <div class="exec-pillar">
+    <h4>Security vs. Freedom</h4>
+    <ul>
+      <li>Surveillance capability vs. civil liberties</li>
+      <li>Government monitoring vs. RIPA</li>
+      <li>Red teaming vs. offensive ethics</li>
+      <li>Vulnerability disclosure vs. exploitation</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sub-head">How Topics Interconnect — The Module Map</div>
+<div class="tbl-wrap">
+<table>
+  <thead><tr><th>Topic</th><th>Ethics Dimension</th><th>Legal Anchor</th><th>Governance Link</th><th>Real-World Case</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Professionalism</strong></td><td>BCS/ACM duties, virtue ethics</td><td>Employment law, codes</td><td>Professional accountability</td><td>Frances Haugen</td></tr>
+    <tr><td><strong>Data Privacy</strong></td><td>Privacy as autonomy and dignity</td><td>UK GDPR, DPA 2018</td><td>ICO enforcement</td><td>TikTok, Meta, TEMU</td></tr>
+    <tr><td><strong>IP Law</strong></td><td>Innovation incentives vs. monopoly harm</td><td>CDPA 1988, Patents Act</td><td>IP governance, licensing</td><td>Infopaq, AI scraping</td></tr>
+    <tr><td><strong>Info Governance</strong></td><td>Accountability, data stewardship</td><td>GDPR Art. 5(2)</td><td>IG frameworks, DPOs</td><td>Post Office Horizon</td></tr>
+    <tr><td><strong>Cyber Security</strong></td><td>Ethical hacking, harm prevention</td><td>CMA 1990, NIST</td><td>Security governance</td><td>Bybit, ransomware</td></tr>
+    <tr><td><strong>Red Teaming</strong></td><td>Offensive simulation ethics</td><td>CMA exemptions</td><td>Risk management</td><td>Nation-state models</td></tr>
+    <tr><td><strong>Monitoring</strong></td><td>Privacy, dignity, proportionality</td><td>RIPA, DPA, ACAS</td><td>HR governance, policy</td><td>Amazon warehouse</td></tr>
+    <tr><td><strong>Leadership</strong></td><td>Virtue ethics, moral courage</td><td>Reasonableness standard</td><td>Organisational culture</td><td>Kipling's "If"</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="callout callout-exam">
+  <span class="callout-label">🎯 What The Exam Is REALLY Testing</span>
+  <p>The examiner is not looking for a statute recitation or a list of GDPR principles. They want to see whether you can <strong>synthesise</strong> ethical theory, legal framework, and real-world application into a coherent professional judgement. The distinction student demonstrates: (1) command of the facts; (2) critical evaluation of competing perspectives; (3) ability to apply frameworks to novel scenarios; (4) genuine professional voice.</p>
+</div>
+
+</div><!-- end exec -->
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 1 — PROFESSIONALISM & ETHICS      -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s1">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 01</span>
+  <h2>Professionalism, Ethics &amp; Codes of Conduct</h2>
+  <p class="chapter-tagline">The foundation: why professional ethics is not optional, and what it demands of you.</p>
+</div>
+
+<div class="sub-head">A · Core Definitions</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Concept</th><th>Definition</th><th>Key Distinction</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Ethics</strong></td><td>The branch of philosophy concerned with what is morally right or wrong; the principles guiding human behaviour</td><td>Internal moral compass; can exceed legal minimum</td></tr>
+    <tr><td><strong>Law</strong></td><td>A system of rules created and enforced by governmental or regulatory authority</td><td>External constraint; sets a floor, not a ceiling</td></tr>
+    <tr><td><strong>Governance</strong></td><td>The frameworks, policies, and accountability structures through which organisations manage conduct and risk</td><td>Bridges ethics and enforcement; institutionalises values</td></tr>
+    <tr><td><strong>Professionalism</strong></td><td>Adherence to the standards, behaviours, and ethics expected of a practitioner in a specialised field</td><td>Socially negotiated; requires ongoing self-regulation</td></tr>
+    <tr><td><strong>Compliance</strong></td><td>Meeting the minimum requirements of law or regulation</td><td>Necessary but <em>insufficient</em> — legal ≠ ethical</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">B · Why It Matters</div>
+<p>Computing professionals exercise <strong>asymmetric power</strong> over society. They design systems that affect healthcare, finance, elections, and personal safety. Unlike earlier professions, there is often no patient or client in the room — the "users" are abstract masses, and the harms are invisible until catastrophic. The BCS and ACM codes exist precisely to <strong>internalise ethical accountability</strong> in the absence of a direct relationship.</p>
+
+<div class="sub-head">C · The Four Ethical Theories — Applied to Cyber</div>
+<div class="ethics-bar">
+  <div class="ethics-col util">
+    <h5>Utilitarianism</h5>
+    <ul>
+      <li>Greatest good for greatest number</li>
+      <li>Outcomes-focused</li>
+      <li>Thinker: Bentham / Mill</li>
+      <li>Cyber: delay vulnerable app release to prevent mass harm</li>
+      <li>Weakness: can justify oppressing a minority for majority benefit</li>
+    </ul>
+  </div>
+  <div class="ethics-col deon">
+    <h5>Deontology</h5>
+    <ul>
+      <li>Rules and duties above outcomes</li>
+      <li>Categorical Imperative (Kant)</li>
+      <li>Act only as you'd will universalised</li>
+      <li>Cyber: never release insecure code regardless of profit gain</li>
+      <li>Weakness: rigid; ignores consequences</li>
+    </ul>
+  </div>
+  <div class="ethics-col virtue">
+    <h5>Virtue Ethics</h5>
+    <ul>
+      <li>Character over rules or outcomes</li>
+      <li>Thinker: Aristotle</li>
+      <li>What would a person of good character do?</li>
+      <li>Cyber: integrity, honesty, courage in whistleblowing</li>
+      <li>Weakness: unclear in novel dilemmas</li>
+    </ul>
+  </div>
+  <div class="ethics-col conseq">
+    <h5>Consequentialism</h5>
+    <ul>
+      <li>Broader than utilitarianism</li>
+      <li>Any theory judging acts by results</li>
+      <li>Includes negative consequences</li>
+      <li>Cyber: evaluate full impact chain of AI deployment</li>
+      <li>Weakness: requires perfect prediction of outcomes</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sub-head">D · BCS vs. ACM Codes — Comparative Analysis</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Principle</th><th>BCS Code</th><th>ACM Code</th><th>Significance</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Public Interest</strong></td><td>"Have due regard for public health, privacy and wellbeing"</td><td>"Contribute to society and human well-being"</td><td>Both elevate public interest above employer loyalty</td></tr>
+    <tr><td><strong>Professional Competence</strong></td><td>Maintain and develop professional competence</td><td>Acquire and maintain professional competence</td><td>Continuing professional development is mandatory</td></tr>
+    <tr><td><strong>Honesty &amp; Integrity</strong></td><td>Act with integrity; avoid misrepresentation</td><td>Be honest and trustworthy</td><td>Includes not overstating capabilities of systems</td></tr>
+    <tr><td><strong>Respect</strong></td><td>Treat all with respect; no discrimination</td><td>Respect privacy; honour confidentiality</td><td>Binds professionals even under commercial pressure</td></tr>
+    <tr><td><strong>Wider Society</strong></td><td>Consider the broader societal impact</td><td>Articulate social impacts of computing</td><td>Requires proactive evaluation, not reactive compliance</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">E · Frances Haugen — The Definitive Whistleblowing Case</div>
+<div class="case-card">
+  <div class="case-header">
+    <h3>Frances Haugen — Facebook / Meta Whistleblower (2021)</h3>
+    <span class="badge badge-p">Professionalism · Whistleblowing · Corporate Ethics</span>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">What Happened</div><div class="case-val">Former product manager on Facebook's civic integrity team disclosed thousands of internal documents to Congress and the WSJ, revealing Facebook knowingly optimised engagement algorithms over user safety, exacerbating political polarisation, youth mental health damage, and misinformation spread.</div></div>
+    <div class="case-row"><div class="case-key">Ethical Tension</div><div class="case-val">Corporate profit vs. public safety. The documents showed internal research confirming harm, yet the company chose not to act. This is a textbook tension between <em>consequentialist</em> ethics (harm minimisation) and <em>corporate deontology</em> (fiduciary duty to shareholders).</div></div>
+    <div class="case-row"><div class="case-key">BCS/ACM Application</div><div class="case-val">Both codes demand that professionals prioritise public interest above employer instruction. Haugen's act — first raising internally, then escalating externally — mirrors the correct BCS escalation protocol. Her actions were ethically justified under both codes.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Algorithmic responsibility is not delegable. If you design, deploy, or maintain a system causing societal harm, professional ethics demand intervention — regardless of corporate hierarchy.</div></div>
+    <div class="case-row"><div class="case-key">Exam Angle</div><div class="case-val">Use as primary evidence for: platform accountability, profit vs. safety dilemmas, whistleblowing escalation, and the limits of compliance-only ethics.</div></div>
+  </div>
+</div>
+
+<div class="sub-head">F · The Whistleblowing Escalation Ladder</div>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Internal — Document &amp; Build Evidence</div><div class="step-desc">Compile factual evidence of the ethical or legal violation. Do not act alone without documentation. Recruit allies where possible.</div></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Internal — Official Reporting Channels</div><div class="step-desc">Use ethics hotlines, compliance officers, senior management, or board-level reporting. Document all responses and inaction.</div></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Regulatory — Prescribed External Bodies</div><div class="step-desc">Report to the ICO (data), FCA (finance), NCSC (security), or relevant professional body (BCS). Protected Disclosures Act provides legal protection in UK.</div></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">LAST RESORT — Public / Media Disclosure</div><div class="step-desc">Only after all above exhausted and ongoing serious public harm. Haugen reached this stage correctly. Not a first-response action.</div><span class="step-tag">Both BCS &amp; ACM treat this as the final option</span></div></div>
+</div>
+
+<div class="callout callout-distinction">
+  <span class="callout-label">🎓 Distinction-Level Talking Points</span>
+  <ul>
+    <li>Legal compliance is a <strong>floor, not a ceiling</strong>. Facebook's ad targeting practices may have been technically lawful while being profoundly unethical.</li>
+    <li>The concept of <strong>"algorithmic harm"</strong> — that automated systems can cause discrimination and damage without direct human intent — challenges traditional models of legal liability and professional responsibility.</li>
+    <li>Professional codes are <strong>aspirational and enforceable</strong>: BCS can expel members; ACM can sanction. This creates a form of professional governance that operates <em>above</em> mere legal compliance.</li>
+    <li>The <strong>"public interest test"</strong>: an action is professionally defensible if a reasonable fellow-professional, seeing all the facts, would consider it to be in the public interest — a standard borrowed from journalism and medicine.</li>
+  </ul>
+</div>
+
+<div class="callout callout-exam">
+  <span class="callout-label">🎯 Exam Insight — What Examiners Want</span>
+  <p>Examiners want you to demonstrate that you understand ethics as a <strong>practice</strong>, not a theory. Show that you can apply a theory (e.g., deontology), then critically evaluate its limits (e.g., it fails when rules conflict), then pivot to a professional code (e.g., BCS public interest principle), then land on a real-world example (Haugen). This is the distinction-level answer architecture.</p>
+</div>
+
+<div class="memory-box">
+  <h5>⚡ Memory Trigger — ELGPC</h5>
+  <div class="mnemonic">E·L·G·P·C</div>
+  <div class="mnemonic-expand"><span>E</span>thics → <span>L</span>aw → <span>G</span>overnance → <span>P</span>rofessionalism → <span>C</span>ompliance — the hierarchy from moral philosophy to minimum standard</div>
+</div>
+</div><!-- end s1 -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 2 — DATA PRIVACY                  -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s2">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 02</span>
+  <h2>Data Privacy &amp; Data Protection</h2>
+  <p class="chapter-tagline">Privacy as a fundamental right — and the legal frameworks designed to protect it.</p>
+</div>
+
+<div class="sub-head">A · Core Definitions</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Term</th><th>Definition</th><th>Examples</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Personal Data</strong></td><td>Any information relating to an identified or identifiable natural person</td><td>Name, email, IP address, location data, cookie IDs, biometric templates</td></tr>
+    <tr><td><strong>PII</strong></td><td>Personally Identifiable Information — narrower US-origin term focusing on direct identifiers</td><td>SSN, passport number, bank account — note: UK uses GDPR's broader "personal data" concept</td></tr>
+    <tr><td><strong>Special Category Data</strong></td><td>Sensitive personal data requiring explicit consent or specific lawful basis</td><td>Health, genetic, biometric, racial/ethnic, political, religious, sexual orientation data</td></tr>
+    <tr><td><strong>Data Processing</strong></td><td>Any operation on personal data — collection, storage, use, disclosure, erasure</td><td>Collecting a form, running analytics, sharing with a third party</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">C · The 7 UK GDPR Principles (Article 5)</div>
+<div class="card-grid">
+  <div class="card card-accent-top"><h4>P1 — Lawfulness, Fairness &amp; Transparency</h4><p>Processing must have a valid lawful basis; individuals must be informed in plain language what is done with their data.</p></div>
+  <div class="card card-accent-top cyan"><h4>P2 — Purpose Limitation</h4><p>Data collected for a specific purpose cannot be reused for incompatible purposes without fresh lawful basis.</p></div>
+  <div class="card card-accent-top gold"><h4>P3 — Data Minimisation</h4><p>Only collect what is adequate, relevant, and limited to what is necessary. No "just in case" collection.</p></div>
+  <div class="card card-accent-top red"><h4>P4 — Accuracy</h4><p>Personal data must be accurate and kept up to date. Inaccurate data must be corrected or erased promptly.</p></div>
+  <div class="card card-accent-top green"><h4>P5 — Storage Limitation</h4><p>Data must not be held longer than necessary. Retention schedules are mandatory, not optional.</p></div>
+  <div class="card card-accent-top"><h4>P6 — Integrity &amp; Confidentiality</h4><p>Technical and organisational security measures must protect against unauthorised access, loss, or destruction.</p></div>
+</div>
+<div class="card" style="margin-top:0;border-top:2px solid var(--purple);margin-bottom:1rem;">
+  <h4>P7 — Accountability (The Master Principle)</h4>
+  <p>The data controller must be able to <em>demonstrate</em> compliance with all of the above. This transforms GDPR from a rule-following exercise into an active governance obligation. Accountability is why a DPO, audit trails, and privacy-by-design exist.</p>
+</div>
+
+<div class="sub-head">D · The 6 Lawful Bases for Processing (Article 6)</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>#</th><th>Lawful Basis</th><th>When To Use</th><th>Watch Out For</th></tr></thead>
+  <tbody>
+    <tr><td class="accent-cell">1</td><td><strong>Consent</strong></td><td>Individual has freely given, specific, informed, unambiguous agreement</td><td>Must be withdrawable; pre-ticked boxes invalid</td></tr>
+    <tr><td class="accent-cell">2</td><td><strong>Contract</strong></td><td>Necessary to fulfil or enter a contract with the data subject</td><td>Cannot be stretched to cover unrelated processing</td></tr>
+    <tr><td class="accent-cell">3</td><td><strong>Legal Obligation</strong></td><td>Required by law (e.g., tax records, employment records)</td><td>Must be a specific UK/EU legal obligation</td></tr>
+    <tr><td class="accent-cell">4</td><td><strong>Vital Interests</strong></td><td>Necessary to protect someone's life</td><td>Narrow; typically emergency health situations</td></tr>
+    <tr><td class="accent-cell">5</td><td><strong>Public Task</strong></td><td>Exercising official authority or public functions (public sector)</td><td>Does not extend to commercial activities</td></tr>
+    <tr><td class="accent-cell">6</td><td><strong>Legitimate Interests</strong></td><td>Controller's genuine interests that are not overridden by the individual's rights</td><td>Requires a three-part test: purpose → necessity → balancing</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">D · Real-World Cases — Data Privacy Failures</div>
+<div class="card-grid">
+  <div class="card card-accent-top red"><h4>Meta / Facebook</h4><p>Cambridge Analytica: 87 million profiles harvested without valid consent via a third-party app. Violates P1 (lawfulness), P2 (purpose), P3 (minimisation). £500k ICO fine (pre-GDPR maximum). Under GDPR: potentially £1.3 billion.</p></div>
+  <div class="card card-accent-top red"><h4>TikTok</h4><p>CEO testimony revealed collection of keystroke patterns, device IDs, and cross-site tracking far exceeding stated purpose. ICO fined TikTok £12.7M (2023) for processing children's data without valid consent or lawful basis.</p></div>
+  <div class="card card-accent-top gold"><h4>OpenAI / ChatGPT</h4><p>GDPR investigations in multiple EU states regarding training data collection without consent, right to erasure difficulties, and inaccurate outputs about real individuals. Italy temporarily banned the service (2023).</p></div>
+  <div class="card card-accent-top gold"><h4>TEMU</h4><p>Privacy investigations into the app's data collection practices, including alleged excessive permissions and data transfers to servers in China, raising both GDPR and national security concerns.</p></div>
+  <div class="card card-accent-top red"><h4>Oracle Health Breach (2025)</h4><p>Patient data breach affecting healthcare providers; highlights Controller vs. Processor liability — Oracle as a cloud health data processor bears direct accountability obligations under UK GDPR post-DPA 2018.</p></div>
+  <div class="card card-accent-top gold"><h4>Gambling Firms / Meta Data Sharing</h4><p>Gambling platforms sharing customer data with Facebook via pixel tracking without transparent disclosure. Violates P1 (fairness/transparency) and P2 (purpose limitation). ICO enforcement ongoing.</p></div>
+</div>
+
+<div class="sub-head">E · OSINT, Digital Footprints &amp; Ethical Implications</div>
+<p>Open Source Intelligence (OSINT) involves aggregating publicly available information to build profiles of individuals. In seminar exercises, students discover how much information is derivable from social media, domain registrations, photo metadata, and public records. This raises a crucial distinction: <strong>legality vs. ethics</strong>.</p>
+
+<div class="callout callout-danger">
+  <span class="callout-label">⚠️ The Aggregation Problem</span>
+  <p>Each individual piece of public data may be harmless and legally accessible. But when aggregated, the profile becomes an invasion of privacy — knowing someone's name (public), workplace (LinkedIn), daily gym time (Strava), and home neighbourhood (photo metadata) together creates a surveillance capability that <strong>no single piece would enable</strong>. This is why the Strava heatmap revealed military base locations, and why OSINT is ethically complex even when technically lawful. GDPR's "identifiable natural person" definition is designed to address this aggregation risk.</p>
+</div>
+
+<div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Data Type</th><th>Counts as Personal Data?</th><th>Special Category?</th><th>Why It Matters</th></tr></thead>
+    <tbody>
+      <tr><td>Full name + address</td><td class="accent-cell">Yes — directly identifies</td><td>No</td><td>Core identifier</td></tr>
+      <tr><td>IP address</td><td class="accent-cell">Yes — indirectly identifies device/user</td><td>No</td><td>Key for network monitoring GDPR compliance</td></tr>
+      <tr><td>Cookie ID / Device ID</td><td class="accent-cell">Yes — can link to individual</td><td>No</td><td>Core of adtech GDPR disputes</td></tr>
+      <tr><td>Facial recognition template</td><td class="accent-cell">Yes</td><td class="danger-cell">Yes — biometric data</td><td>Requires explicit consent (Art. 9)</td></tr>
+      <tr><td>Anonymised data</td><td>No — if truly anonymised</td><td>No</td><td>But re-identification is often possible</td></tr>
+      <tr><td>Pseudonymised data</td><td class="accent-cell">Yes — still personal data</td><td>Depends</td><td>GDPR still applies; only reduces risk</td></tr>
+      <tr><td>Health records</td><td class="accent-cell">Yes</td><td class="danger-cell">Yes — health data</td><td>NHS AI access raises P1-P3 tensions</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="sub-head">F · AI &amp; Data Privacy — Emerging Tensions</div>
+<div class="card-grid">
+  <div class="card card-accent-top"><h4>AI Training Data</h4><p>Large language models trained on scraped internet data may incorporate personal information without consent or awareness. Does training on publicly posted text constitute "processing personal data"? Most DPAs say yes.</p></div>
+  <div class="card card-accent-top cyan"><h4>Algorithmic Profiling</h4><p>Article 22 GDPR creates rights against solely automated decisions with significant effects. AI credit scoring, insurance pricing, and content curation all engage this right — but "solely automated" is often contested.</p></div>
+  <div class="card card-accent-top gold"><h4>Children's Privacy</h4><p>Children require heightened protection — Art. 8 sets 13-16 as the age of digital consent. TikTok's £12.7M ICO fine was specifically for failing to protect children's data. Age verification is technically and ethically contentious.</p></div>
+  <div class="card card-accent-top red"><h4>Biometric Data</h4><p>Facial recognition at workplaces and public spaces processes special category data requiring explicit consent or substantial public interest. Its use in policing remains legally contested in the UK.</p></div>
+</div>
+
+<div class="callout callout-distinction">
+  <span class="callout-label">🎓 Distinction-Level Talking Points — Data Privacy</span>
+  <ul>
+    <li><strong>Privacy as power asymmetry:</strong> Data collection is fundamentally about one party (organisation) accumulating knowledge about another (individual) without reciprocal transparency. GDPR attempts to redress this power imbalance structurally.</li>
+    <li><strong>Data commodification:</strong> The surveillance capitalism model (Zuboff) treats personal data as raw material for behavioural prediction products. GDPR's "lawful basis" requirement is a direct challenge to this model.</li>
+    <li><strong>The consent fiction:</strong> Consent under GDPR is theoretically meaningful, but cookie banners and 50-page privacy policies make genuine informed consent practically impossible. This is a structural governance failure, not merely a compliance failure.</li>
+    <li><strong>Cross-border data flows:</strong> The Schrems II ruling invalidated the EU-US Privacy Shield, establishing that US surveillance law makes meaningful adequacy decisions impossible. The new UK-US data bridge remains contested.</li>
+  </ul>
+</div>
+
+<div class="memory-box">
+  <h5>⚡ Memory Trigger — GDPR 7 Principles: LFPASIC-A</h5>
+  <div class="mnemonic">L·F·P·A·S·I·C → A</div>
+  <div class="mnemonic-expand"><span>L</span>awful, <span>F</span>air, transparent · <span>P</span>urpose limitation · <span>A</span>ccurate · <span>S</span>torage limited · <span>I</span>ntegrity/Confidentiality · <span>C</span>ollect minimally → all underpinned by <span>A</span>ccountability</div>
+</div>
+</div><!-- end s2 -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 3 — INTELLECTUAL PROPERTY         -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s3">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 03</span>
+  <h2>Intellectual Property in Computing</h2>
+  <p class="chapter-tagline">How law constructs artificial monopolies to incentivise innovation — and the tensions this creates.</p>
+</div>
+
+<div class="sub-head">A · Why IP Exists — The Governance Rationale</div>
+<p>Intellectual property law solves a market failure: <strong>knowledge goods are non-rival and non-excludable</strong> — once a piece of code or invention is shared, it can be copied at near-zero cost, eliminating the creator's ability to recoup investment. IP law creates temporary, legally enforceable monopolies to <strong>incentivise innovation and creative production</strong>. The tension is systemic: monopolies restrict access, raise prices, and can paradoxically <em>retard</em> innovation if over-extended.</p>
+
+<div class="sub-head">C · The Four Pillars of IP — Full Technical Analysis</div>
+
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Type</th><th>Statute</th><th>What It Protects</th><th>Duration</th><th>Registration?</th><th>Key Software Application</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Copyright</strong></td>
+      <td>CDPA 1988</td>
+      <td>Expression of original creative works — source code, object code, non-literal structure, UI design, documentation</td>
+      <td>Life + 70 years</td>
+      <td>Automatic — no registration</td>
+      <td>Protects source code; object code separately; non-literal structure (organisation/design) — Whelan v Jaslow</td>
+    </tr>
+    <tr>
+      <td><strong>Patents</strong></td>
+      <td>Patents Act 1977</td>
+      <td>Novel, non-obvious technical inventions that provide a technical contribution to a technical problem</td>
+      <td>Up to 20 years</td>
+      <td>Mandatory — UKIPO / EPO</td>
+      <td>Software excluded "as such"; patentable if technical contribution — Aerotel/Macrossan four-step test</td>
+    </tr>
+    <tr>
+      <td><strong>Trade Marks</strong></td>
+      <td>Trade Marks Act 1994</td>
+      <td>Brand identity, origin indicators, graphical representations capable of distinguishing goods/services</td>
+      <td>10 years, renewable indefinitely</td>
+      <td>Mandatory for full protection</td>
+      <td>Domain names, software brand names; protects against typosquatting and passing off tort</td>
+    </tr>
+    <tr>
+      <td><strong>Design Rights</strong></td>
+      <td>Registered Designs Act 1949 / CDPA 1988</td>
+      <td>Shape, configuration, and visual appearance of products — including GUIs, icons, device casings</td>
+      <td>Registered: 25 years; Unregistered: 10–15 years</td>
+      <td>Registered: Yes; Unregistered: Automatic</td>
+      <td>UI/UX designs; protects visual features but not features dictated by technical function</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">D · Key Legal Cases</div>
+<div class="card-grid">
+  <div class="card card-accent-top"><h4>Infopaq v Danske Dagblades (2009)</h4><p>ECJ ruling: reproducing as few as <strong>11 words</strong> constitutes copyright infringement if the extract reflects the <em>"author's own intellectual creation."</em> Sets the originality threshold — genuine intellectual choices, not mechanical production, attract protection. Critical for software copyright and AI-generated content debates.</p></div>
+  <div class="card card-accent-top cyan"><h4>Aerotel / Macrossan (2006)</h4><p>Court of Appeal established the four-step patent test for software: (1) construe the claim; (2) identify actual contribution; (3) check technical nature; (4) check excluded matter. Software is only patentable if it provides a <em>technical solution to a technical problem</em> going beyond normal program execution.</p></div>
+  <div class="card card-accent-top gold"><h4>Blyth v Birmingham Waterworks (1856)</h4><p>The <strong>reasonableness standard</strong> for negligence — what a prudent and reasonable person would do. Now applied to AI liability: AI systems (and their designers) are assessed against what a reasonable, competent professional would have done. Links IP/ethics to professional responsibility.</p></div>
+  <div class="card card-accent-top red"><h4>Whelan v Jaslow (1986)</h4><p>US case establishing that <strong>non-literal elements</strong> of software (structure, sequence, organisation) can be protected by copyright — not just literal code. Extended protection beyond simple verbatim copying to architecture-level similarity.</p></div>
+</div>
+
+<div class="sub-head">E · AI &amp; IP — The Frontier Tensions</div>
+<div class="callout callout-danger">
+  <span class="callout-label">⚠️ High-Stakes Emerging Issue — AI Training &amp; Copyright</span>
+  <ul>
+    <li><strong>Training data legality:</strong> AI models trained on scraped internet content may incorporate copyrighted text, code, and art without licence. Getty Images v Stability AI and The New York Times v OpenAI represent the leading edge of this litigation.</li>
+    <li><strong>Generated outputs:</strong> If an AI generates content substantially similar to a protected work in its training data, this may constitute infringement — but who is liable? The model? The user? The developer?</li>
+    <li><strong>Synthetic content ownership:</strong> Current UK law does not grant copyright to AI-generated works unless a human "author" made substantial creative choices. The CDPA 1988 s.9(3) "computer-generated works" provision attributes copyright to the person who made the arrangements — but this was designed for automated generation, not LLM-scale creation.</li>
+    <li><strong>The anti-commons problem:</strong> Over-propertisation of IP can create a "tragedy of the anti-commons" — too many rights holders veto further innovation. Open source licensing exists partly to counteract this.</li>
+  </ul>
+</div>
+
+<div class="sub-head">F · Open Source &amp; Licensing Risk</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Licence Type</th><th>Key Feature</th><th>Risk for Commercial Users</th></tr></thead>
+  <tbody>
+    <tr><td><strong>GPL (v2/v3)</strong></td><td>"Copyleft" — derived works must be released under same licence</td><td>If incorporated into commercial code, that code may need to be open-sourced ("viral" effect)</td></tr>
+    <tr><td><strong>MIT / BSD</strong></td><td>Permissive — use freely, retain attribution</td><td>Low commercial risk; attribution required</td></tr>
+    <tr><td><strong>Apache 2.0</strong></td><td>Permissive with patent grant; requires NOTICE file</td><td>Low risk; explicit patent licence included</td></tr>
+    <tr><td><strong>AGPL</strong></td><td>Strongest copyleft — extends to software offered over network</td><td>SaaS offerings using AGPL code may trigger open-source obligations</td></tr>
+    <tr><td><strong>Creative Commons</strong></td><td>For creative works, not software</td><td>NC (non-commercial) and SA (share-alike) variants create obligations</td></tr>
+  </tbody>
+</table></div>
+
+<div class="callout callout-distinction">
+  <span class="callout-label">🎓 Distinction-Level Talking Points — IP</span>
+  <ul>
+    <li><strong>The anti-commons paradox:</strong> IP law creates monopolies to incentivise production, but excessive IP can prevent the follow-on innovation that the system was designed to promote. Patent thickets in software are a well-documented example.</li>
+    <li><strong>Scraping and T&Cs:</strong> Contractual restrictions on data scraping (via Terms of Service) are legally distinct from IP rights. Breach of ToS is contract law, not copyright — but both can restrict OSINT and AI training.</li>
+    <li><strong>The Infopaq threshold in an AI world:</strong> If even 11 words of human-authored text attract copyright, every RAG (Retrieval Augmented Generation) output that cites source material risks infringement. This will be the defining IP litigation of the next decade.</li>
+  </ul>
+</div>
+
+<div class="memory-box">
+  <h5>⚡ Memory Trigger — The 4 IP Pillars: CPTD</h5>
+  <div class="mnemonic">C·P·T·D</div>
+  <div class="mnemonic-expand"><span>C</span>opyright (expression/code) · <span>P</span>atents (technical inventions) · <span>T</span>rade Marks (brand/identity) · <span>D</span>esign Rights (visual appearance)</div>
+</div>
+</div><!-- end s3 -->
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 4 — INFORMATION GOVERNANCE        -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s4">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 04</span>
+  <h2>Information Governance</h2>
+  <p class="chapter-tagline">How organisations tame the chaos of data — and why failure costs far more than compliance.</p>
+</div>
+
+<div class="sub-head">A · Core Definition</div>
+<p><strong>Information Governance (IG)</strong> is the overarching framework of policies, processes, and accountabilities through which an organisation manages the entire lifecycle of its information assets — from creation to disposal — in a way that is legally compliant, operationally sound, and strategically valuable. IG is broader than data protection: it encompasses <em>all</em> organisational information, not just personal data.</p>
+
+<div class="sub-head">B · Why IG Matters — The Four Failure Modes</div>
+<div class="card-grid">
+  <div class="card card-accent-top red"><h4>Legal Risk</h4><p>Failure to comply with GDPR, DPA 2018, the CMA, or sector-specific regulations (NHS, financial services) results in ICO fines up to £17.5M, regulatory sanctions, and potential criminal liability for individuals.</p></div>
+  <div class="card card-accent-top gold"><h4>Reputational Risk</h4><p>Data breaches destroy public trust. TikTok, Post Office, and NHS data scandals demonstrate that governance failures become headline news — with long-tail reputational damage that outlasts the legal penalty.</p></div>
+  <div class="card card-accent-top cyan"><h4>Operational Risk</h4><p>Poor data quality and governance directly impairs operational decision-making. The Post Office Horizon scandal shows how accepting inaccurate data as truth caused catastrophic real-world harm — hundreds of wrongful prosecutions.</p></div>
+  <div class="card card-accent-top green"><h4>Strategic Risk</h4><p>Organisations that cannot govern their data cannot leverage it for AI, analytics, or competitive intelligence — creating a direct link between IG maturity and strategic capability.</p></div>
+</div>
+
+<div class="sub-head">C · Structured vs. Unstructured Data</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Type</th><th>Definition</th><th>Examples</th><th>Governance Challenges</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Structured</strong></td><td>Organised in predefined format — rows and columns, queryable via SQL</td><td>CRM databases, HR records, financial ledgers</td><td>Relatively easy to apply retention policies, access controls, and audit trails</td></tr>
+    <tr><td><strong>Unstructured</strong></td><td>No predefined format — free-form, not easily searchable</td><td>Emails, documents, videos, images, social media posts, chat logs</td><td>80% of organisational data; difficult to classify, control, or apply policies to at scale</td></tr>
+    <tr><td><strong>Semi-structured</strong></td><td>Has tags/markers but not relational</td><td>XML, JSON, email metadata, logs</td><td>Requires specialised tools; governance policies need adaptation</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">D · Key Case Studies — Governance Failures</div>
+<div class="case-card">
+  <div class="case-header">
+    <h3>The Post Office Horizon IT Scandal</h3>
+    <span class="badge badge-r">Information Governance · Data Accuracy · Accountability</span>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">What Happened</div><div class="case-val">Faulty Fujitsu Horizon accounting software generated erroneous shortfall reports. The Post Office accepted this data as definitive, resulting in the wrongful prosecution of over 900 subpostmasters for theft and false accounting between 2000–2014.</div></div>
+    <div class="case-row"><div class="case-key">IG Failure</div><div class="case-val">Catastrophic violation of GDPR Principle 4 (Accuracy) and Principle 7 (Accountability). The organisation treated flawed system data as ground truth without verification. No effective audit trail; no challenge mechanism; governance structures captured by commercial interest.</div></div>
+    <div class="case-row"><div class="case-key">Accountability Gap</div><div class="case-val">Neither Fujitsu nor Post Office leadership faced prosecution. This illustrates the "accountability diffusion" problem — when multiple parties share governance responsibility, none may face consequence. WHO is the data controller? Who holds ultimate accountability?</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Computing professionals have a duty to flag when system outputs are being used as evidence without adequate validation. Silence in the face of known system flaws is an ethical failure, not a professional position.</div></div>
+  </div>
+</div>
+
+<div class="case-card">
+  <div class="case-header">
+    <h3>NHS AI Data Access &amp; DeepMind / Palantir Controversies</h3>
+    <span class="badge badge-c">Public Sector · AI Ethics · Information Governance</span>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">Context</div><div class="case-val">Royal Free NHS Trust shared 1.6 million identifiable patient records with DeepMind (Google subsidiary) without proper transparency or lawful basis — ICO found this in breach of data protection law. Later, NHS contracts with Palantir for federated data platform raised concerns about commercial access to the UK's most sensitive health dataset.</div></div>
+    <div class="case-row"><div class="case-key">Core Tension</div><div class="case-val">Genuine public benefit (AI-accelerated diagnostics, pandemic response) vs. patient privacy rights and risks of commercial exploitation of NHS data. This is the archetypal innovation vs. privacy governance dilemma.</div></div>
+    <div class="case-row"><div class="case-key">Governance Failures</div><div class="case-val">Inadequate transparency with patients; failure to establish appropriate data processor agreements; insufficient oversight of commercial partners' use of data.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Public sector IG must balance innovation against the higher duty of care owed to citizens who have no choice but to engage with public services. Commercial partnership does not transfer governance responsibility.</div></div>
+  </div>
+</div>
+
+<div class="sub-head">E · The IG Framework Components</div>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Data Classification &amp; Inventory</div><div class="step-desc">Know what data you have, where it is, who owns it, and how sensitive it is. Without this, all other governance is guesswork.</div><span class="step-tag">Structured → Unstructured → Semi-structured</span></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Policy Framework</div><div class="step-desc">Data Retention Policy, Data Disposal Policy, Access Control Policy, Acceptable Use Policy, Incident Response Policy — all must exist, be current, and be enforced.</div></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Governance Roles</div><div class="step-desc">Data Controller (ultimate accountability), Data Processor (operations under instruction), DPO (oversight function). Clear ownership prevents accountability diffusion.</div></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Lifecycle Management (ILM)</div><div class="step-desc">Collect → Store → Use → Archive → Dispose. Each stage has specific legal obligations and security controls.</div><span class="step-tag">Defensible Disposal: legally sound deletion with audit trail</span></div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Audit &amp; Assurance</div><div class="step-desc">Regular audits, penetration tests of governance systems, independent assurance, and Board-level reporting. Accountability principle (P7) requires demonstrable compliance.</div></div></div>
+</div>
+
+<div class="callout callout-exam">
+  <span class="callout-label">🎯 Exam Insight — Information Governance</span>
+  <p>Examiners want you to connect IG failure to <strong>real-world harm</strong>, not just regulatory breach. The Post Office case is the perfect vehicle — it shows how a data governance failure destroyed hundreds of lives, not just incurred a fine. Distinguish between technical compliance and substantive governance — an organisation can have a DPO and a retention policy while still failing catastrophically at governance (as the Post Office demonstrates).</p>
+</div>
+
+<div class="memory-box">
+  <h5>⚡ Memory Trigger — IG Failure Modes: LORS</h5>
+  <div class="mnemonic">L·O·R·S</div>
+  <div class="mnemonic-expand"><span>L</span>egal risk · <span>O</span>perational risk · <span>R</span>eputational risk · <span>S</span>trategic risk — the four costs of poor information governance</div>
+</div>
+</div><!-- end s4 -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 5 — CYBER SECURITY                -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s5">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 05</span>
+  <h2>Cyber Security &amp; Ethical Hacking</h2>
+  <p class="chapter-tagline">Understanding attack to enable defence — and the legal line between authorised testing and criminal conduct.</p>
+</div>
+
+<div class="sub-head">C · The CIA Triad — The Foundation of Security</div>
+<div class="cia-triangle">
+  <div class="cia-node conf">
+    <div class="cia-letter">C</div>
+    <div class="cia-word">Confidentiality</div>
+    <div class="cia-desc">Ensuring information is accessible only to those authorised. Attacked by: data exfiltration, credential theft, eavesdropping, insider threat.</div>
+  </div>
+  <div class="cia-node integ">
+    <div class="cia-letter">I</div>
+    <div class="cia-word">Integrity</div>
+    <div class="cia-desc">Ensuring information is accurate and unmodified. Attacked by: SQL injection, man-in-the-middle, malware that alters data, supply chain tampering.</div>
+  </div>
+  <div class="cia-node avail">
+    <div class="cia-letter">A</div>
+    <div class="cia-word">Availability</div>
+    <div class="cia-desc">Ensuring information systems are accessible when needed. Attacked by: DDoS, ransomware, physical destruction, power failure, insider sabotage.</div>
+  </div>
+</div>
+
+<div class="sub-head">D · Threat Actor Taxonomy</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Actor Type</th><th>Motivation</th><th>Capability</th><th>Examples</th><th>CMA Risk</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Nation-State APT</strong></td><td>Espionage, disruption, strategic advantage</td><td>Highest — zero-days, custom implants</td><td>Lazarus Group (DPRK), APT29 (Russia), APT41 (China)</td><td class="danger-cell">S.3ZA — serious damage threshold</td></tr>
+    <tr><td><strong>Organised Crime</strong></td><td>Financial gain — ransomware, fraud</td><td>High — RaaS toolkits</td><td>Conti, LockBit, REvil</td><td class="danger-cell">S.3 — intentional impairment</td></tr>
+    <tr><td><strong>Hacktivists</strong></td><td>Political/ideological message</td><td>Medium</td><td>Anonymous, Killnet</td><td class="warn-cell">S.3 — even if motivated politically</td></tr>
+    <tr><td><strong>Script Kiddies</strong></td><td>Recognition, curiosity</td><td>Low — uses pre-built tools</td><td>Various forum-based actors</td><td class="accent-cell">S.1 — unauthorised access</td></tr>
+    <tr><td><strong>Insider Threats</strong></td><td>Disgruntlement, financial, coercion</td><td>High contextual — legitimate access</td><td>Edward Snowden, rogue admins</td><td class="warn-cell">S.3 if sabotage; theft of IP laws</td></tr>
+    <tr><td><strong>White Hat</strong></td><td>Defence, discovery, responsible disclosure</td><td>High — professional skill</td><td>Security researchers, pen testers</td><td class="accent-cell">Exempt with authorisation</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">D · Real Attacks — The Attack Lifecycle Applied</div>
+<div class="case-card">
+  <div class="case-header">
+    <h3>Bybit Cryptocurrency Heist (February 2025)</h3>
+    <span class="badge badge-r">CMA S.1/S.3 · Nation-State Attribution · Crypto Crime</span>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">What Happened</div><div class="case-val">One of the largest cryptocurrency thefts in history — approximately $1.5 billion stolen from Bybit exchange. Attributed to the Lazarus Group (DPRK-affiliated). Attack compromised multi-signature cold wallet infrastructure through a sophisticated UI manipulation attack on a third-party signing interface (Safe{Wallet}).</div></div>
+    <div class="case-row"><div class="case-key">Attack Stages</div><div class="case-val">Recon (mapping Bybit's cold wallet infrastructure) → Scanning (identifying Safe{Wallet} dependency) → Gaining Access (compromising Safe{Wallet} developer environment — supply chain attack) → Maintaining Access (implanting malicious JavaScript) → Execution (manipulating UI during a routine transaction to redirect funds).</div></div>
+    <div class="case-row"><div class="case-key">Legal Analysis</div><div class="case-val">Multiple CMA 1990 offences: S.1 (unauthorised access to Safe{Wallet} systems), S.3 (unauthorised modification of transaction data), potentially S.3ZA if deemed to threaten financial system integrity. Cross-jurisdictional enforcement against nation-state actors remains practically impossible.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Supply chain attacks now dominate sophisticated threat actor playbooks. Governance of third-party software dependencies is as critical as internal security controls. The weakness was not in Bybit's systems but in its supply chain — an IG and cyber governance failure simultaneously.</div></div>
+  </div>
+</div>
+
+<div class="sub-head">E · The Computer Misuse Act 1990 — Critical Analysis</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Section</th><th>Offence Title</th><th>Actus Reus</th><th>Mens Rea</th><th>Penalty</th><th>Ethical Hacking Immunity?</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge badge-c">S.1</span></td><td>Unauthorised Access</td><td>Accessing any computer material without authorisation</td><td>Intent to access + knowledge of no authorisation</td><td>2 years / unlimited fine</td><td class="accent-cell">Yes — if written authorisation exists</td></tr>
+    <tr><td><span class="badge badge-g">S.3</span></td><td>Unauthorised Modification / Impairment</td><td>Any unauthorised act disrupting a computer system</td><td>Intent OR recklessness to impair</td><td>10 years / unlimited fine</td><td class="accent-cell">Yes — with scoped, written permission</td></tr>
+    <tr><td><span class="badge badge-r">S.3ZA</span></td><td>Serious Damage / National Infrastructure</td><td>Acts causing or risking serious damage to human welfare or national security</td><td>Intent or recklessness to cause serious damage</td><td>Life imprisonment / fine</td><td class="danger-cell">Extremely narrow — rarely applicable to pen testing</td></tr>
+    <tr><td><span class="badge badge-p">S.3A</span></td><td>Making/Supplying Hacking Tools</td><td>Creating, distributing, or obtaining tools for CMA offences</td><td>Intent for use in CMA offences</td><td>2 years / fine</td><td class="warn-cell">Grey area — dual-use tools (Metasploit, Kali Linux)</td></tr>
+  </tbody>
+</table></div>
+
+<div class="callout callout-danger">
+  <span class="callout-label">⚠️ Critical Legal Gap — Is The CMA Fit For AI?</span>
+  <p>The CMA was written in 1990 for a world of human hackers breaking into discrete systems. It struggles with: (1) <strong>AI-automated attacks</strong> — who has "intent" when an AI system autonomously discovers and exploits a vulnerability? (2) <strong>Adversarial AI</strong> — injecting malicious inputs into AI models; does this "modify" computer material within S.3? (3) <strong>Nation-state cyber warfare</strong> — the Act is extraterritorial but practically unenforceable against foreign state actors. This is a key distinction-level argument: the legal framework has not kept pace with the threat landscape.</p>
+</div>
+
+<div class="sub-head">F · Responsible Disclosure — The Ethics of Vulnerability Research</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Approach</th><th>Description</th><th>Ethical Position</th><th>Legal Risk</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Full Disclosure</strong></td><td>Publish vulnerability details immediately, publicly</td><td>Forces vendors to act; maximises community awareness</td><td>Moderate — can constitute S.3A if detailed exploit included</td></tr>
+    <tr><td><strong>Coordinated / Responsible Disclosure</strong></td><td>Notify vendor privately; agree remediation timeline; disclose after patch</td><td>Best practice — balances transparency with harm reduction</td><td>Low — standard professional approach</td></tr>
+    <tr><td><strong>Bug Bounty</strong></td><td>Vendor pays researchers to find and report vulnerabilities within defined scope</td><td>Aligns incentives; reduces chilling effect on research</td><td>Lowest — explicit authorisation and liability waiver</td></tr>
+    <tr><td><strong>Selling to Brokers</strong></td><td>Sell zero-day exploits to vulnerability brokers (Zerodium etc.)</td><td>Highly contentious — may enable state surveillance or attack</td><td>High — S.3A risk; may constitute supply of hacking article</td></tr>
+  </tbody>
+</table></div>
+
+<div class="callout callout-distinction">
+  <span class="callout-label">🎓 Distinction-Level Talking Points — Cyber Security</span>
+  <ul>
+    <li><strong>"Knowing no authorisation"</strong> — the mens rea element of CMA S.1 is the critical pivot: this is what distinguishes a pen tester with a signed Letter of Authorisation from a criminal. The document is not merely a formality — it is the legal instrument that negates the mental element of the offence.</li>
+    <li><strong>Dual-use technology paradox:</strong> Kali Linux, Metasploit, and Wireshark are simultaneously essential defensive tools and potential S.3A articles for "use in offences." The legality depends entirely on intent and authorisation — the tools themselves are neutral. This reflects a broader IP/ethics tension: knowledge of vulnerability is neither good nor bad; context determines morality.</li>
+    <li><strong>Cyber resilience vs. cyber security:</strong> Security is about preventing breaches; resilience is about ensuring business continuity when breaches occur. Modern governance frameworks (NIST CSF, ISO 27001) treat both as essential — an organisation that can only prevent, not recover, is fundamentally insecure.</li>
+  </ul>
+</div>
+
+<div class="memory-box">
+  <h5>⚡ Memory Trigger — CIA Triad Application</h5>
+  <div class="mnemonic">C · I · A</div>
+  <div class="mnemonic-expand"><span>C</span>onfidentiality (who sees it) · <span>I</span>ntegrity (is it accurate?) · <span>A</span>vailability (can you get to it?) — ask these three questions for any security scenario</div>
+</div>
+</div><!-- end s5 -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 6 — RED TEAMING                   -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s6">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 06</span>
+  <h2>Red Teaming &amp; Adversarial Thinking</h2>
+  <p class="chapter-tagline">Simulating the enemy to defeat them — and the profound ethical questions this raises.</p>
+</div>
+
+<div class="sub-head">A · What Is Red Teaming?</div>
+<p><strong>Red teaming</strong> is the practice of role-playing as a hostile actor against your own systems, processes, or people to identify vulnerabilities before real attackers do. Originally a Cold War military concept (the "Red Army" vs. the "Blue Army"), it has become central to modern cybersecurity governance, AI safety testing, and national defence strategy. The key distinction from penetration testing: red teaming is <strong>scenario-driven, adversarial-mindset simulation</strong> rather than technical vulnerability scanning — it tests <em>people, processes, and culture</em>, not just technology.</p>
+
+<div class="sub-head">C · The HUHT/HULT/LUHT/LULT Actor Framework</div>
+<p>This framework classifies threat actors along two axes: <strong>Capability</strong> (High/Low) and <strong>Desire to cause harm to the target</strong> (High/Low). Each quadrant demands a different defensive and red teaming posture.</p>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Actor Model</th><th>Full Name</th><th>Profile</th><th>Examples</th><th>Red Team Priority</th></tr></thead>
+  <tbody>
+    <tr><td><span class="badge badge-r">HUHT</span></td><td>High Utility / High Threat</td><td>Highly capable AND highly motivated to attack you specifically. The most dangerous category.</td><td>Nation-state APTs targeting critical infrastructure; organised crime targeting financial institutions</td><td class="danger-cell">Highest — simulate their specific TTPs (Tactics, Techniques, Procedures)</td></tr>
+    <tr><td><span class="badge badge-g">HULT</span></td><td>High Utility / Low Threat</td><td>Highly capable but not motivated to target you specifically. May become a threat if circumstances change.</td><td>Sophisticated cybercriminal groups not currently targeting your sector; allied intelligence services</td><td class="warn-cell">High — capabilities could be redirected; monitor for targeting shift</td></tr>
+    <tr><td><span class="badge badge-p">LUHT</span></td><td>Low Utility / High Threat</td><td>Highly motivated to attack you but limited capability. May use commodity tools or insider access.</td><td>Disgruntled ex-employees; low-skill hacktivists; opportunistic criminals</td><td class="accent-cell">Medium — focus on access controls, insider threat programmes</td></tr>
+    <tr><td><span class="badge badge-gr">LULT</span></td><td>Low Utility / Low Threat</td><td>Neither particularly capable nor specifically motivated. Low priority but opportunistic risks.</td><td>Script kiddies; automated scanning bots; random phishing campaigns</td><td class="accent-cell">Low — basic hygiene (patching, MFA) is sufficient defence</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">D · Digital Twins &amp; Attack Rehearsal</div>
+<p>A <strong>digital twin</strong> is a virtual replica of a physical or digital system that can be used for simulation, testing, and attack rehearsal without affecting live operations. In red teaming contexts, digital twins allow teams to: (1) test attacks against realistic system models; (2) rehearse incident response; (3) identify single points of failure; and (4) model supply chain attacks without legal or operational risk. Critical national infrastructure operators increasingly use digital twins to rehearse HUHT attack scenarios against power grids, water treatment, and financial clearing systems.</p>
+
+<div class="sub-head">E · The Ethics of Red Teaming — The Core Debate</div>
+<div class="callout callout-danger">
+  <span class="callout-label">⚠️ Ethical Tension — "Is It Ethical To Teach Offensive Techniques?"</span>
+  <p>The strongest objection: teaching red team techniques creates a dual-use knowledge problem. The same skills that enable an authorised red teamer to test a bank's defences could enable an unauthorised attacker to breach them. Arguments for teaching offensive techniques:</p>
+  <ul>
+    <li><strong>Security through understanding:</strong> Defenders who cannot think like attackers will always be reactive. Offensive skills are a prerequisite for effective defence.</li>
+    <li><strong>Controlled creation:</strong> Skills taught in professional and academic contexts come with professional accountability structures (BCS codes, employment law, CMA liability) that deter misuse.</li>
+    <li><strong>Counterfactual:</strong> Determined attackers can learn these techniques regardless. Refusing to teach them only disadvantages defenders.</li>
+  </ul>
+  <p>Arguments against / limitations:</p>
+  <ul>
+    <li><strong>Not all students will be ethical:</strong> Academic institutions cannot guarantee that red team skills will only be used defensively.</li>
+    <li><strong>Lowering barriers:</strong> Professionalised education does reduce the skill barrier to conducting attacks — some attacks require capabilities only available after formal training.</li>
+    <li><strong>The "just following orders" analogy:</strong> Professional context does not always prevent misuse — insider threats emerge from trained professionals.</li>
+  </ul>
+</div>
+
+<div class="sub-head">E · Stakeholder Attack Modelling</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Target Type</th><th>Actor Classification</th><th>Attack Vector</th><th>Ethical Complexity</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Financial Institutions</strong></td><td>HUHT (organised crime, APT)</td><td>SWIFT system compromise, supply chain, insider recruitment</td><td>High — systemic financial risk; BoE / FCA regulation adds legal layer</td></tr>
+    <tr><td><strong>Government Systems</strong></td><td>HUHT (rival states), LUHT (hacktivists)</td><td>Spear phishing, credential stuffing, zero-days in legacy systems</td><td>Very high — national security; cyber warfare legal grey zone</td></tr>
+    <tr><td><strong>Political Actors</strong></td><td>HUHT (state-sponsored influence operations)</td><td>Disinformation campaigns, email compromise (DNC hack 2016 model), social engineering</td><td>Extremely high — electoral integrity; free speech tensions</td></tr>
+    <tr><td><strong>Supply Chain</strong></td><td>HUHT</td><td>Compromising upstream software/hardware dependencies (SolarWinds model, Bybit Safe{Wallet})</td><td>High — entire downstream customer base at risk; contractual and tortious liability</td></tr>
+    <tr><td><strong>Critical Infrastructure</strong></td><td>HUHT (nation-state)</td><td>OT/SCADA exploitation, phishing operators</td><td>Highest — human welfare; CMA S.3ZA, international humanitarian law</td></tr>
+  </tbody>
+</table></div>
+
+<div class="callout callout-distinction">
+  <span class="callout-label">🎓 Distinction-Level Talking Points — Red Teaming</span>
+  <ul>
+    <li><strong>Adversarial thinking as a professional competency:</strong> The ability to model how an attacker perceives and targets a system is a distinct cognitive skill — it requires actively suppressing the defender's tendency to assume rational, benign use of systems. This is taught, not innate, and is why red teaming requires professional training.</li>
+    <li><strong>The "negative stakeholder" concept:</strong> Most stakeholder analysis in business assumes stakeholders want the organisation to succeed. Red teaming introduces <em>negative stakeholders</em> — actors whose interests are actively served by the organisation's failure. Incorporating negative stakeholders into governance analysis changes security architecture decisions fundamentally.</li>
+    <li><strong>Cognitive bias in defence:</strong> Defenders are systematically biased toward over-confidence in existing controls, under-estimation of novel attack vectors, and anchoring on past incidents. Red teaming is a structured debiasing mechanism for security governance.</li>
+  </ul>
+</div>
+
+<div class="memory-box">
+  <h5>⚡ Memory Trigger — HUHT Matrix</h5>
+  <div class="mnemonic">H·H → H·L → L·H → L·L</div>
+  <div class="mnemonic-expand">High-High = <span>most dangerous</span> (APTs) · High-Low = <span>watch carefully</span> · Low-High = <span>access controls</span> · Low-Low = <span>basic hygiene</span></div>
+</div>
+</div><!-- end s6 -->
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 7 — WORKPLACE MONITORING          -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s7">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 07</span>
+  <h2>Workplace Monitoring &amp; Employment Ethics</h2>
+  <p class="chapter-tagline">The employer's power to watch — and the employee's right to dignity.</p>
+</div>
+
+<div class="sub-head">C · Monitoring Methods Matrix</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Method</th><th>Type</th><th>What It Captures</th><th>Legal Basis Required</th><th>Ethical Risk</th></tr></thead>
+  <tbody>
+    <tr><td><strong>CCTV</strong></td><td>Physical / Network</td><td>Physical location, behaviour, interactions</td><td>Legitimate interests (LI) + signage; DPA/GDPR; CCTV Code of Practice</td><td class="warn-cell">Chilling effect on behaviour; coverage of personal spaces</td></tr>
+    <tr><td><strong>Email Monitoring</strong></td><td>Endpoint / Network</td><td>Content, attachments, recipients, timing</td><td>LI for business purpose; RIPA — must have policy informing employees; TLBP Regulations 2000</td><td class="warn-cell">High — captures personal communications; legal/HR privilege issues</td></tr>
+    <tr><td><strong>Internet/Web Logs</strong></td><td>Network</td><td>Sites visited, bandwidth used, time patterns</td><td>LI for security/productivity; Acceptable Use Policy + informed staff</td><td class="accent-cell">Moderate — less intimate than email but reveals behavioural patterns</td></tr>
+    <tr><td><strong>Keystroke Logging</strong></td><td>Endpoint</td><td>Every key pressed, timing, patterns</td><td>High threshold — LI must be compelling; targeted not blanket; transparent</td><td class="danger-cell">Very high — captures passwords, personal messages, medical searches</td></tr>
+    <tr><td><strong>Screen Recording</strong></td><td>Endpoint</td><td>Real-time or periodic screenshots of entire display</td><td>High threshold — specific investigations or contractual requirement</td><td class="danger-cell">Very high — no privacy at workstation; severe chilling effect</td></tr>
+    <tr><td><strong>Phone/Call Recording</strong></td><td>Network / Endpoint</td><td>Conversation content, duration, frequency</td><td>RIPA — explicit consent (both parties) OR business purpose exception</td><td class="danger-cell">Highest — interception of live communications</td></tr>
+    <tr><td><strong>Vehicle/GPS Tracking</strong></td><td>Physical / Network</td><td>Location, route, speed, timing</td><td>LI for fleet management; GDPR applies (location = personal data); time-limited</td><td class="warn-cell">Moderate — extends surveillance beyond workplace</td></tr>
+    <tr><td><strong>Access Logs</strong></td><td>Network / Physical</td><td>Entry/exit times, door badge data, system logins</td><td>LI for security; standard for most organisations; transparent</td><td class="accent-cell">Low — generally expected in secure environments</td></tr>
+    <tr><td><strong>Biometric Attendance</strong></td><td>Endpoint</td><td>Fingerprint, facial recognition for time/attendance</td><td>Art. 9 GDPR — requires explicit consent for biometric special category data</td><td class="danger-cell">Very high — biometric data is permanent; cannot be changed if breached</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">E · Ethical Analysis — The Proportionality Framework</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Ethical Principle</th><th>Requirement For Monitoring</th><th>Failure Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Proportionality</strong></td><td>The level of monitoring must be proportionate to the legitimate business need. Blanket keylogging for all staff to catch one suspected leaker fails this test.</td><td>Amazon warehouse scanners tracking toilet breaks — ICO investigated as disproportionate</td></tr>
+    <tr><td><strong>Transparency</strong></td><td>Employees must know what is being monitored, why, how data is used, and for how long. Covert surveillance requires exceptional justification.</td><td>Installing hidden software on devices without disclosure — RIPA breach; GDPR breach; ACAS violation</td></tr>
+    <tr><td><strong>Necessity</strong></td><td>The monitoring must be the minimum required to achieve the purpose. A less intrusive method would defeat the monitoring obligation test.</td><td>Full email content monitoring when metadata alone would achieve the purpose</td></tr>
+    <tr><td><strong>Legitimacy</strong></td><td>A genuine, demonstrable business purpose must exist. Monitoring cannot be used for control or intimidation.</td><td>Monitoring employees' personal social media out of hours — no nexus to employment purpose</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">E · Arguments For vs. Against Workplace Monitoring</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>For Monitoring</th><th>Against Monitoring</th></tr></thead>
+  <tbody>
+    <tr><td>Legitimate security need — insider threat is real and costly (average insider incident costs $15M+)</td><td>Trust erosion — monitored employees report lower job satisfaction, reduced autonomy, and increased stress</td></tr>
+    <tr><td>Legal protection — evidence of misconduct for disciplinary/legal proceedings requires contemporaneous records</td><td>Chilling effect — employees self-censor communications, reducing innovation and open culture</td></tr>
+    <tr><td>Productivity management — particularly relevant for remote work environments</td><td>Surveillance capitalism creep — productivity monitoring data can be misused for discriminatory purposes</td></tr>
+    <tr><td>Regulatory compliance — financial services, healthcare, legal sectors have mandatory monitoring obligations</td><td>Privacy as dignity — monitoring treats employees as untrustworthy subjects, not autonomous professionals</td></tr>
+    <tr><td>Incident investigation — forensic capability requires data preservation</td><td>Psychological harm — hypervigilance, anxiety, and burnout from constant monitoring are documented</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">F · Legal Framework — DPA, RIPA, ACAS</div>
+<div class="callout callout-danger">
+  <span class="callout-label">⚠️ High-Score Legal Threshold — Telecommunications (Lawful Business Practice) Regulations 2000</span>
+  <p>The TLBP Regulations create the narrow business-purpose exemption within RIPA allowing monitoring <em>without explicit consent</em> if: (1) the interception is for a <strong>legitimate business purpose</strong> (crime detection, regulatory compliance, business transaction verification, system standards); (2) the employer has taken <strong>all reasonable steps to inform</strong> employees that monitoring may occur; (3) monitoring is <strong>proportionate</strong> to the stated purpose. Failure to satisfy all three limbs = RIPA breach = potential criminal liability for the employer, not just civil GDPR breach.</p>
+</div>
+
+<div class="callout callout-distinction">
+  <span class="callout-label">🎓 Distinction-Level Talking Points — Workplace Monitoring</span>
+  <ul>
+    <li><strong>The digital-physical surveillance merge:</strong> Traditional employment law was designed for a physical workplace. Remote working, BYOD (Bring Your Own Device), and always-on monitoring tools have dissolved the boundary between work and personal life — GDPR's "purpose limitation" principle has never been more strained.</li>
+    <li><strong>Productivity surveillance vs. performance management:</strong> There is a meaningful ethical distinction between monitoring <em>outcomes</em> (what was produced) and monitoring <em>process</em> (every keystroke, mouse movement, idle second). The latter treats employees as machines and imports the logic of industrial Taylorism into knowledge work, where it is both empirically ineffective and ethically corrosive.</li>
+    <li><strong>The consent problem:</strong> Employment relationships are structurally coercive — an employee who "consents" to biometric monitoring as a condition of employment has not given free consent under GDPR. This is why Art. 9 special category data (biometrics) cannot rely on employment consent — an alternative lawful basis is required.</li>
+  </ul>
+</div>
+
+<div class="memory-box">
+  <h5>⚡ Memory Trigger — Monitoring Lawfulness Test: PTLN</h5>
+  <div class="mnemonic">P·T·L·N</div>
+  <div class="mnemonic-expand"><span>P</span>roportionate · <span>T</span>ransparent · <span>L</span>egitimate purpose · <span>N</span>ecessary — all four must be satisfied for lawful workplace monitoring</div>
+</div>
+</div><!-- end s7 -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 8 — LEADERSHIP & PROFESSIONALISM  -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s8">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 08</span>
+  <h2>Humanism, Leadership &amp; Professional Identity</h2>
+  <p class="chapter-tagline">Character under pressure — what kind of professional do you choose to be?</p>
+</div>
+
+<div class="sub-head">A · The Reasonableness Standard — Legal Tradition &amp; Moral Baseline</div>
+<p>The <strong>"reasonable person" standard</strong> originated in <em>Blyth v Birmingham Waterworks Co</em> (1856) as the test for negligence — conduct is judged against what a <em>prudent and reasonable person</em> would have done in the same circumstances. In computing ethics, this standard has been extended to measure professional conduct, AI system decisions, and organisational liability. The question is not what the defendant <em>intended</em>, but what a reasonable professional <em>would have done</em>. This matters because it creates an objective standard for professional accountability that transcends subjective good intentions.</p>
+
+<div class="pull-quote">
+  <p>"The reasonableness standard asks not what you thought was right, but what any responsible professional in your position would have recognised as their duty."</p>
+  <cite>— Applied to computing ethics and AI governance</cite>
+</div>
+
+<div class="sub-head">C · Leadership Styles — Comparative Analysis</div>
+<div class="ls-head">
+  <div>Style</div>
+  <div>Strengths</div>
+  <div>Ethical/Professional Risks</div>
+</div>
+<div class="ls-row">
+  <div class="ls-style">Autocratic</div>
+  <div class="ls-good">Decisive in crisis; clear direction; fast execution in emergencies</div>
+  <div class="ls-bad">Suppresses dissent; prevents ethical challenge; creates cultures where misconduct is unreported (Post Office model)</div>
+</div>
+<div class="ls-row">
+  <div class="ls-style">Democratic</div>
+  <div class="ls-good">Builds engagement and buy-in; surfaces diverse perspectives; identifies blind spots</div>
+  <div class="ls-bad">Slow in crisis; can lead to diffusion of accountability; "committee ethics" may lower individual moral responsibility</div>
+</div>
+<div class="ls-row">
+  <div class="ls-style">Coaching</div>
+  <div class="ls-good">Builds long-term capability; ethical reflection embedded in development; supports professional growth</div>
+  <div class="ls-bad">Time-intensive; not effective in immediate crises; requires leaders with own ethical clarity</div>
+</div>
+<div class="ls-row">
+  <div class="ls-style">Visionary</div>
+  <div class="ls-good">Inspires mission-driven behaviour; aligns teams behind ethical goals (public interest)</div>
+  <div class="ls-bad">Can become cult of personality; unethical vision can inspire unethical action (Theranos)</div>
+</div>
+<div class="ls-row">
+  <div class="ls-style">Servant Leadership</div>
+  <div class="ls-good">Prioritises wellbeing of team; creates psychological safety for ethical whistleblowing</div>
+  <div class="ls-bad">May undermine authority in truly adversarial environments (cyber incident response)</div>
+</div>
+<div class="ls-row">
+  <div class="ls-style">Laissez-Faire</div>
+  <div class="ls-good">Maximises autonomy; effective with highly skilled, self-directed teams</div>
+  <div class="ls-bad">Governance vacuum; no ethical oversight; accountability diffusion; risk of individual misconduct going unchecked</div>
+</div>
+<div class="ls-row">
+  <div class="ls-style">Pacesetter</div>
+  <div class="ls-good">High performance culture; sets strong quality standards</div>
+  <div class="ls-bad">Psychological pressure; corners-cut under pace demands; ethical shortcuts ("move fast and break things")</div>
+</div>
+
+<div class="sub-head">E · Kipling's "If" — Professional Resilience Framework</div>
+<div class="callout callout-info">
+  <span class="callout-label">📖 Kipling's "If" as Professional Ethics</span>
+  <p>Rudyard Kipling's poem <em>If</em> is interpreted in this module as a framework for professional resilience and ethical behaviour under pressure. Key applications:</p>
+  <ul>
+    <li><strong>"If you can keep your head when all about you are losing theirs"</strong> → Ethical decision-making during a cyber incident, when organisational panic may push for shortcuts (paying ransom; concealing a breach)</li>
+    <li><strong>"If you can trust yourself when all men doubt you"</strong> → The whistleblower's position; maintaining professional conviction against institutional pressure (Frances Haugen)</li>
+    <li><strong>"If you can talk with crowds and keep your virtue"</strong> → Not compromising professional ethics under peer or hierarchical pressure; resisting groupthink in security culture</li>
+    <li><strong>"If you can meet with Triumph and Disaster and treat those two impostors just the same"</strong> → Neither complacency after security success nor panic after breach; steady governance and resilience</li>
+    <li><strong>"Yours is the Earth and everything that's in it, and — which is more — you'll be a Man, my son"</strong> → Professional maturity: responsibility accepted, not avoided; accountability embraced, not deflected</li>
+  </ul>
+</div>
+
+<div class="sub-head">E · Aspirational Morality vs. Minimum Standards</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Concept</th><th>Description</th><th>Professional Application</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Minimum Standards Ethics</strong></td><td>Behave lawfully; comply with regulations; avoid penalties</td><td>GDPR compliance checklists; CMA training; ACAS policy adherence. <em>Necessary but insufficient for genuine professionalism.</em></td></tr>
+    <tr><td><strong>Aspirational Ethics</strong></td><td>Strive toward ideals of integrity, public service, and excellence beyond what is required</td><td>Voluntarily disclosing a system vulnerability even without legal obligation; advocating for user privacy beyond regulatory minimum; BCS public interest principle applied proactively.</td></tr>
+    <tr><td><strong>Moral Courage</strong></td><td>Acting ethically when there is a personal cost — professional risk, social pressure, financial penalty</td><td>Frances Haugen; the post office IT workers who raised concerns; researchers disclosing AI biases at personal career cost</td></tr>
+    <tr><td><strong>Integrity Under Pressure</strong></td><td>Maintaining ethical standards when circumstances make deviation tempting or easy</td><td>Not covering up a breach; not over-stating AI system capabilities in a pitch; resisting pressure to deploy vulnerable code</td></tr>
+  </tbody>
+</table></div>
+
+<div class="callout callout-distinction">
+  <span class="callout-label">🎓 Distinction-Level Talking Points — Leadership</span>
+  <ul>
+    <li><strong>Leadership and governance are inseparable:</strong> The Post Office scandal demonstrates that governance frameworks (Horizon data governance, disciplinary procedures) are only as effective as the leaders who use them. Technically compliant processes in the hands of leaders who suppress challenge become instruments of harm.</li>
+    <li><strong>Ethical leadership creates the conditions for ethical conduct:</strong> Psychological safety — the ability to raise concerns without fear of retaliation — is a leadership output, not a structural guarantee. No whistleblowing hotline saves an employee who fears their manager.</li>
+    <li><strong>The "professional identity" argument:</strong> The most resilient ethical professionals are those whose identity is bound to their values, not their employer. Frances Haugen did not work for the public interest — she <em>was</em> a person of the public interest. Professional identity rooted in virtue ethics is more robust than compliance training.</li>
+  </ul>
+</div>
+
+<div class="memory-box">
+  <h5>⚡ Memory Trigger — Leadership Ethical Risks</h5>
+  <div class="mnemonic">AUTO → SUPP → DIFFUSE</div>
+  <div class="mnemonic-expand"><span>AUTO</span>cratic suppresses ethical challenge · Democratic can <span>DIFFUSE</span> accountability · Laissez-faire creates governance vacuum — know the ethical failure mode of each style</div>
+</div>
+</div><!-- end s8 -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 9 — EXAM PREPARATION ZONE         -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s9">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 09</span>
+  <h2>Exam Preparation Zone</h2>
+  <p class="chapter-tagline">The architecture of a distinction-level answer — and the errors that prevent it.</p>
+</div>
+
+<div class="sub-head">Likely Exam Themes &amp; Question Types</div>
+<div class="card-grid">
+  <div class="card card-accent-top"><h4>Scenario-Based Ethics</h4><p>Given a real or hypothetical case (a data breach, an AI deployment decision, a whistleblowing dilemma), apply two or more ethical frameworks to analyse the situation and reach a professionally reasoned conclusion.</p></div>
+  <div class="card card-accent-top cyan"><h4>Law vs. Ethics Analysis</h4><p>Critically evaluate whether a legal framework adequately captures the ethical dimensions of a problem. E.g., is the CMA fit for AI? Does GDPR meaningfully protect privacy in a surveillance capitalism economy?</p></div>
+  <div class="card card-accent-top gold"><h4>Professional Responsibility</h4><p>Apply BCS/ACM codes to a professional dilemma. Analyse the obligations of specific roles (DPO, CISO, pen tester, software engineer) in a given scenario.</p></div>
+  <div class="card card-accent-top red"><h4>Governance Failure Analysis</h4><p>Dissect a real case (Post Office Horizon, NHS AI, TikTok) identifying governance failures across technical, legal, ethical, and organisational dimensions.</p></div>
+</div>
+
+<div class="sub-head">The Distinction-Level Answer Architecture</div>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Define &amp; Contextualise</div><div class="step-desc">Open with a clear, MSc-level definition of the central concept. Immediately situate it in its broader governance / societal context. Do not spend more than 15% of your answer here.</div></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Apply Multiple Frameworks</div><div class="step-desc">Apply at minimum two ethical theories AND a legal framework AND a professional code to the same scenario. Show how they converge OR diverge. Divergence is more intellectually interesting — lean into it.</div></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Use Specific Evidence</div><div class="step-desc">Name specific cases, statutes, and section numbers. "The GDPR" is weak; "Article 5(1)(b) GDPR — purpose limitation" is strong. Case names (Infopaq, Aerotel, Blyth) signal command of material.</div></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Critically Evaluate</div><div class="step-desc">Challenge the framework you've applied. Show its limits. Does GDPR really protect privacy when consent is manufactured through dark patterns? Is the CMA truly enforceable against nation-state actors? This is where distinction marks live.</div></div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Professional Voice &amp; Synthesis</div><div class="step-desc">Conclude with a coherent professional judgement — not a fence-sitting "it depends" but a considered position that acknowledges complexity while committing to a defensible conclusion. This demonstrates the professional maturity examiners are looking for.</div></div></div>
+</div>
+
+<div class="exam-zone">
+  <h4>⚡ Weak Answers vs. Distinction Answers</h4>
+  <div class="weak-strong">
+    <div class="weak">
+      <h5>❌ Common Weak Answer Patterns</h5>
+      <ul>
+        <li>Lists GDPR principles without applying them to the scenario</li>
+        <li>Defines ethical theories without applying them</li>
+        <li>Names laws without analysing their elements (actus reus/mens rea)</li>
+        <li>Uses only one ethical framework; ignores tensions</li>
+        <li>Describes what happened in a case without extracting the principle</li>
+        <li>Fence-sits: "there are arguments on both sides" without reaching a conclusion</li>
+        <li>Confuses legal and ethical obligations (treats compliance as sufficient)</li>
+        <li>Ignores professional codes entirely</li>
+        <li>No critical evaluation of frameworks' limits</li>
+        <li>No synthesis across the module's topics</li>
+      </ul>
+    </div>
+    <div class="strong">
+      <h5>✅ Distinction Answer Characteristics</h5>
+      <ul>
+        <li>Opens with a conceptually precise definition, then immediately questions its limits</li>
+        <li>Applies theories to the specific facts of the scenario, not in the abstract</li>
+        <li>Cites specific legal provisions and case names correctly</li>
+        <li>Identifies the core tension (e.g., innovation vs. privacy) and sustains analysis through it</li>
+        <li>Uses cases as evidence for principles, not as stories to be told</li>
+        <li>Reaches a defensible professional conclusion with appropriate qualification</li>
+        <li>Distinguishes between legal compliance and ethical behaviour</li>
+        <li>Demonstrates awareness of the limits of the frameworks applied</li>
+        <li>Cross-references multiple module topics (e.g., IG failure + ethical leadership + GDPR)</li>
+        <li>Uses professional voice — the voice of a practitioner, not a student</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="sub-head">Recurring High-Value Arguments — Use In Any Relevant Question</div>
+<div class="card-grid">
+  <div class="card card-accent-top"><h4>"Legal Compliance ≠ Ethical Conduct"</h4><p>Facebook's data practices were largely legal; they were not ethical. This argument applies to any question where a party has technically complied with regulation but caused harm. Always worth deploying.</p></div>
+  <div class="card card-accent-top cyan"><h4>"Accountability Diffusion"</h4><p>When responsibility is shared across organisations, individuals, and technical systems, no single actor bears clear accountability — enabling harm to occur unchecked. Post Office Horizon, supply chain attacks, AI decisions.</p></div>
+  <div class="card card-accent-top gold"><h4>"Power Asymmetry"</h4><p>Data collection, workplace surveillance, and algorithmic decision-making all involve one party accumulating knowledge and power over another. Governance frameworks exist to redress this asymmetry — ask whether they succeed.</p></div>
+  <div class="card card-accent-top red"><h4>"The Reasonableness Standard"</h4><p>What would a competent, reasonable professional in this role have done? This standard can be deployed to evaluate any professional conduct question, and connects to Blyth v Birmingham Waterworks and AI liability.</p></div>
+  <div class="card card-accent-top green"><h4>"Innovation-Privacy Trade-off"</h4><p>Almost every data and AI ethics question involves the same underlying tension. Acknowledge the genuine public benefit of innovation (NHS AI diagnostics, fraud detection) while articulating why it does not automatically override rights.</p></div>
+  <div class="card card-accent-top"><h4>"The Floor/Ceiling Distinction"</h4><p>Law sets a floor; ethics sets a ceiling. Professional codes demand conduct above the legal minimum. This argument allows you to analyse situations where an actor is both legally compliant and professionally deficient.</p></div>
+</div>
+
+<div class="sub-head">Most Important Laws &amp; Provisions — Quick Fire Reference</div>
+<div class="cheat">
+  <div class="cheat-title">Critical Legal Provisions</div>
+  <div class="cheat-items">
+    <span class="cheat-item">GDPR Art.5 — 7 Principles</span>
+    <span class="cheat-item">GDPR Art.6 — Lawful Basis</span>
+    <span class="cheat-item">GDPR Art.9 — Special Category</span>
+    <span class="cheat-item">GDPR Art.17 — Erasure</span>
+    <span class="cheat-item">GDPR Art.22 — Automated Decisions</span>
+    <span class="cheat-item">GDPR Art.25 — Privacy by Design</span>
+    <span class="cheat-item">DPA 2018 — UK Implementation</span>
+    <span class="cheat-item">CMA 1990 S.1 — Unauthorised Access</span>
+    <span class="cheat-item">CMA 1990 S.3 — Impairment</span>
+    <span class="cheat-item">CMA 1990 S.3ZA — Serious Damage</span>
+    <span class="cheat-item">CMA 1990 S.3A — Hacking Tools</span>
+    <span class="cheat-item">RIPA 2000 — Interception</span>
+    <span class="cheat-item">TLBP Regs 2000 — Business Exception</span>
+    <span class="cheat-item">CDPA 1988 — Copyright</span>
+    <span class="cheat-item">Patents Act 1977</span>
+    <span class="cheat-item">Trade Marks Act 1994</span>
+    <span class="cheat-item">Employment Act 2002</span>
+    <span class="cheat-item">ACAS Code of Practice</span>
+    <span class="cheat-item">BCS Code of Conduct</span>
+    <span class="cheat-item">ACM Code of Ethics</span>
+  </div>
+</div>
+</div><!-- end s9 -->
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 10 — ULTRA-CONDENSED REVISION     -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s10">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 10</span>
+  <h2>Ultra-Condensed Revision Sheets</h2>
+  <p class="chapter-tagline">Everything you need to recall — nothing you don't.</p>
+</div>
+
+<div class="sub-head">Ethics Rapid Reference</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Theory</th><th>Core Principle</th><th>Thinker</th><th>Cyber Application</th><th>Key Weakness</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Utilitarianism</strong></td><td>Greatest good for greatest number</td><td>Bentham / Mill</td><td>Delay insecure product to prevent mass harm</td><td>Can justify minority harm for majority benefit</td></tr>
+    <tr><td><strong>Deontology</strong></td><td>Rules and duties; consequences irrelevant</td><td>Kant — Categorical Imperative</td><td>Never deploy vulnerable code regardless of business cost</td><td>Rigid; fails when rules conflict</td></tr>
+    <tr><td><strong>Virtue Ethics</strong></td><td>Character over rules/outcomes</td><td>Aristotle</td><td>Act with integrity, courage, honesty even under pressure</td><td>Vague in novel dilemmas</td></tr>
+    <tr><td><strong>Consequentialism</strong></td><td>Judge acts by their full results</td><td>Various</td><td>Evaluate total impact chain of AI deployment</td><td>Requires impossible prediction of outcomes</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">Legal Quick Reference — CMA 1990</div>
+<div class="tbl-wrap"><table>
+  <thead><tr><th>Section</th><th>Offence</th><th>Penalty</th><th>Pen Test Immunity?</th></tr></thead>
+  <tbody>
+    <tr><td>S.1</td><td>Unauthorised access</td><td>2 years</td><td class="accent-cell">Yes — with written authorisation</td></tr>
+    <tr><td>S.3</td><td>Unauthorised impairment</td><td>10 years</td><td class="accent-cell">Yes — within scoped authorisation</td></tr>
+    <tr><td>S.3ZA</td><td>Serious damage / national infrastructure</td><td>Life</td><td class="danger-cell">Narrow — rarely pen test applicable</td></tr>
+    <tr><td>S.3A</td><td>Making/supplying hacking tools</td><td>2 years</td><td class="warn-cell">Grey area — dual-use tools</td></tr>
+  </tbody>
+</table></div>
+
+<div class="sub-head">GDPR 7 Principles — One-Line Recall</div>
+<div class="memory-box">
+  <h5>⚡ GDPR Principles Cheatsheet</h5>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:6px;">
+    <div style="font-size:13px;color:var(--text2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);font-family:var(--mono);font-weight:700;">P1</span> Lawful, Fair, Transparent — tell people; have a basis</div>
+    <div style="font-size:13px;color:var(--text2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);font-family:var(--mono);font-weight:700;">P2</span> Purpose Limitation — use only for stated purpose</div>
+    <div style="font-size:13px;color:var(--text2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);font-family:var(--mono);font-weight:700;">P3</span> Data Minimisation — no more than necessary</div>
+    <div style="font-size:13px;color:var(--text2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);font-family:var(--mono);font-weight:700;">P4</span> Accuracy — correct inaccurate data promptly</div>
+    <div style="font-size:13px;color:var(--text2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);font-family:var(--mono);font-weight:700;">P5</span> Storage Limitation — delete when no longer needed</div>
+    <div style="font-size:13px;color:var(--text2);padding:4px 0;border-bottom:1px solid var(--border);"><span style="color:var(--gold);font-family:var(--mono);font-weight:700;">P6</span> Integrity &amp; Confidentiality — encrypt, control access</div>
+    <div style="font-size:13px;color:var(--text2);padding:4px 0;" style="grid-column:1/-1;"><span style="color:var(--gold);font-family:var(--mono);font-weight:700;">P7</span> Accountability — DEMONSTRATE compliance; this is the master principle</div>
+  </div>
+</div>
+
+<div class="sub-head">IP Four Pillars — Flash Cards</div>
+<div class="card-grid-4">
+  <div class="card" style="border-top:2px solid var(--gold);">
+    <h4 style="color:var(--gold);">© Copyright</h4>
+    <p><strong>Statute:</strong> CDPA 1988<br><strong>Duration:</strong> Life +70<br><strong>Register?</strong> No — automatic<br><strong>Software:</strong> Source + object code; non-literal elements<br><strong>Threshold:</strong> Infopaq — "author's own intellectual creation"</p>
+  </div>
+  <div class="card" style="border-top:2px solid var(--cyan);">
+    <h4 style="color:var(--cyan);">⚙ Patents</h4>
+    <p><strong>Statute:</strong> Patents Act 1977<br><strong>Duration:</strong> 20 years<br><strong>Register?</strong> Mandatory<br><strong>Software:</strong> Only if technical contribution<br><strong>Test:</strong> Aerotel 4-step</p>
+  </div>
+  <div class="card" style="border-top:2px solid var(--purple-l);">
+    <h4 style="color:var(--purple-l);">™ Trade Marks</h4>
+    <p><strong>Statute:</strong> TMA 1994<br><strong>Duration:</strong> 10yr + renewable<br><strong>Register?</strong> Yes for full protection<br><strong>Software:</strong> Brand names, domain names<br><strong>Offence:</strong> Passing off, typosquatting</p>
+  </div>
+  <div class="card" style="border-top:2px solid var(--green);">
+    <h4 style="color:var(--green);">◼ Design Rights</h4>
+    <p><strong>Statute:</strong> RDA 1949<br><strong>Duration:</strong> Reg: 25yr; Unreg: auto<br><strong>Register?</strong> Optional<br><strong>Software:</strong> GUIs, icons, visual interface elements<br><strong>Limit:</strong> Not functional features</p>
+  </div>
+</div>
+
+<div class="sub-head">Mnemonics Master Sheet</div>
+<div class="card-grid">
+  <div class="memory-box" style="margin:0;">
+    <h5>⚡ Ethics Theories — UDVC</h5>
+    <div class="mnemonic">U·D·V·C</div>
+    <div class="mnemonic-expand"><span>U</span>tilitarianism (outcomes) · <span>D</span>eontology (rules) · <span>V</span>irtue (character) · <span>C</span>onsequentialism (full impact)</div>
+  </div>
+  <div class="memory-box" style="margin:0;">
+    <h5>⚡ BCS vs ACM Shared Values — PHSTN</h5>
+    <div class="mnemonic">P·H·S·T·N</div>
+    <div class="mnemonic-expand"><span>P</span>ublic interest · <span>H</span>onesty · <span>S</span>afety · <span>T</span>ransparency · <span>N</span>on-discrimination</div>
+  </div>
+  <div class="memory-box" style="margin:0;">
+    <h5>⚡ CIA Triad</h5>
+    <div class="mnemonic">C·I·A</div>
+    <div class="mnemonic-expand"><span>C</span>onfidentiality (who sees it) · <span>I</span>ntegrity (is it right?) · <span>A</span>vailability (can you get it?)</div>
+  </div>
+  <div class="memory-box" style="margin:0;">
+    <h5>⚡ Five Attack Stages — RSGMC</h5>
+    <div class="mnemonic">R·S·G·M·C</div>
+    <div class="mnemonic-expand"><span>R</span>econ · <span>S</span>can · <span>G</span>ain access · <span>M</span>aintain access · <span>C</span>over tracks</div>
+  </div>
+  <div class="memory-box" style="margin:0;">
+    <h5>⚡ Red Team Actors — HUHT Matrix</h5>
+    <div class="mnemonic">H²H² Matrix</div>
+    <div class="mnemonic-expand">High-High (most dangerous) → High-Low (watch) → Low-High (access controls) → Low-Low (hygiene only)</div>
+  </div>
+  <div class="memory-box" style="margin:0;">
+    <h5>⚡ IP Pillars — CPTD</h5>
+    <div class="mnemonic">C·P·T·D</div>
+    <div class="mnemonic-expand"><span>C</span>opyright · <span>P</span>atents · <span>T</span>rade Marks · <span>D</span>esign Rights</div>
+  </div>
+</div>
+</div><!-- end s10 -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 11 — CASE STUDY COMPENDIUM        -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s11">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 11</span>
+  <h2>Case Study Compendium</h2>
+  <p class="chapter-tagline">Nine premium case breakdowns — each a complete exam-ready argument.</p>
+</div>
+
+<!-- CASE 1 -->
+<div class="case-card">
+  <div class="case-header">
+    <h3>Frances Haugen — Facebook / Meta Whistleblower (2021)</h3>
+    <div><span class="badge badge-p">Ethics</span> <span class="badge badge-g">Professional Conduct</span> <span class="badge badge-c">Platform Governance</span></div>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">What Happened</div><div class="case-val">Former Facebook product manager leaked internal research documents to Congress and media, revealing Facebook knowingly amplified division, misinformation, and harm to youth mental health to optimise engagement metrics — prioritising profit over safety.</div></div>
+    <div class="case-row"><div class="case-key">Stakeholders</div><div class="case-val">Facebook/Meta (corporate interest); users (safety, privacy); society (democratic health); Haugen (professional duty vs. employment obligation); regulators (governance failure)</div></div>
+    <div class="case-row"><div class="case-key">Ethical Issues</div><div class="case-val">Consequentialism: net harm to society > net corporate benefit. Deontology: Facebook violated a duty of care to users. Virtue ethics: Haugen demonstrated moral courage. Professional ethics: BCS/ACM public interest obligation demands exactly this action.</div></div>
+    <div class="case-row"><div class="case-key">Governance Failures</div><div class="case-val">Internal research suppressed; no effective board-level ethics oversight; external regulatory frameworks unable to access internal algorithms; profit metrics embedded into governance structures, displacing safety metrics.</div></div>
+    <div class="case-row"><div class="case-key">Legal Implications</div><div class="case-val">GDPR data processing for targeted advertising under scrutiny. Section 230 (US) protections for platform content debated. EU Digital Services Act directly responds to this governance gap — mandatory algorithmic risk assessments for very large platforms.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Algorithmic harm is professional harm. The engineers who built and maintained these systems bore professional responsibility — not merely legal liability. Haugen's escalation path (internal → external → media) is the BCS/ACM mandated protocol.</div></div>
+  </div>
+</div>
+
+<!-- CASE 2 -->
+<div class="case-card">
+  <div class="case-header">
+    <h3>The Post Office Horizon IT Scandal (2000–2014)</h3>
+    <div><span class="badge badge-r">Information Governance</span> <span class="badge badge-g">Data Accuracy</span> <span class="badge badge-p">Professional Ethics</span></div>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">What Happened</div><div class="case-val">Faulty Fujitsu Horizon accounting software generated false shortfall figures. Post Office treated outputs as definitive, leading to the wrongful prosecution of over 900 subpostmasters for theft/false accounting. The largest miscarriage of justice in UK legal history.</div></div>
+    <div class="case-row"><div class="case-key">Stakeholders</div><div class="case-val">Subpostmasters (victims); Post Office (institutional perpetrator); Fujitsu (software provider); government (shareholder and regulator); ICO; UK justice system</div></div>
+    <div class="case-row"><div class="case-key">Ethical Issues</div><div class="case-val">Deontological failure: treating individuals as means to protect institutional reputation. Governance failure: Accountability Principle (GDPR P7) — organisations must be able to demonstrate data accuracy. Virtue ethics: institutional cowardice in the face of overwhelming evidence of harm.</div></div>
+    <div class="case-row"><div class="case-key">Governance Failures</div><div class="case-val">No data quality validation; Horizon outputs accepted without audit or challenge mechanism; concerns raised by subpostmasters systematically suppressed; accountability diffusion between Post Office and Fujitsu; no independent DPO-style oversight; governance captured by commercial and reputational interests.</div></div>
+    <div class="case-row"><div class="case-key">Legal Implications</div><div class="case-val">GDPR Art.5(1)(d) Accuracy principle; Art.5(2) Accountability. Criminal convictions being overturned. Fujitsu faces potential criminal liability. Post Office governance under Parliamentary scrutiny. Raises fundamental question: should IT system evidence require independent validation before use in criminal proceedings?</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Computing professionals who know a system is producing erroneous outputs have a positive professional duty to speak — not merely to comply with instructions. Silence in the face of known system error is a BCS/ACM code violation, not professional neutrality.</div></div>
+  </div>
+</div>
+
+<!-- CASE 3 -->
+<div class="case-card">
+  <div class="case-header">
+    <h3>TikTok Congressional Hearings &amp; Data Governance (2023)</h3>
+    <div><span class="badge badge-c">Data Privacy</span> <span class="badge badge-r">Information Governance</span> <span class="badge badge-g">National Security</span></div>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">What Happened</div><div class="case-val">TikTok CEO Shou Zi Chew testified before US Congress on national security and privacy concerns. Internal practices revealed: collection of keystroke patterns, device IDs, cross-site tracking beyond stated purpose, and concerns about Chinese government access to US user data (Project Texas attempted to address this).</div></div>
+    <div class="case-row"><div class="case-key">Data Privacy Issues</div><div class="case-val">GDPR violations: P2 (purpose limitation — cross-site tracking unrelated to app function); P3 (data minimisation — keystroke data not necessary); P1 (transparency — inadequate disclosure). UK ICO fined TikTok £12.7M in 2023 specifically for children's data processing failures.</div></div>
+    <div class="case-row"><div class="case-key">Governance Failures</div><div class="case-val">No meaningful data minimisation; corporate structure enabling data sharing across ByteDance entities; inadequate DPO oversight for UK/EU markets; failure to implement Art.25 GDPR (Privacy by Design and Default).</div></div>
+    <div class="case-row"><div class="case-key">Ethical Tensions</div><div class="case-val">Surveillance capitalism model requires excessive data collection to function. Transparency disclosures exist but are meaningless to users. Power asymmetry: TikTok knows vastly more about users than users know about TikTok. National security vs. free expression of a globally popular platform.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Data minimisation is not just a compliance box — it is a design philosophy. Responsible engineers should challenge product requirements that demand excessive data collection, not merely implement them. Art.25 GDPR places this obligation on engineers by design.</div></div>
+  </div>
+</div>
+
+<!-- CASE 4 -->
+<div class="case-card">
+  <div class="case-header">
+    <h3>NHS AI Data Access — DeepMind / Palantir</h3>
+    <div><span class="badge badge-c">Public Sector Ethics</span> <span class="badge badge-p">AI Governance</span> <span class="badge badge-g">Data Privacy</span></div>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">What Happened</div><div class="case-val">Royal Free NHS Trust shared 1.6M patient records with Google DeepMind for an app (Streams) without adequate transparency or lawful basis — ICO found a breach of data protection law (2017). Later, NHS Federated Data Platform (Palantir contract) raised systemic questions about commercial access to national health data.</div></div>
+    <div class="case-row"><div class="case-key">Core Tension</div><div class="case-val">The genuine public benefit of AI in healthcare (faster diagnostics, pandemic modelling, drug discovery) vs. patients' right to control their most sensitive personal data. This is the innovation-privacy trade-off at its starkest: the NHS holds the richest health dataset in the world — who should control it?</div></div>
+    <div class="case-row"><div class="case-key">Governance Failures</div><div class="case-val">Inadequate patient transparency; absence of lawful basis assessment for DeepMind; failure to distinguish between operational necessity and research purpose; no meaningful patient consent mechanism; governance captured by enthusiasm for AI innovation.</div></div>
+    <div class="case-row"><div class="case-key">Legal Implications</div><div class="case-val">Art.9 GDPR — health data is special category, requiring explicit consent or specific statutory basis. Art.5(1)(a) transparency breach. NHS as Data Controller held accountable; commercial partner (DeepMind/Palantir) as Data Processor must operate under binding DPA agreement.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Public sector professionals owe a heightened duty to citizens who have no choice but to engage with services. Commercial enthusiasm for AI cannot override fundamental patient rights. Data access governance must be co-designed with patients, not imposed upon them.</div></div>
+  </div>
+</div>
+
+<!-- CASE 5 -->
+<div class="case-card">
+  <div class="case-header">
+    <h3>Bybit Cryptocurrency Heist — February 2025</h3>
+    <div><span class="badge badge-r">Cyber Attack</span> <span class="badge badge-c">CMA 1990</span> <span class="badge badge-g">Supply Chain Security</span></div>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">What Happened</div><div class="case-val">~$1.5 billion stolen from Bybit exchange by the Lazarus Group (North Korean state-sponsored APT). Attack vector: compromise of Safe{Wallet} (third-party multi-sig interface), injecting malicious JavaScript to manipulate transaction signing UI — redirecting funds during a routine cold wallet transfer.</div></div>
+    <div class="case-row"><div class="case-key">Attack Lifecycle</div><div class="case-val">Recon (map Bybit's infrastructure) → Scan (identify Safe{Wallet} dependency) → Gain Access (compromise developer environment — supply chain attack) → Maintain (persist malicious JS) → Execute (manipulate UI in real transaction to redirect $1.5B to attacker wallets) → Cover (transactions appear legitimate on-chain).</div></div>
+    <div class="case-row"><div class="case-key">Legal Analysis</div><div class="case-val">CMA S.1 (unauthorised access to Safe{Wallet} systems); S.3 (unauthorised modification of transaction data). Practically unenforceable against nation-state actors. Highlights gap between legal frameworks designed for individual hackers and state-sponsored threat actors operating with impunity.</div></div>
+    <div class="case-row"><div class="case-key">Governance Failures</div><div class="case-val">Insufficient third-party security assessment (supply chain); inadequate monitoring of signing interface integrity; over-reliance on cryptographic security at the protocol level while ignoring UI-layer vulnerability; no real-time anomaly detection on transaction patterns.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Security governance must extend to supply chains. Every third-party dependency is an attack surface — and sophisticated adversaries exploit the weakest link, not the strongest. HUHT adversaries will always find the unguarded door. Supply chain security is now a Board-level governance obligation.</div></div>
+  </div>
+</div>
+
+<!-- CASE 6 -->
+<div class="case-card">
+  <div class="case-header">
+    <h3>OpenAI &amp; GDPR Privacy Investigations (2023–2025)</h3>
+    <div><span class="badge badge-c">Data Privacy</span> <span class="badge badge-p">AI Ethics</span> <span class="badge badge-g">GDPR</span></div>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">What Happened</div><div class="case-val">Multiple EU data protection authorities (Italy, France, Spain, Germany, Poland) investigated ChatGPT for: training data collection without consent; inability to honour right to erasure (Art.17) for data incorporated into model weights; inaccurate AI-generated statements about real individuals; inadequate transparency about data processing.</div></div>
+    <div class="case-row"><div class="case-key">Core GDPR Tensions</div><div class="case-val">Art.17 (Right to Erasure): once personal data is incorporated into LLM weights, it cannot be "deleted" — technically impossible without retraining the model. Art.22 (Automated Decisions): AI-generated text about individuals may constitute automated processing with significant effects. Art.5(1)(a): transparency obligations — users cannot understand how their data is used in training.</div></div>
+    <div class="case-row"><div class="case-key">Emerging Legal Question</div><div class="case-val">Does web scraping for AI training constitute "processing personal data" even if individual data points are public? Most DPAs answer yes — if the data relates to an identifiable person, GDPR applies regardless of public availability. This challenges the entire training data model of large AI companies.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">AI engineers have a professional obligation to design systems capable of honouring data subject rights. Building systems structurally incapable of compliance (e.g., models that cannot forget training data) is a foreseeable GDPR failure that engineers should flag as a design requirement, not a later legal problem.</div></div>
+  </div>
+</div>
+
+<!-- CASE 7 -->
+<div class="case-card">
+  <div class="case-header">
+    <h3>TEMU App Privacy Concerns (2023–2025)</h3>
+    <div><span class="badge badge-c">Data Minimisation</span> <span class="badge badge-p">App Security</span> <span class="badge badge-g">National Security</span></div>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">Context</div><div class="case-val">TEMU (PDD Holdings, China) faced privacy investigations in multiple jurisdictions. Security researchers and DPAs raised concerns about excessive app permissions, potential data exfiltration, transfer of user data to servers in jurisdictions without adequate GDPR data transfer safeguards, and opaque data sharing practices.</div></div>
+    <div class="case-row"><div class="case-key">GDPR Analysis</div><div class="case-val">P3 (Data Minimisation) — permissions extend beyond app functionality necessity. P1 (Transparency) — data sharing with parent company and third parties inadequately disclosed. International Transfer concerns — Chapter V GDPR requires adequacy, SCCs, or BCRs for data transfers to non-adequate countries. China lacks UK/EU adequacy decision.</div></div>
+    <div class="case-row"><div class="case-key">Broader Tension</div><div class="case-val">Global tech companies subject to domestic law of their country of incorporation (including China's Data Security Law, which can require disclosure to state actors) while processing EU/UK personal data subject to GDPR. This creates a structural conflict of law that the GDPR's Chapter V transfer provisions inadequately address.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Data protection and national security are not separate domains. Computing professionals must consider the entire data supply chain — including where data ultimately ends up and under whose legal authority — not merely the technical spec of their own system.</div></div>
+  </div>
+</div>
+
+<!-- CASE 8 -->
+<div class="case-card">
+  <div class="case-header">
+    <h3>Workplace Surveillance — Amazon Warehouse Monitoring</h3>
+    <div><span class="badge badge-p">Employment Ethics</span> <span class="badge badge-c">Proportionality</span> <span class="badge badge-g">GDPR</span></div>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">Context</div><div class="case-val">Amazon warehouse operations use extensive real-time monitoring: scanner tracking of pick-rates, toilet break timing, idle detection systems, AI-powered camera monitoring, and in some cases wearable devices. Workers report pressure from algorithmic management systems — being "managed" by automated targets rather than human supervisors.</div></div>
+    <div class="case-row"><div class="case-key">Ethical Issues</div><div class="case-val">Proportionality: is second-by-second productivity tracking proportionate to legitimate business interests? Dignity: does reducing workers to productivity metrics dehumanise the employment relationship? Power asymmetry: workers have no ability to challenge algorithmic decisions or access the data used against them (Art.22 GDPR).</div></div>
+    <div class="case-row"><div class="case-key">Legal Analysis</div><div class="case-val">GDPR Art.22 — automated decision-making; workers have rights against being subject solely to algorithmic management with significant effects. ICO Employment Practices guidance requires proportionality. ACAS Code — monitoring must be disclosed and proportionate. Art.9 — health/biometric data from wearables requires explicit consent.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Engineers who design monitoring systems bear professional responsibility for the human consequences of those systems. Optimising for productivity metrics without considering the human cost — burnout, injury, dehumanisation — is an ethical failure regardless of legal compliance.</div></div>
+  </div>
+</div>
+
+<!-- CASE 9 -->
+<div class="case-card">
+  <div class="case-header">
+    <h3>Vulnerability Research &amp; Responsible Disclosure Debates</h3>
+    <div><span class="badge badge-p">Ethical Hacking</span> <span class="badge badge-c">CMA S.3A</span> <span class="badge badge-g">Professional Responsibility</span></div>
+  </div>
+  <div class="case-body">
+    <div class="case-row"><div class="case-key">Context</div><div class="case-val">Security researchers occupying a legally and ethically ambiguous space: discovering and disclosing vulnerabilities serves genuine public good (patching creates a safer internet) but may technically constitute unauthorised access (CMA S.1) or supply of hacking tools (S.3A) without explicit bug bounty authorisation.</div></div>
+    <div class="case-row"><div class="case-key">Ethical Tensions</div><div class="case-val">Full disclosure: forces vendor action but potentially arms attackers. Coordinated disclosure: best practice but dependent on vendor responsiveness. Selling to brokers: commercially rational but ethically questionable. The CVE/NVD system relies on responsible researchers acting ethically, often for no compensation.</div></div>
+    <div class="case-row"><div class="case-key">Legal Grey Zone</div><div class="case-val">CMA S.3A creates a chilling effect on legitimate security research. Dual-use tools (Metasploit, Nmap, Burp Suite) are used identically by attackers and defenders — the legality hinges on authorisation and intent, not the tool itself. Legal protection for good-faith security research remains inadequate in UK law compared to US Computer Fraud and Abuse Act safe harbours.</div></div>
+    <div class="case-row"><div class="case-key">Professional Lesson</div><div class="case-val">Security researchers operating in the public interest deserve legal protection. The professional community's commitment to responsible disclosure is a governance mechanism — a self-regulatory system that creates social value. BCS/ACM codes' public interest obligation supports coordinated disclosure as the ethically mandated approach.</div></div>
+  </div>
+</div>
+</div><!-- end s11 -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 12 — GLOSSARY                     -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s12">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 12</span>
+  <h2>MSc-Level Glossary</h2>
+  <p class="chapter-tagline">Every key term — defined with precision.</p>
+</div>
+
+<div class="gloss-item"><div class="gloss-term">Accountability (GDPR P7)</div><div class="gloss-def">The principle requiring data controllers to demonstrate active compliance with all GDPR principles — not merely assert it. Requires policies, DPO appointments, DPIAs, and audit trails.</div></div>
+<div class="gloss-item"><div class="gloss-term">Actus Reus</div><div class="gloss-def">The physical or external element of a criminal offence — "the guilty act." Under CMA S.1: accessing computer material without authorisation.</div></div>
+<div class="gloss-item"><div class="gloss-term">Algorithmic Profiling</div><div class="gloss-def">The automated analysis of personal data to evaluate, predict, or infer characteristics about individuals — e.g., creditworthiness, health risk, political opinions. Governed by GDPR Art.22.</div></div>
+<div class="gloss-item"><div class="gloss-term">Anti-Commons Problem</div><div class="gloss-def">Paradox where excessive IP rights ownership creates so many veto points that further innovation is prevented — the opposite of the intended effect of IP law.</div></div>
+<div class="gloss-item"><div class="gloss-term">APT (Advanced Persistent Threat)</div><div class="gloss-def">A sophisticated, long-term, targeted cyber-attack typically conducted by nation-state or state-sponsored actors. Characterised by stealth, persistence, and high capability.</div></div>
+<div class="gloss-item"><div class="gloss-term">Aspirational Ethics</div><div class="gloss-def">Ethical conduct that exceeds the minimum legal or regulatory requirement — striving toward the ideals of professional integrity, public service, and excellence.</div></div>
+<div class="gloss-item"><div class="gloss-term">Biometric Data</div><div class="gloss-def">Special category data under Art.9 GDPR. Unique physical characteristics used for identification — fingerprints, facial recognition templates, iris scans, voice patterns. Cannot be changed if compromised.</div></div>
+<div class="gloss-item"><div class="gloss-term">Bug Bounty</div><div class="gloss-def">A formal programme through which organisations offer financial rewards to security researchers for discovering and responsibly disclosing vulnerabilities. Provides explicit authorisation, removing CMA liability.</div></div>
+<div class="gloss-item"><div class="gloss-term">CIA Triad</div><div class="gloss-def">The three pillars of information security: Confidentiality (restricting access to authorised parties), Integrity (ensuring data accuracy and completeness), and Availability (ensuring systems are accessible when needed).</div></div>
+<div class="gloss-item"><div class="gloss-term">CDPA 1988</div><div class="gloss-def">Copyright, Designs and Patents Act 1988. The primary UK statute governing copyright protection for creative works including software source code, object code, and non-literal structural elements.</div></div>
+<div class="gloss-item"><div class="gloss-term">CMA 1990</div><div class="gloss-def">Computer Misuse Act 1990. The primary UK statute criminalising unauthorised access to computer systems (S.1), unauthorised modification/impairment (S.3), serious damage (S.3ZA), and supply of hacking tools (S.3A).</div></div>
+<div class="gloss-item"><div class="gloss-term">Consequentialism</div><div class="gloss-def">An ethical theory holding that the morality of an action is determined by its consequences. Includes utilitarianism (greatest good) and other outcome-based frameworks.</div></div>
+<div class="gloss-item"><div class="gloss-term">Data Controller</div><div class="gloss-def">The entity that determines the purposes and means of processing personal data. Holds primary legal accountability under UK GDPR. Fines up to £17.5M or 4% of global turnover.</div></div>
+<div class="gloss-item"><div class="gloss-term">Data Minimisation</div><div class="gloss-def">GDPR Principle 3 — only collect personal data that is adequate, relevant, and limited to what is necessary for the specified purpose. Core design obligation under Art.25 (Privacy by Design).</div></div>
+<div class="gloss-item"><div class="gloss-term">Data Processor</div><div class="gloss-def">An entity that processes personal data on behalf of a Data Controller, acting under instruction. Must operate under a Data Processing Agreement. Now subject to direct ICO enforcement under DPA 2018.</div></div>
+<div class="gloss-item"><div class="gloss-term">Data Protection Officer (DPO)</div><div class="gloss-def">Mandatory appointment for large organisations or those processing special category data at scale. Oversees GDPR compliance, acts as ICO contact point, and provides independent advice to the organisation.</div></div>
+<div class="gloss-item"><div class="gloss-term">Defensible Disposal</div><div class="gloss-def">The legally documented, auditable process of deleting personal data when retention is no longer justified. Must comply with P5 GDPR and produce a certificate/audit trail demonstrating secure deletion.</div></div>
+<div class="gloss-item"><div class="gloss-term">Deontology</div><div class="gloss-def">An ethical theory holding that the morality of an action is determined by adherence to rules or duties, regardless of consequences. Associated with Kant's Categorical Imperative.</div></div>
+<div class="gloss-item"><div class="gloss-term">Digital Twin</div><div class="gloss-def">A virtual replica of a physical or digital system used for simulation, testing, and attack rehearsal. Enables red team exercises without affecting live operational systems.</div></div>
+<div class="gloss-item"><div class="gloss-term">DPA 2018</div><div class="gloss-def">Data Protection Act 2018. The UK Act implementing and supplementing the UK GDPR. Grants the ICO enforcement powers including fines up to £17.5M or 4% of global annual turnover.</div></div>
+<div class="gloss-item"><div class="gloss-term">Endpoint Monitoring</div><div class="gloss-def">Surveillance conducted on a specific device — keystroke logging, screen recording, application monitoring. Higher privacy risk than network monitoring; requires stronger justification.</div></div>
+<div class="gloss-item"><div class="gloss-term">GDPR (UK GDPR)</div><div class="gloss-def">General Data Protection Regulation as retained in UK law post-Brexit. Establishes seven data processing principles, data subject rights, and controller/processor obligations. Enforced by the ICO.</div></div>
+<div class="gloss-item"><div class="gloss-term">HUHT / HULT / LUHT / LULT</div><div class="gloss-def">Red team threat actor classification framework: High/Low Utility (capability) × High/Low Threat (motivation to target you). Used to prioritise defensive investment and red team simulation scenarios.</div></div>
+<div class="gloss-item"><div class="gloss-term">ICO</div><div class="gloss-def">Information Commissioner's Office. UK's independent data protection regulator. Can issue fines up to £17.5M or 4% of global turnover, conduct audits, impose enforcement notices, and prosecute criminal DPA offences.</div></div>
+<div class="gloss-item"><div class="gloss-term">Infopaq Standard</div><div class="gloss-def">The EU originality test for copyright established in Infopaq v Danske (2009): a work attracts copyright protection if it is the "author's own intellectual creation" — even as few as 11 words.</div></div>
+<div class="gloss-item"><div class="gloss-term">Information Lifecycle Management (ILM)</div><div class="gloss-def">The governance framework managing data through its entire lifecycle: Collect → Store → Use → Archive → Dispose. Each stage carries specific legal obligations and security controls.</div></div>
+<div class="gloss-item"><div class="gloss-term">Lawful Basis</div><div class="gloss-def">One of six grounds under GDPR Art.6 that makes data processing lawful: consent, contract, legal obligation, vital interests, public task, or legitimate interests.</div></div>
+<div class="gloss-item"><div class="gloss-term">Legitimate Interests (LIA)</div><div class="gloss-def">Lawful basis for processing requiring a three-part test: (1) identify a genuine purpose; (2) demonstrate processing is necessary; (3) balance against individuals' rights and interests.</div></div>
+<div class="gloss-item"><div class="gloss-term">Mens Rea</div><div class="gloss-def">The mental element of a criminal offence — the "guilty mind." Under CMA S.1: intentionally accessing a system, <em>knowing</em> there is no authorisation. Absent mens rea = no criminal offence.</div></div>
+<div class="gloss-item"><div class="gloss-term">Network Monitoring</div><div class="gloss-def">Surveillance of data in transit across an organisation's infrastructure — web logs, bandwidth monitoring, packet analysis. Governed by RIPA if intercepting live communications.</div></div>
+<div class="gloss-item"><div class="gloss-term">NIST 800-115</div><div class="gloss-def">NIST Technical Guide to Information Security Testing and Assessment. The framework structuring authorised penetration testing: Planning → Discovery → Attack → Reporting.</div></div>
+<div class="gloss-item"><div class="gloss-term">OSINT</div><div class="gloss-def">Open Source Intelligence — aggregating publicly available information to build intelligence profiles. Raises the aggregation problem: individually innocuous data, combined, may constitute a privacy invasion even if each element is publicly available.</div></div>
+<div class="gloss-item"><div class="gloss-term">Passing Off</div><div class="gloss-def">A UK tort (unregistered trade mark equivalent) — misrepresenting one's goods/services as those of another, thereby trading on their reputation and goodwill. Protects unregistered brand identity.</div></div>
+<div class="gloss-item"><div class="gloss-term">Penetration Testing</div><div class="gloss-def">Authorised, structured testing of computer systems using attacker techniques to identify security vulnerabilities. Requires written authorisation (Letter of Authorisation) to be exempt from CMA offences.</div></div>
+<div class="gloss-item"><div class="gloss-term">Privacy by Design</div><div class="gloss-def">GDPR Art.25 obligation to embed data protection considerations into system design from the outset — not as an afterthought. Requires data minimisation, access controls, and privacy-protective default settings.</div></div>
+<div class="gloss-item"><div class="gloss-term">Proportionality</div><div class="gloss-def">A principle requiring that monitoring, data collection, or other intrusive measures be the minimum necessary to achieve a legitimate purpose. Failure of proportionality renders otherwise lawful monitoring unlawful.</div></div>
+<div class="gloss-item"><div class="gloss-term">Purpose Limitation</div><div class="gloss-def">GDPR Principle 2 — personal data collected for a specified, explicit, legitimate purpose cannot be further processed for incompatible purposes. Core constraint on data reuse and AI training.</div></div>
+<div class="gloss-item"><div class="gloss-term">Ransomware</div><div class="gloss-def">Malware that encrypts a victim's data and demands payment for the decryption key. A CMA S.3 offence (impairment). Typically also engages S.3A (supply/creation of malicious tool).</div></div>
+<div class="gloss-item"><div class="gloss-term">Reasonableness Standard</div><div class="gloss-def">From Blyth v Birmingham Waterworks (1856): conduct is assessed against what a prudent, reasonable person would have done. Applied to professional negligence, AI liability, and computing ethics.</div></div>
+<div class="gloss-item"><div class="gloss-term">Red Teaming</div><div class="gloss-def">Adversarial simulation of attacks against one's own systems, processes, and people. Tests systemic defences by role-playing as a hostile actor. Broader than penetration testing — evaluates people and culture, not just technology.</div></div>
+<div class="gloss-item"><div class="gloss-term">RIPA 2000</div><div class="gloss-def">Regulation of Investigatory Powers Act 2000. Makes interception of live communications unlawful without explicit consent or business necessity. TLBP Regulations 2000 create a narrow business purpose exception.</div></div>
+<div class="gloss-item"><div class="gloss-term">Special Category Data</div><div class="gloss-def">GDPR Art.9 — sensitive personal data requiring elevated protection: health, genetic, biometric, racial/ethnic, political, religious, sexual orientation data. Processing requires explicit consent or specific legal basis.</div></div>
+<div class="gloss-item"><div class="gloss-term">Supply Chain Attack</div><div class="gloss-def">An attack targeting a less-secure element in a target's supply chain (software dependencies, hardware vendors, service providers) to gain access to the primary target. Bybit and SolarWinds are canonical examples.</div></div>
+<div class="gloss-item"><div class="gloss-term">Surveillance Capitalism</div><div class="gloss-def">Shoshana Zuboff's concept describing an economic system in which personal data is the raw material for predicting and modifying human behaviour — primarily for advertising. Challenges the GDPR consent model structurally.</div></div>
+<div class="gloss-item"><div class="gloss-term">TLBP Regulations 2000</div><div class="gloss-def">Telecommunications (Lawful Business Practice) Regulations 2000. Creates a business-purpose exception to RIPA allowing employer monitoring of communications without consent, provided: legitimate purpose, all-reasonable-steps to inform staff, and proportionality.</div></div>
+<div class="gloss-item"><div class="gloss-term">Virtue Ethics</div><div class="gloss-def">An ethical theory centred on the moral character of the agent rather than rules or outcomes. From Aristotle. Key virtues in computing: integrity, honesty, moral courage, prudence. Applied to: whistleblowing, professional resilience, ethical leadership.</div></div>
+</div><!-- end s12 -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!--  SECTION 13 — FINAL DISTINCTION INSIGHTS   -->
+<!-- ═══════════════════════════════════════════ -->
+<div id="s13">
+<div class="chapter">
+  <span class="chapter-num">§ SECTION 13</span>
+  <h2>Final Distinction Insights</h2>
+  <p class="chapter-tagline">The biggest ideas — and why they will define your professional lifetime.</p>
+</div>
+
+<div class="sub-head">The Five Biggest Themes Across This Module</div>
+<div class="steps">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <div class="step-title">Responsible Power</div>
+      <div class="step-desc">Computing professionals exercise unprecedented societal power — over elections (algorithmic curation), health (AI diagnostics), finance (automated trading), and privacy (mass surveillance). The core lesson of this module is that power must be matched by proportionate responsibility. Every framework studied — GDPR, CMA, BCS code, ACAS — is an attempt to institutionalise that responsibility. The professional who understands this operates at a fundamentally different level than one who treats these as compliance checklists.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <div class="step-title">The Inadequacy of Law Alone</div>
+      <div class="step-desc">Every legal framework studied is in some respect inadequate: the CMA was written before AI; GDPR's consent model does not survive contact with surveillance capitalism; intellectual property law has not resolved AI authorship; employment law was not designed for algorithmic management. The professional who relies solely on legal compliance will always be one step behind. Ethics and governance exist precisely to fill these gaps — and to anticipate the next legal failure before it produces the next Post Office scandal.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <div class="step-title">Accountability Cannot Be Automated</div>
+      <div class="step-desc">The Post Office, NHS DeepMind, Horizon, and every governance failure studied share a common thread: the diffusion of accountability across organisations, technologies, and hierarchies until no single person or entity could be held responsible. Governance frameworks are only as effective as the humans who operate them with genuine accountability. The most important professional skill this module teaches is not technical — it is the ability and willingness to say "I am responsible" and act accordingly.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <div class="step-title">Trust Is the Foundation of Digital Society</div>
+      <div class="step-desc">Every system studied depends on trust: GDPR is a trust framework for data use; the CMA is a trust framework for computer access; professional codes are trust frameworks for practitioner conduct. When trust breaks — when Facebook lies about safety research, when the Post Office falsely prosecutes innocent people, when TikTok secretly collects behavioural data — it causes harm far beyond the individual breach. Rebuilding trust is exponentially harder than maintaining it.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <div class="step-title">The Ethical Technologist Is the Future</div>
+      <div class="step-desc">The integration of AI into every domain of life creates a structural demand for professionals who can navigate the intersection of technical capability, legal constraint, and ethical obligation. The organisations that will thrive in the next decade are those with professionals capable of asking "should we?" as well as "can we?" — and the courage to act on the answer. This is the graduate that this module is designed to produce.</div>
+    </div>
+  </div>
+</div>
+
+<div class="sub-head">Future of AI Governance — The Next Decade</div>
+<div class="card-grid">
+  <div class="card card-accent-top"><h4>EU AI Act (2024–2027)</h4><p>First comprehensive AI regulation globally. Risk-tiered approach: unacceptable risk (banned) → high risk (strict conformity assessment) → limited risk (transparency obligations) → minimal risk (voluntary codes). Will shape global AI governance norms as GDPR shaped global data protection.</p></div>
+  <div class="card card-accent-top cyan"><h4>AI Liability Frameworks</h4><p>The EU AI Liability Directive will introduce fault-based and strict liability regimes for AI harms. The Blyth v Birmingham reasonableness standard will be central to fault assessment — what would a reasonable, competent AI developer have done?</p></div>
+  <div class="card card-accent-top gold"><h4>Algorithmic Transparency</h4><p>Growing regulatory demand for explainability in AI decisions — particularly in high-stakes domains (credit, employment, healthcare). GDPR Art.22 right to explanation is the legal foundation; technical XAI (Explainable AI) is the engineering challenge.</p></div>
+  <div class="card card-accent-top red"><h4>Cyber Warfare Norms</h4><p>The Tallinn Manual attempts to apply international humanitarian law to cyber operations, but state practice remains contested. The Bybit heist demonstrates that attribution and enforcement against nation-state actors remains practically impossible — requiring governance solutions above and beyond domestic law.</p></div>
+  <div class="card card-accent-top green"><h4>AI Training Data Rights</h4><p>The resolution of Getty Images v Stability AI and NYT v OpenAI will determine whether the current AI development model is legally sustainable. The outcome will reshape IP law, GDPR training data obligations, and the economics of AI development simultaneously.</p></div>
+  <div class="card card-accent-top"><h4>Professional Certification for AI</h4><p>Growing pressure for formal ethical certification requirements for AI practitioners — equivalent to the chartered engineer model. The BCS/ACM codes provide the ethical foundation; formal licensing structures for high-risk AI deployment may follow the EU AI Act's lead.</p></div>
+</div>
+
+<div class="pull-quote">
+  <p>"The ethical technologist does not ask 'am I required to do this?' but 'is this right?' — and builds systems that make the same distinction."</p>
+  <cite>— Final Reflection, 25COP928</cite>
+</div>
+
+<div class="callout callout-distinction">
+  <span class="callout-label">🎓 The Ultimate Distinction Insight</span>
+  <p>The highest-performing students in this module are not those who know the most laws, or can recite the most GDPR principles. They are the ones who have internalised a <strong>professional identity</strong> — an identity rooted in the conviction that computing professionals bear a distinctive ethical responsibility precisely because of the power they wield. Every framework studied — from the BCS code to the CMA, from GDPR to the Aerotel test — is an imperfect human attempt to constrain and direct that power toward good ends. The professional who understands this, and who commits to carrying that responsibility with them throughout their career, is the professional this module was designed to produce. That is what a distinction looks like.</p>
+</div>
+
+<!-- FOOTER -->
+<div style="margin-top:4rem;padding:2rem 0;border-top:1px solid var(--border);text-align:center;">
+  <p style="font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;">25COP928 — Professionalism, Ethics &amp; Cyber Security</p>
+  <p style="font-family:var(--mono);font-size:11px;color:var(--text3);">MSc Distinction Revision Guide · Exam: 9 June 2025 · All sections complete · Zero content omitted</p>
+</div>
+
+</div><!-- end s13 -->
+</div></body></html>

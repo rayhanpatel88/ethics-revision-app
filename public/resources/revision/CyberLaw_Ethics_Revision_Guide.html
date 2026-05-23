@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersecurity Law &amp; Ethics — Revision Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0c1b33;
+    --navy-mid: #152844;
+    --navy-light: #1e3a5f;
+    --amber: #d97706;
+    --amber-light: #fef3c7;
+    --amber-border: #fcd34d;
+    --red: #b91c1c;
+    --red-light: #fef2f2;
+    --red-border: #fca5a5;
+    --teal: #0f766e;
+    --teal-light: #f0fdfa;
+    --teal-border: #99f6e4;
+    --blue-light: #eff6ff;
+    --blue-border: #bfdbfe;
+    --blue-text: #1d4ed8;
+    --purple-light: #f5f3ff;
+    --purple-border: #c4b5fd;
+    --purple-text: #6d28d9;
+    --text: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --border: #e2e8f0;
+    --surface: #f8fafc;
+    --white: #ffffff;
+    --serif: 'Playfair Display', Georgia, serif;
+    --body: 'Lora', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', 'Courier New', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+    background: #f1f5f9;
+    padding: 2rem 1rem;
+  }
+
+  .guide-wrapper {
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--navy);
+    color: white;
+    border-radius: 12px;
+    padding: 3.5rem 3rem 3rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    border: 40px solid rgba(217,119,6,0.15);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -30px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 30px solid rgba(255,255,255,0.05);
+  }
+  .cover-tag {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-border);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .cover h1 {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+    color: white;
+  }
+  .cover-sub {
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 2rem;
+  }
+  .cover-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .cover-pill {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* ── SECTION CARDS ── */
+  .section-card {
+    background: var(--white);
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .section-header {
+    background: var(--navy);
+    color: white;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-number {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: rgba(217,119,6,0.6);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .section-header-text h2 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+  }
+  .section-header-text p {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 3px;
+  }
+  .section-body {
+    padding: 2rem;
+  }
+
+  /* ── SUBSECTION HEADINGS ── */
+  .subsection-title {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--navy);
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 6px;
+    margin-bottom: 1.25rem;
+    margin-top: 2rem;
+  }
+  .subsection-title:first-child { margin-top: 0; }
+
+  /* ── CALLOUT BOXES ── */
+  .callout {
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.25rem 0;
+    border-left: 4px solid;
+  }
+  .callout-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .callout p, .callout li { font-size: 14px; line-height: 1.65; }
+  .callout ul { padding-left: 1.25rem; margin-top: 6px; }
+  .callout li { margin-bottom: 4px; }
+
+  .callout-danger {
+    background: var(--red-light);
+    border-color: var(--red);
+  }
+  .callout-danger .callout-label { color: var(--red); }
+
+  .callout-warning {
+    background: var(--amber-light);
+    border-color: var(--amber);
+  }
+  .callout-warning .callout-label { color: var(--amber); }
+
+  .callout-info {
+    background: var(--blue-light);
+    border-color: var(--blue-text);
+  }
+  .callout-info .callout-label { color: var(--blue-text); }
+
+  .callout-success {
+    background: var(--teal-light);
+    border-color: var(--teal);
+  }
+  .callout-success .callout-label { color: var(--teal); }
+
+  .callout-purple {
+    background: var(--purple-light);
+    border-color: var(--purple-text);
+  }
+  .callout-purple .callout-label { color: var(--purple-text); }
+
+  /* ── TABLES ── */
+  .table-wrapper { overflow-x: auto; margin: 1.25rem 0; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--sans);
+    font-size: 13.5px;
+  }
+  thead { background: var(--navy); color: white; }
+  thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  tbody tr:nth-child(even) { background: var(--surface); }
+  tbody tr:hover { background: #e8f0fe; }
+  tbody td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  td strong { color: var(--navy); }
+  .cell-highlight {
+    background: var(--amber-light) !important;
+    font-weight: 600;
+    color: #92400e;
+  }
+
+  /* ── PENALTY BADGES ── */
+  .badge {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .badge-red { background: #fee2e2; color: #991b1b; }
+  .badge-amber { background: #fef3c7; color: #92400e; }
+  .badge-navy { background: #dbeafe; color: #1e3a8a; }
+  .badge-teal { background: #ccfbf1; color: #134e4a; }
+  .badge-purple { background: #ede9fe; color: #5b21b6; }
+
+  /* ── COMPARISON GRID ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+  .compare-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .compare-card-header {
+    padding: 10px 16px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+  .compare-card-header.network { background: var(--navy-mid); color: #93c5fd; }
+  .compare-card-header.endpoint { background: #1c1917; color: #fed7aa; }
+  .compare-card-body { padding: 14px 16px; }
+  .compare-card-body ul { padding-left: 1.1rem; }
+  .compare-card-body li { font-size: 13.5px; margin-bottom: 6px; line-height: 1.5; }
+
+  /* ── STEP FLOW ── */
+  .step-list { counter-reset: step-counter; margin: 1.25rem 0; }
+  .step-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+  }
+  .step-item::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 42px;
+    bottom: -18px;
+    width: 2px;
+    background: var(--border);
+  }
+  .step-item:last-child::before { display: none; }
+  .step-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: white;
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-content { flex: 1; }
+  .step-title {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14.5px;
+    color: var(--navy);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .step-content p { font-size: 14px; color: var(--text-secondary); margin-bottom: 4px; }
+  .step-tools {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--teal);
+    background: var(--teal-light);
+    border: 1px solid var(--teal-border);
+    padding: 4px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 4px;
+  }
+
+  /* ── FLOWCHART ── */
+  .flow-chain {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 1.25rem 0;
+  }
+  .flow-node {
+    background: var(--navy);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 120px;
+  }
+  .flow-node span {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    margin-top: 2px;
+  }
+  .flow-arrow {
+    color: var(--amber);
+    font-size: 18px;
+    font-weight: 700;
+    padding: 0 6px;
+  }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; padding: 0; margin: 0.75rem 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .check-icon.yes { background: #dcfce7; color: #166534; font-size: 12px; font-weight: 700; }
+  .check-icon.no  { background: #fee2e2; color: #991b1b; font-size: 12px; font-weight: 700; }
+  .check-icon.warn{ background: #fef3c7; color: #92400e; font-size: 12px; font-weight: 700; }
+
+  /* ── CASE CARDS ── */
+  .case-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 1.25rem;
+    overflow: hidden;
+  }
+  .case-card-header {
+    background: var(--navy-mid);
+    padding: 12px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .case-card-header h3 {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+  }
+  .case-card-body {
+    padding: 14px 18px;
+  }
+  .case-card-body p { font-size: 14px; line-height: 1.65; color: var(--text-secondary); }
+  .case-card-body p + p { margin-top: 8px; }
+  .case-tag {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .case-tag.law { background: rgba(99,102,241,0.2); color: #c7d2fe; }
+  .case-tag.breach { background: rgba(239,68,68,0.2); color: #fca5a5; }
+  .case-tag.ethics { background: rgba(245,158,11,0.2); color: #fde68a; }
+  .case-tag.hack { background: rgba(16,185,129,0.2); color: #6ee7b7; }
+
+  /* ── ACAS STEPS ── */
+  .acas-step {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .acas-step:last-child { border-bottom: none; }
+  .acas-num {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    background: var(--navy);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 2px;
+  }
+  .acas-step-content { flex: 1; }
+  .acas-step-title {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .acas-step-desc { font-size: 13.5px; color: var(--text-secondary); }
+
+  /* ── ETHICS CARDS ── */
+  .ethics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+  .ethics-card {
+    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid;
+  }
+  .ethics-card h4 {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .ethics-card .thinker {
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+  .ethics-card p { font-size: 13px; line-height: 1.6; }
+  .ethics-card.consequentialist { background: #f0fdf4; border-color: #86efac; }
+  .ethics-card.consequentialist h4 { color: #166534; }
+  .ethics-card.consequentialist .thinker { color: #4ade80; }
+  .ethics-card.deontological { background: #eff6ff; border-color: #93c5fd; }
+  .ethics-card.deontological h4 { color: #1e3a8a; }
+  .ethics-card.deontological .thinker { color: #60a5fa; }
+  .ethics-card.virtue { background: #fdf4ff; border-color: #d8b4fe; }
+  .ethics-card.virtue h4 { color: #581c87; }
+  .ethics-card.virtue .thinker { color: #c084fc; }
+
+  /* ── IP PILLARS ── */
+  .ip-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+  .ip-card {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .ip-card-head {
+    padding: 10px 16px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .ip-card-head.copyright { background: #fef9c3; color: #713f12; border-bottom: 1px solid #fde68a; }
+  .ip-card-head.patent    { background: #dbeafe; color: #1e3a8a; border-bottom: 1px solid #93c5fd; }
+  .ip-card-head.trademark { background: #fce7f3; color: #831843; border-bottom: 1px solid #f9a8d4; }
+  .ip-card-head.design    { background: #d1fae5; color: #065f46; border-bottom: 1px solid #6ee7b7; }
+  .ip-card-body { padding: 12px 16px; }
+  .ip-card-body dl { display: grid; grid-template-columns: 90px 1fr; gap: 4px 10px; font-size: 13px; }
+  .ip-card-body dt { font-family: var(--sans); font-weight: 600; color: var(--text-secondary); padding: 3px 0; }
+  .ip-card-body dd { color: var(--text); padding: 3px 0; }
+
+  /* ── KEY STATUTES ── */
+  .statute-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .statute-row:last-child { border-bottom: none; }
+  .statute-code {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--navy);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  /* ── ROLES TABLE ── */
+  .roles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 1.25rem 0;
+  }
+  .role-card {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .role-head {
+    padding: 10px 14px;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .role-head.controller { background: var(--navy); color: #93c5fd; }
+  .role-head.processor  { background: var(--navy-mid); color: #c4b5fd; }
+  .role-head.dpo        { background: #1a2942; color: #6ee7b7; }
+  .role-body { padding: 12px 14px; font-size: 13.5px; }
+  .role-body p { line-height: 1.6; color: var(--text-secondary); }
+  .role-body .role-key { font-family: var(--sans); font-weight: 600; font-size: 12px; color: var(--navy); margin-top: 8px; }
+
+  /* ── ESCALATION LADDER ── */
+  .escalation-step {
+    display: flex;
+    gap: 14px;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    border: 1px solid;
+    font-size: 14px;
+  }
+  .escalation-step.internal { background: var(--teal-light); border-color: var(--teal-border); }
+  .escalation-step.caution  { background: var(--amber-light); border-color: var(--amber-border); }
+  .escalation-step.last-resort { background: var(--red-light); border-color: var(--red-border); }
+  .escalation-num {
+    flex-shrink: 0;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+  .internal .escalation-num { background: var(--teal); color: white; }
+  .caution  .escalation-num { background: var(--amber); color: white; }
+  .last-resort .escalation-num { background: var(--red); color: white; }
+
+  /* ── PRINCIPLES LIST ── */
+  .principles-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 1.25rem 0;
+  }
+  .principle-item {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: var(--surface);
+  }
+  .principle-num {
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--amber);
+    background: #1c1917;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-top: 2px;
+  }
+  .principle-text strong {
+    display: block;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .principle-text span { font-size: 12.5px; color: var(--text-secondary); }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+  /* ── UTILITY ── */
+  mark {
+    background: #fef08a;
+    color: #713f12;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+  code {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--navy);
+  }
+  .statute-ref {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--teal);
+  }
+
+  @media (max-width: 660px) {
+    .compare-grid, .ethics-grid, .ip-grid, .roles-grid, .principles-list { grid-template-columns: 1fr; }
+    .cover h1 { font-size: 2rem; }
+    .section-body { padding: 1.25rem; }
+    .flow-chain { flex-direction: column; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="guide-wrapper">
+
+<!-- COVER -->
+<div class="cover">
+  <span class="cover-tag">Elite Revision Series · June 2025 Examination</span>
+  <h1>UK Cybersecurity Law<br>&amp; Computing Ethics</h1>
+  <p class="cover-sub">A precision-engineered revision guide covering all 4 modules — zero content omitted, maximum scannability.</p>
+  <div class="cover-pills">
+    <span class="cover-pill">CMA 1990</span>
+    <span class="cover-pill">UK GDPR / DPA 2018</span>
+    <span class="cover-pill">RIPA 2000</span>
+    <span class="cover-pill">BCS &amp; ACM Codes</span>
+    <span class="cover-pill">ACAS Framework</span>
+    <span class="cover-pill">Infopaq Standard</span>
+    <span class="cover-pill">Aerotel Four-Step Test</span>
+    <span class="cover-pill">NIST 800-115</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION 0 — SYLLABUS DASHBOARD               -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-number">§0</div>
+    <div class="section-header-text">
+      <h2>The Syllabus Dashboard</h2>
+      <p>Four modules · one-sentence foci · critical exam questions</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:6%">#</th>
+            <th style="width:24%">Module Title</th>
+            <th style="width:35%">One-Sentence Focus</th>
+            <th>Core Exam Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-navy">M1</span></td>
+            <td><strong>Workplace Monitoring &amp; Employment</strong></td>
+            <td>Examines technical surveillance methods and their legal/ethical boundaries under RIPA, DPA, and the ACAS employment framework.</td>
+            <td><em>How can an organisation balance legitimate security monitoring with an employee's right to privacy and consent?</em></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-red">M2</span></td>
+            <td><strong>Cybersecurity &amp; Hacking Law</strong></td>
+            <td>Contrasts malicious hacking offences under the CMA 1990 with lawful penetration testing and the five-stage attack methodology.</td>
+            <td><em>Where is the legal and ethical line between an authorised ethical hack (white hat) and an unlawful computer misuse offence (black hat)?</em></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-teal">M3</span></td>
+            <td><strong>Data Privacy &amp; Information Governance</strong></td>
+            <td>Applies GDPR principles, data subject rights, and lifecycle management to govern structured and unstructured personal data compliantly.</td>
+            <td><em>How does an organisation govern vast amounts of big data to maximise business value while avoiding severe ICO penalties and protecting individual privacy?</em></td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-purple">M4</span></td>
+            <td><strong>Professional Ethics &amp; Intellectual Property</strong></td>
+            <td>Applies normative ethics theories and professional codes (BCS/ACM) to resolve conflicts between corporate interests and public-safety obligations, while mapping the four pillars of IP law.</td>
+            <td><em>How should a computing professional resolve conflicts between corporate interests (profit, rapid deployment) and ethical obligations to public safety and well-being?</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION 1 — WORKPLACE MONITORING             -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-number">§1</div>
+    <div class="section-header-text">
+      <h2>Module 1 — Workplace Monitoring &amp; Employment Law</h2>
+      <p>Technical tools · DPA/GDPR vs RIPA · ACAS dismissal framework</p>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection-title">Technical Tools Matrix — Endpoint vs. Network Monitoring</div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-card-header network">🌐 Network Monitoring Tools</div>
+        <div class="compare-card-body">
+          <p style="font-size:12px;color:#78716c;margin-bottom:8px;font-family:var(--sans)">Watches data <em>crossing</em> the organisation's infrastructure.</p>
+          <ul>
+            <li><strong>Firewalls &amp; Proxy Servers</strong> — log websites visited, enforce URL blocking policies.</li>
+            <li><strong>Packet Sniffers</strong> (e.g., <code>Wireshark</code>) — capture and inspect raw network traffic packets.</li>
+            <li><strong>Bandwidth Monitors</strong> — flag anomalous large file transfers or unusual data egress volumes.</li>
+            <li><strong>IDS/IPS</strong> — detect and block suspicious traffic patterns at the perimeter.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-card">
+        <div class="compare-card-header endpoint">💻 Endpoint Monitoring Tools</div>
+        <div class="compare-card-body">
+          <p style="font-size:12px;color:#78716c;margin-bottom:8px;font-family:var(--sans)">Watches what a user does on their <em>specific device</em>.</p>
+          <ul>
+            <li><strong>EIM Software</strong> (Employee Internet Management) — tracks screen activity, keystrokes, applications in use, and web history.</li>
+            <li><strong>Keyword Scanners</strong> — scan emails and chat messages for flagged terms or content policies.</li>
+            <li><strong>File-Type Detectors</strong> — detect unauthorised file types (e.g., <code>.mp3</code>, <code>.avi</code>) on corporate devices.</li>
+            <li><strong>DLP Agents</strong> — prevent data exfiltration via USB, email attachments, or cloud uploads.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-label">📌 Exam Anchor — Scenario Application</div>
+      <p><strong>Network:</strong> IT deploys a proxy server to block gambling websites across the entire office.</p>
+      <p><strong>Endpoint:</strong> IT installs keylogger software on a specific suspect employee's laptop during a disciplinary investigation.</p>
+    </div>
+
+    <!-- DPA vs RIPA -->
+    <div class="subsection-title">The DPA / UK GDPR vs. RIPA Tightrope</div>
+
+    <div class="callout callout-danger">
+      <div class="callout-label">⚠️ High-Score Legal Threshold — The Telecommunications (Lawful Business Practice) Regulations 2000</div>
+      <p>These regulations create the <strong>business purpose exemption</strong> under RIPA that allows employers to monitor communications <em>without explicit consent</em> — but only if strictly defined conditions are met:</p>
+      <ul>
+        <li>The monitoring must be for a <strong>legitimate business purpose</strong> (e.g., detecting crime, ensuring regulatory compliance, verifying business transactions, assessing standards of training).</li>
+        <li>The employer must have taken <strong>all reasonable steps to inform staff</strong> that monitoring may occur — typically via an Acceptable Use Policy (AUP), employment contract, or staff handbook.</li>
+        <li>Monitoring must be <strong>proportionate</strong> to the stated business purpose; blanket covert surveillance without notice falls outside the exemption.</li>
+        <li><strong>Notification rule:</strong> Employees must be informed that monitoring is a possibility (implied consent via policy), even if explicit consent is not sought for each individual act of monitoring.</li>
+      </ul>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>DPA 1998 / UK GDPR</th>
+            <th>RIPA 2000</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Governs</strong></td>
+            <td>How personal data collected during monitoring is handled and stored</td>
+            <td>Whether interception of live communications in transit is lawful</td>
+          </tr>
+          <tr>
+            <td><strong>Consent Basis</strong></td>
+            <td>Consent OR Legitimate Interests (Art. 6 UK GDPR) — low-impact or "normal workplace practice" monitoring can be justified without explicit consent</td>
+            <td>Requires <strong>explicit consent</strong> OR must be <strong>strictly necessary</strong> for communication systems (the business network exception)</td>
+          </tr>
+          <tr>
+            <td><strong>Trigger</strong></td>
+            <td>Any processing of personal data (website logs, keystroke records, email metadata)</td>
+            <td>Interception of <em>live, in-transit</em> communications (e.g., tapping a live phone call or reading a message during transmission)</td>
+          </tr>
+          <tr>
+            <td><strong>Overlap</strong></td>
+            <td colspan="2" style="text-align:center;background:#fef9c3;color:#713f12;font-weight:600">If interception results in recording personal data → BOTH DPA and RIPA apply simultaneously</td>
+          </tr>
+          <tr>
+            <td><strong>Exam Example</strong></td>
+            <td>Logging which websites staff visit → DPA applies to those browsing records</td>
+            <td>Secretly tapping and recording live phone calls → must satisfy RIPA's far stricter consent/necessity threshold</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ACAS -->
+    <div class="subsection-title">ACAS Code of Practice — Disciplinary &amp; Dismissal Framework</div>
+
+    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:1rem;">The <strong>Employment Act 2002</strong> sets the <em>statutory minimum</em> for dismissal procedures. The <strong>ACAS Code of Practice</strong> provides the procedural fairness guidelines courts use to evaluate conduct. Breaching either triggers automatic unfair dismissal findings.</p>
+
+    <div>
+      <div class="acas-step">
+        <div class="acas-num">1</div>
+        <div class="acas-step-content">
+          <div class="acas-step-title">Attempt Informal Resolution First</div>
+          <div class="acas-step-desc">Before any formal procedure, explore whether the issue can be resolved through a direct, informal conversation. Jumping straight to formal proceedings without attempting this is a procedural flaw.</div>
+        </div>
+      </div>
+      <div class="acas-step">
+        <div class="acas-num">2</div>
+        <div class="acas-step-content">
+          <div class="acas-step-title">Conduct a Full, Thorough Investigation Before Taking Action</div>
+          <div class="acas-step-desc">Gather all relevant evidence before proceeding. Share the evidence with the employee in advance of any hearing — they must not be blindsided. Failure to investigate or withholding evidence = procedurally unfair.</div>
+        </div>
+      </div>
+      <div class="acas-step">
+        <div class="acas-num">3</div>
+        <div class="acas-step-content">
+          <div class="acas-step-title">Hold a Formal Hearing — Grant Right to Respond &amp; Be Accompanied</div>
+          <div class="acas-step-desc">The employee must be given the full opportunity to present their case. They have a statutory right to be accompanied by a <strong>trade union representative or a colleague</strong>. Denying this right triggers automatic unfair dismissal.</div>
+        </div>
+      </div>
+      <div class="acas-step">
+        <div class="acas-num">4</div>
+        <div class="acas-step-content">
+          <div class="acas-step-title">Apply Graduated Sanctions — Never Dismiss on a First Offence (Unless Gross Misconduct)</div>
+          <div class="acas-step-desc">For most offences, the employer must escalate: <strong>verbal warning → written warning → final written warning → dismissal</strong>. Bypassing this progressive procedure (except for proven gross misconduct) is a <mark>statutorily automatically unfair dismissal</mark>.</div>
+        </div>
+      </div>
+      <div class="acas-step">
+        <div class="acas-num">5</div>
+        <div class="acas-step-content">
+          <div class="acas-step-title">Provide a Right to Appeal</div>
+          <div class="acas-step-desc">After a disciplinary outcome, the employee must be informed of their right to appeal. Failing to offer an appeal route is an independent ground for a finding of unfair dismissal.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-danger">
+      <div class="callout-label">🚫 Automatically Unfair Dismissal — The Three Fatal Procedural Mistakes</div>
+      <ul>
+        <li><strong>Skipping the graduated warning process</strong> — dismissing for a first offence that does not constitute gross misconduct.</li>
+        <li><strong>Denying the right to be accompanied</strong> — refusing a union representative or colleague at the disciplinary hearing.</li>
+        <li><strong>Denying the right to appeal</strong> — failing to notify the employee of or provide a proper appeal mechanism.</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION 2 — CYBERSECURITY & CRIMINAL LAW     -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-number">§2</div>
+    <div class="section-header-text">
+      <h2>Module 2 — Cybersecurity &amp; Criminal Law</h2>
+      <p>CMA 1990 · five attack stages · penetration testing &amp; legal immunity</p>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection-title">The CMA 1990 Definitive Matrix — Sections 1, 3, 3ZA, 3A</div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:10%">Section</th>
+            <th style="width:22%">Official Title</th>
+            <th style="width:22%">Actus Reus (The Act)</th>
+            <th style="width:22%">Mens Rea (The Intent)</th>
+            <th style="width:12%">Max Penalty</th>
+            <th>Illustrative Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-amber">S.1</span></td>
+            <td><strong>Unauthorised Access to Computer Material</strong></td>
+            <td>Accessing any computer system, program, or data without authorisation</td>
+            <td>Intentionally gains access; <em>knows</em> they are not entitled; <em>knows</em> there is no consent</td>
+            <td><span class="badge badge-amber">2 years + unlimited fine</span></td>
+            <td>Employee guesses a colleague's password and reads private emails out of curiosity</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-red">S.3</span></td>
+            <td><strong>Unauthorised Acts with Intent to Impair Operation</strong></td>
+            <td>Performing any unauthorised act against a computer that disrupts, impairs, or hinders its operation</td>
+            <td>Intent to impair operation OR recklessness as to impairing it (dual mens rea)</td>
+            <td><span class="badge badge-red">10 years + unlimited fine</span></td>
+            <td>Disgruntled ex-employee hacks in and deletes a critical customer database</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-red" style="background:#7f1d1d;color:#fca5a5;">S.3ZA</span></td>
+            <td><strong>Unauthorised Acts Causing or Creating Risk of Serious Damage</strong></td>
+            <td>Unauthorised acts that cause or risk serious damage to human welfare, the environment, the economy, or national security</td>
+            <td>Intent or recklessness as to causing/risking serious damage (same dual structure as S.3, elevated stakes)</td>
+            <td><span class="badge badge-red" style="background:#7f1d1d;color:#fca5a5;">Up to Life imprisonment + fine</span></td>
+            <td>State-sponsored attacker shuts down a hospital's power grid, directly threatening patient lives</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-navy">S.3A</span></td>
+            <td><strong>Making, Supplying, or Obtaining Articles for Use in CMA Offences</strong></td>
+            <td>Creating, distributing, offering, or obtaining hacking tools (articles) intended for use in a CMA offence</td>
+            <td>Intent that the article will be used in a S.1, S.3, or S.3ZA offence</td>
+            <td><span class="badge badge-navy">2 years + fine</span></td>
+            <td>Programmer writes and sells custom ransomware online (making + supplying)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">📚 Legislative History — CMA Amendments</div>
+      <p>The Computer Misuse Act 1990 has been amended twice: the <strong>Police and Justice Act 2006</strong> introduced S.3A (supply of hacking tools) and elevated penalties; the <strong>Serious Crime Act 2015</strong> introduced S.3ZA (serious damage / national infrastructure attacks) and increased maximum sentences to life imprisonment.</p>
+    </div>
+
+    <!-- 5 Attack Steps -->
+    <div class="subsection-title">The Five Attack Stages — Chronological Methodology</div>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Reconnaissance <span class="badge badge-teal">Passive / Active</span></div>
+          <p>Gathering information about the target system, organisation, or employees without triggering detection. Also called OSINT (Open Source Intelligence) gathering.</p>
+          <span class="step-tools">Tools / Artefacts: WHOIS, LinkedIn, Maltego, Shodan, DNS lookups, social engineering</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Scanning <span class="badge badge-amber">Vulnerability Mapping</span></div>
+          <p>Actively probing the target to identify open ports, running services, software versions, and exploitable weaknesses in the network perimeter.</p>
+          <span class="step-tools">Tools / Artefacts: Nmap, Nessus, Metasploit (scanning modules), port scanners</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Gaining Access <span class="badge badge-red">Exploitation</span></div>
+          <p>Exploiting the identified vulnerability to breach the system — stealing data, causing damage, or commencing espionage operations.</p>
+          <span class="step-tools">Tools / Artefacts: Metasploit, SQLi, phishing payloads, brute-force tools, exploit kits</span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Maintaining Access <span class="badge badge-red">Persistence</span></div>
+          <p>Ensuring continued covert access to the compromised system by installing backdoors, rootkits, or creating hidden OS/web accounts to survive reboots and patching.</p>
+          <span class="step-tools">Artefacts: Rootkits, web shells, hidden OS accounts, C2 (Command &amp; Control) implants, malware disguised as <code>svchosts.exe</code></span>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Covering Tracks <span class="badge badge-navy">Anti-Forensics</span></div>
+          <p>Erasing or manipulating forensic evidence to prevent detection — clearing log files, altering timestamps, or disguising malware as legitimate system processes.</p>
+          <span class="step-tools">Techniques: Log clearing/tampering, timestomping, renaming malware to system filenames (<code>svchosts.exe</code>), steganography</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pen Testing -->
+    <div class="subsection-title">Authorised Penetration Testing — Legal Immunity &amp; NIST 800-115</div>
+
+    <div class="callout callout-success">
+      <div class="callout-label">✅ Legal Immunity Threshold — The Letter of Authorisation</div>
+      <p>A penetration tester is only exempt from the Computer Misuse Act 1990 if they hold <strong>explicit, written, prior authorisation</strong>. The following components must be present in the scoping/authorisation document to constitute legal protection:</p>
+      <ul>
+        <li><strong>Defined Scope</strong> — exact IP ranges, systems, applications, and domains that are in scope for testing.</li>
+        <li><strong>Explicit Permission Statement</strong> — a clear, signed statement by an authorised representative of the target organisation granting permission to test.</li>
+        <li><strong>Permitted Techniques</strong> — specific attack techniques permitted (e.g., social engineering, phishing simulations, physical access testing) and those explicitly forbidden.</li>
+        <li><strong>Time Window</strong> — defined start and end dates/times during which testing is authorised.</li>
+        <li><strong>Emergency Contacts</strong> — escalation contacts if a live vulnerability is found that requires immediate remediation.</li>
+        <li><strong>Data Handling</strong> — how any sensitive data encountered during the test must be handled and disposed of.</li>
+      </ul>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>White Hat (Pen Testing)</th>
+            <th>Black Hat (Malicious Hacking)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Authorisation</strong></td>
+            <td>Explicit written permission from system owner</td>
+            <td>No permission — access is unauthorised</td>
+          </tr>
+          <tr>
+            <td><strong>Framework</strong></td>
+            <td>NIST 800-115: Planning → Discovery → Attack → Reporting</td>
+            <td>Ad hoc, malicious intent, personal gain or sabotage</td>
+          </tr>
+          <tr>
+            <td><strong>CMA Status</strong></td>
+            <td>Exempt — authorisation negates the mens rea of "knowing no consent"</td>
+            <td>S.1 / S.3 / S.3ZA offence — criminal liability</td>
+          </tr>
+          <tr>
+            <td><strong>Red Teaming</strong></td>
+            <td>Role-playing as a defined threat actor against digital twins using structured frameworks (High/Low Tier threat models)</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td><strong>Output</strong></td>
+            <td>Formal written report with vulnerabilities, risk ratings, and remediation recommendations</td>
+            <td>Data theft, system disruption, ransom demand</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION 3 — DATA PRIVACY & GOVERNANCE        -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-number">§3</div>
+    <div class="section-header-text">
+      <h2>Module 3 — Data Privacy &amp; Information Governance</h2>
+      <p>UK GDPR · tripartite roles · ILM lifecycle · ICO enforcement</p>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection-title">The 7 UK GDPR Principles — Article 5</div>
+
+    <div class="principles-list">
+      <div class="principle-item">
+        <div class="principle-num">P1</div>
+        <div class="principle-text">
+          <strong>Lawfulness, Fairness &amp; Transparency</strong>
+          <span>Processing must have a valid lawful basis (e.g., consent, legitimate interests); individuals must know what is happening to their data.</span>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">P2</div>
+        <div class="principle-text">
+          <strong>Purpose Limitation</strong>
+          <span>Data collected for one specified purpose cannot be reused for incompatible purposes without fresh lawful basis.</span>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">P3</div>
+        <div class="principle-text">
+          <strong>Data Minimisation</strong>
+          <span>Only collect data that is adequate, relevant, and limited to what is necessary for the stated purpose — no more.</span>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">P4</div>
+        <div class="principle-text">
+          <strong>Accuracy</strong>
+          <span>Personal data must be accurate and, where necessary, kept up to date. Inaccurate data must be corrected or erased without delay.</span>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">P5</div>
+        <div class="principle-text">
+          <strong>Storage Limitation</strong>
+          <span>Data must not be held for longer than necessary for the stated purpose. Retention schedules and deletion policies are mandatory.</span>
+        </div>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">P6</div>
+        <div class="principle-text">
+          <strong>Integrity &amp; Confidentiality (Security)</strong>
+          <span>Data must be protected against unauthorised access, accidental loss, or destruction using appropriate technical controls (encryption, access controls).</span>
+        </div>
+      </div>
+      <div class="principle-item" style="grid-column: 1 / -1;">
+        <div class="principle-num">P7</div>
+        <div class="principle-text">
+          <strong>Accountability</strong>
+          <span>The data controller bears primary responsibility for demonstrating compliance with all of the above principles — compliance must be <em>demonstrable</em>, not just asserted.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Article 17(3) Erasure -->
+    <div class="subsection-title">Data Subject Rights &amp; Article 17(3) — Right to Erasure Exceptions</div>
+
+    <div class="callout callout-warning">
+      <div class="callout-label">⚠️ High-Score Legal Threshold — Article 17(3): When the Right to Erasure Does NOT Apply</div>
+      <p>An organisation is <strong>not required to delete personal data</strong> on receipt of an erasure request if processing is necessary for one or more of the following purposes:</p>
+      <ul>
+        <li>✅ <strong>Exercising the right of freedom of expression and information</strong></li>
+        <li>✅ <strong>Compliance with a legal obligation</strong> — e.g., tax retention requirements, statutory record-keeping duties</li>
+        <li>✅ <strong>Reasons of public interest in the area of public health</strong></li>
+        <li>✅ <strong>Archiving purposes in the public interest, scientific or historical research, or statistical purposes</strong></li>
+        <li>✅ <strong>Establishment, exercise, or defence of legal claims</strong> — data held for pending or anticipated litigation</li>
+      </ul>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Right</th><th>Plain-English Definition</th><th>Key Limitation / Exception</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Right of Access (SAR)</strong></td><td>Individuals can request a copy of all personal data held about them</td><td>Must be fulfilled within 1 month; free of charge (ordinarily)</td></tr>
+          <tr><td><strong>Right to Rectification</strong></td><td>Request correction of inaccurate or incomplete personal data</td><td>Controller has 1 month to act</td></tr>
+          <tr><td><strong>Right to Erasure (Art. 17)</strong></td><td>"Right to be forgotten" — request deletion of personal data</td><td>Does not apply where Art. 17(3) exceptions exist (see above)</td></tr>
+          <tr><td><strong>Right to Portability</strong></td><td>Receive personal data in a structured, machine-readable format and transmit to another controller</td><td>Only applies to data processed by automated means on consent or contract basis</td></tr>
+          <tr><td><strong>Right to Object</strong></td><td>Object to processing based on legitimate interests or direct marketing</td><td>Controller must cease unless compelling legitimate grounds override</td></tr>
+          <tr><td><strong>Right to Restrict Processing</strong></td><td>Request that processing is paused while accuracy or objection is resolved</td><td>Data retained but not actively processed during restriction period</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tripartite Roles -->
+    <div class="subsection-title">Tripartite Roles — Controller, Processor &amp; DPO</div>
+
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-head controller">🏛 Data Controller</div>
+        <div class="role-body">
+          <p>The entity (organisation or individual) that <strong>determines the purpose and means</strong> of processing personal data. Decides the "why" and "how" of processing.</p>
+          <div class="role-key">Primary Legal Accountability</div>
+          <p style="margin-top:4px;font-size:12.5px;color:#b91c1c;font-family:var(--sans);font-weight:600;">Max Fine: £17.5M or 4% global annual turnover (whichever is greater)</p>
+        </div>
+      </div>
+      <div class="role-card">
+        <div class="role-head processor">⚙️ Data Processor</div>
+        <div class="role-body">
+          <p>An external entity (not an employee) that <strong>processes personal data on behalf of the controller</strong>. Carries out instructions — does not set the purpose. E.g., a cloud provider, payroll outsourcer.</p>
+          <div class="role-key">Secondary Accountability</div>
+          <p style="margin-top:4px;font-size:12.5px;color:#7c3aed;font-family:var(--sans);">Must operate under a binding contract (Data Processing Agreement) with the controller; subject to direct ICO enforcement post-UK GDPR.</p>
+        </div>
+      </div>
+      <div class="role-card">
+        <div class="role-head dpo">🔎 Data Protection Officer (DPO)</div>
+        <div class="role-body">
+          <p>An appointed expert role responsible for <strong>overseeing data protection compliance</strong> and acting as a point of contact with the ICO. Must have expert knowledge of data protection law.</p>
+          <div class="role-key">Mandatory if:</div>
+          <p style="margin-top:4px;font-size:12.5px;font-family:var(--sans);">Processing &gt;5,000 data subject records/year; or &gt;250 staff; or large-scale processing of special category data or criminal offence data.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-danger">
+      <div class="callout-label">💰 ICO Financial Penalties — Maximum Enforcement Powers</div>
+      <p>Under UK GDPR, the Information Commissioner's Office (ICO) can impose fines of up to <strong>£17.5 million</strong> or <strong>4% of global annual turnover</strong> — whichever is the <em>higher</em> amount — for the most serious infringements (e.g., violations of the fundamental processing principles, data subject rights, or security obligations resulting in significant breach).</p>
+    </div>
+
+    <!-- ILM Lifecycle -->
+    <div class="subsection-title">Information Lifecycle Management (ILM) — 5 Stages &amp; Security Controls</div>
+
+    <div class="flow-chain">
+      <div class="flow-node">Collect<span>Purpose &amp; lawful basis</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Store<span>Encryption at rest</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Use<span>Access controls</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Archive<span>Retention schedules</span></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">Dispose<span>Defensible deletion</span></div>
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>GDPR Principle Engaged</th><th>Required Security Controls</th><th>Failure Example</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Collect</strong></td>
+            <td>P1 (Lawfulness), P2 (Purpose Limitation), P3 (Minimisation)</td>
+            <td>Privacy notices; valid lawful basis documentation; consent management systems</td>
+            <td>NHS Scotland Covid App — collecting passport images without transparent consent (ICO reprimand)</td>
+          </tr>
+          <tr>
+            <td><strong>Store</strong></td>
+            <td>P6 (Integrity &amp; Confidentiality)</td>
+            <td>Encryption at rest; access controls; backups; data classification labels</td>
+            <td>Telegram — storing unencrypted private messages on corporate cloud servers</td>
+          </tr>
+          <tr>
+            <td><strong>Use</strong></td>
+            <td>P2 (Purpose Limitation), P4 (Accuracy)</td>
+            <td>Role-based access controls (RBAC); audit trails; DLP tools; data quality checks</td>
+            <td>Post Office Horizon — relying on inaccurate data as definitive evidence in prosecutions</td>
+          </tr>
+          <tr>
+            <td><strong>Archive</strong></td>
+            <td>P5 (Storage Limitation)</td>
+            <td>Defined retention schedules; automated archiving policies; tiered storage</td>
+            <td>Retaining customer records indefinitely with no deletion schedule = P5 violation</td>
+          </tr>
+          <tr>
+            <td><strong>Dispose</strong></td>
+            <td>P5 (Storage Limitation), P7 (Accountability)</td>
+            <td>Defensible Disposal policy; secure deletion (overwriting); certificate of destruction; data audit trail</td>
+            <td>Disposing of devices without secure wiping — personal data recoverable from drives</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION 4 — ETHICS & INTELLECTUAL PROPERTY   -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-number">§4</div>
+    <div class="section-header-text">
+      <h2>Module 4 — Professional Ethics &amp; Intellectual Property</h2>
+      <p>Normative ethics · BCS/ACM codes · whistleblowing · the four IP pillars</p>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection-title">Normative Ethics — Applied to Cybersecurity Dilemmas</div>
+
+    <div class="ethics-grid">
+      <div class="ethics-card consequentialist">
+        <h4>Consequentialism</h4>
+        <div class="thinker">Bentham / Mill — "Greatest Good"</div>
+        <p>The ethical choice is the action that produces the <strong>best overall outcome</strong> for the greatest number. Consequences — not rules — determine morality.</p>
+        <hr style="border:none;border-top:1px solid #bbf7d0;margin:8px 0;">
+        <p><em>Applied dilemma:</em> A team is pressured to deploy a vulnerable app on schedule. A consequentialist delays release — preventing potential harm to thousands of users produces the better aggregate outcome, regardless of corporate cost.</p>
+      </div>
+      <div class="ethics-card deontological">
+        <h4>Deontology</h4>
+        <div class="thinker">Kant — "Categorical Imperative"</div>
+        <p>Morality is determined by adherence to <strong>rules and duties</strong>, not outcomes. An action is right only if it conforms to a universal moral law — consequences are irrelevant.</p>
+        <hr style="border:none;border-top:1px solid #bfdbfe;margin:8px 0;">
+        <p><em>Applied dilemma:</em> A professional refuses to deploy the vulnerable app because it violates the deontological duty not to knowingly release software that could harm users — even if the business consequences would be minor.</p>
+      </div>
+      <div class="ethics-card virtue">
+        <h4>Virtue Ethics</h4>
+        <div class="thinker">Aristotle — "Character &amp; Virtue"</div>
+        <p>Focuses on the <strong>internal character and professional virtues</strong> of the individual (honesty, integrity, courage, prudence) rather than rules or outcomes.</p>
+        <hr style="border:none;border-top:1px solid #e9d5ff;margin:8px 0;">
+        <p><em>Applied dilemma:</em> A virtuous professional speaks up about the vulnerability because a person of integrity and professional courage would do so — it is what a person of good character does.</p>
+      </div>
+    </div>
+
+    <!-- BCS vs ACM -->
+    <div class="subsection-title">BCS vs. ACM Professional Codes — Shared Values &amp; Whistleblowing Escalation</div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr><th>Value / Obligation</th><th>BCS Code of Conduct</th><th>ACM Code of Ethics</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Public Interest Priority</strong></td><td>Public interest and wellbeing above personal or employer interests</td><td>Public good, health, and safety above all</td></tr>
+          <tr><td><strong>Transparency / Honesty</strong></td><td>Act with integrity; avoid misleading stakeholders</td><td>Be honest and trustworthy; avoid deception</td></tr>
+          <tr><td><strong>Privacy &amp; Confidentiality</strong></td><td>Respect and protect confidential information</td><td>Respect individuals' privacy</td></tr>
+          <tr><td><strong>Non-Discrimination</strong></td><td>Treat all individuals fairly; no unjust discrimination</td><td>Non-discrimination and inclusivity</td></tr>
+          <tr><td><strong>Safety</strong></td><td>Have due regard to public safety and the environment</td><td>Design and deploy secure, safe systems</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size:14px;color:var(--text-secondary);margin:1rem 0 0.75rem;"><strong style="color:var(--navy);">Whistleblowing Escalation Protocol</strong> — when an employer acts unethically or illegally:</p>
+
+    <div class="escalation-step internal">
+      <div class="escalation-num">1</div>
+      <div>
+        <strong style="font-family:var(--sans);font-size:13.5px;color:#065f46;">Internal — Gather Allies &amp; Build the Evidence Base</strong>
+        <p style="font-size:13px;color:#047857;margin-top:3px;">Identify colleagues who share your concern. Compile factual, documented evidence of the ethical or legal violation. Do not act unilaterally without a clear factual foundation.</p>
+      </div>
+    </div>
+    <div class="escalation-step internal">
+      <div class="escalation-num">2</div>
+      <div>
+        <strong style="font-family:var(--sans);font-size:13.5px;color:#065f46;">Internal — Present Facts via Official Reporting Procedures</strong>
+        <p style="font-size:13px;color:#047857;margin-top:3px;">Use the company's internal ethics hotline, compliance officer, senior management escalation, or board-level reporting. Frame concerns factually; document all responses and outcomes.</p>
+      </div>
+    </div>
+    <div class="escalation-step caution">
+      <div class="escalation-num">3</div>
+      <div>
+        <strong style="font-family:var(--sans);font-size:13.5px;color:#92400e;">Regulatory / External — Report to a Prescribed Body</strong>
+        <p style="font-size:13px;color:#b45309;margin-top:3px;">If internal channels are exhausted or complicit, report to an appropriate regulatory authority (e.g., ICO for data breaches, FCA for financial misconduct, NCSC for national security matters).</p>
+      </div>
+    </div>
+    <div class="escalation-step last-resort">
+      <div class="escalation-num">4</div>
+      <div>
+        <strong style="font-family:var(--sans);font-size:13.5px;color:#991b1b;">ABSOLUTE LAST RESORT — Public Whistleblowing (Media / Journalist)</strong>
+        <p style="font-size:13px;color:#b91c1c;margin-top:3px;">Public disclosure (going to a journalist or publishing publicly) is only ethically permissible after all internal and regulatory routes have been exhausted and the harm to the public remains serious and ongoing. Both BCS and ACM codes treat this as the final option, not the first. See: Frances Haugen (Facebook) as a real-world application.</p>
+      </div>
+    </div>
+
+    <!-- IP Pillars -->
+    <div class="subsection-title">The Four Pillars of Intellectual Property — Definitive Breakdown</div>
+
+    <div class="ip-grid">
+      <div class="ip-card">
+        <div class="ip-card-head copyright">© Copyright <span class="badge" style="background:#fde68a;color:#713f12;">CDPA 1988</span></div>
+        <div class="ip-card-body">
+          <dl>
+            <dt>Protects</dt>
+            <dd>The expression of creative works: source code, object code, non-literal structure, GUIs as literary/artistic works</dd>
+            <dt>Statute</dt>
+            <dd>Copyright, Designs and Patents Act 1988</dd>
+            <dt>Threshold</dt>
+            <dd>Must be the <strong>"author's own intellectual creation"</strong> — the <mark>Infopaq originality standard</mark> (even an 11-word extract can constitute infringement if it meets this threshold)</dd>
+            <dt>Duration</dt>
+            <dd>Life of author + 70 years</dd>
+            <dt>Registration</dt>
+            <dd>Automatic — no registration required</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="ip-card">
+        <div class="ip-card-head patent">⚙ Patents <span class="badge" style="background:#bfdbfe;color:#1e3a8a;">Patents Act 1977</span></div>
+        <div class="ip-card-body">
+          <dl>
+            <dt>Protects</dt>
+            <dd>Technical inventions providing a novel, non-obvious technical solution to a technical problem</dd>
+            <dt>Statute</dt>
+            <dd>Patents Act 1977</dd>
+            <dt>Software Exception</dt>
+            <dd>Computer programs "as such" are excluded from patentability — BUT become patentable if they provide a <mark>technical contribution / technical solution to a technical problem</mark></dd>
+            <dt>Test</dt>
+            <dd><strong>Aerotel/Macrossan Four-Step Test</strong> (see callout below)</dd>
+            <dt>Duration</dt>
+            <dd>Up to 20 years from filing date</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="ip-card">
+        <div class="ip-card-head trademark">™ Trade Marks <span class="badge" style="background:#fbcfe8;color:#831843;">TMA 1994</span></div>
+        <div class="ip-card-body">
+          <dl>
+            <dt>Protects</dt>
+            <dd>Brand identity, origin indicators, quality guarantees — signs capable of graphic representation</dd>
+            <dt>Statute</dt>
+            <dd>Trade Marks Act 1994</dd>
+            <dt>Scope</dt>
+            <dd>Covers domain names; protects against <strong>typosquatting</strong> and the tortious act of <strong>"passing off"</strong> (misrepresenting goods/services as those of another)</dd>
+            <dt>Duration</dt>
+            <dd>10 years from registration, renewable indefinitely</dd>
+            <dt>Registration</dt>
+            <dd>Must be registered (UK IPO); unregistered marks rely on passing off tort</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="ip-card">
+        <div class="ip-card-head design">◼ Design Rights <span class="badge" style="background:#a7f3d0;color:#065f46;">RDA 1949</span></div>
+        <div class="ip-card-body">
+          <dl>
+            <dt>Protects</dt>
+            <dd>Shape, configuration, pattern, or visual appearance of a product — e.g., GUIs, device casings, icons</dd>
+            <dt>Statute</dt>
+            <dd>Registered Designs Act 1949; CDPA 1988 (unregistered)</dd>
+            <dt>Registered</dt>
+            <dd>Up to <strong>25 years</strong> protection (5-year renewable periods)</dd>
+            <dt>Unregistered</dt>
+            <dd>Automatic upon creation — shorter duration (10–15 years); no monopoly right, only right to prevent copying</dd>
+            <dt>Scope</dt>
+            <dd>Covers visual features; does not protect features dictated solely by technical function</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-purple">
+      <div class="callout-label">🏛 Aerotel Ltd v Telco Holdings Ltd &amp; Macrossan's Application (2006) — The Four-Step Patent Test</div>
+      <p>The Court of Appeal established this four-step framework to determine whether a computer-related invention is patentable (provides a "technical contribution"):</p>
+      <ul>
+        <li><strong>Step 1 — Construe the Claim:</strong> Properly construe what the patent claim actually protects.</li>
+        <li><strong>Step 2 — Identify the Actual Contribution:</strong> Determine what the claimed invention actually adds to the prior art — what is truly new?</li>
+        <li><strong>Step 3 — Technical Contribution Check:</strong> Assess whether that contribution is "technical in nature" — i.e., does it produce a technical effect going beyond the normal physical interactions of running a program?</li>
+        <li><strong>Step 4 — Excluded Matter:</strong> Check whether the contribution is excluded from patentability (e.g., is it a computer program "as such," a method of doing business, or a mental act?).</li>
+      </ul>
+      <p style="margin-top:8px;"><em>Only if the contribution passes Steps 3 and 4 (technical, not excluded) is the invention patentable.</em></p>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-label">🏛 Infopaq International v Danske Dagblades Forening (2009) — The Originality Standard</div>
+      <p>An EU Court of Justice ruling establishing that even reproducing an <strong>11-word extract</strong> of a text can constitute copyright infringement if that extract reflects the <strong>"author's own intellectual creation"</strong>. This dramatically lowered the threshold for copyright protection in software — short, original code fragments are protected. The standard: if the expression required genuine intellectual choices by the author, it is protected.</p>
+    </div>
+
+    <div class="callout callout-success">
+      <div class="callout-label">⚖️ Blyth v Birmingham Waterworks Co (1856) — The Reasonableness Standard &amp; AI Liability</div>
+      <p>This historic case established the <strong>"reasonableness test"</strong> for negligence — judging conduct against what a prudent and reasonable person would have done in the circumstances. In computing ethics, this baseline is applied to <strong>AI and machine liability</strong>: an AI system's decisions or errors are evaluated against what a reasonable, competent professional would have done, establishing a moral and legal baseline for automated decision-making.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SECTION 5 — CASE STUDY APPENDIX              -->
+<!-- ══════════════════════════════════════════════ -->
+<div class="section-card">
+  <div class="section-header">
+    <div class="section-number">§5</div>
+    <div class="section-header-text">
+      <h2>Case Study &amp; Precedents Appendix</h2>
+      <p>All real-world cases, breaches, and legal precedents — formatted for rapid exam recall</p>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <div class="subsection-title">⚖️ Legal Cases &amp; Judicial Precedents</div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Infopaq International v Danske Dagblades Forening (2009)</h3>
+        <span class="case-tag law">IP / Copyright Law</span>
+      </div>
+      <div class="case-card-body">
+        <p>A media monitoring company used automated scanning to summarise newspaper articles; the ECJ ruled that reproducing even an <strong>11-word extract</strong> can constitute copyright infringement if it reflects the "author's own intellectual creation."</p>
+        <p><strong>Legal takeaway:</strong> Establishes the <em>Infopaq originality standard</em> — the threshold for copyright protection in Europe. Applied directly to software: any code fragment that reflects genuine intellectual choices is protected by copyright under the Copyright, Designs and Patents Act 1988. Relevant to Module 4 (Copyright).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Aerotel Ltd v Telco Holdings Ltd &amp; Macrossan's Application (2006)</h3>
+        <span class="case-tag law">IP / Patent Law</span>
+      </div>
+      <div class="case-card-body">
+        <p>A dispute over a telephone call-handling system led the Court of Appeal to establish the definitive <strong>four-step framework</strong> for determining whether computer-related inventions provide a "technical contribution" sufficient to be patentable under the Patents Act 1977.</p>
+        <p><strong>Legal takeaway:</strong> Software is not patentable "as such," but becomes so when it produces a genuine technical effect beyond normal program execution. The Aerotel four-step test is the controlling authority for software patent applications in UK courts. Relevant to Module 4 (Patents).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Blyth v Birmingham Waterworks Co (1856)</h3>
+        <span class="case-tag law">Negligence / AI Liability</span>
+      </div>
+      <div class="case-card-body">
+        <p>A landmark negligence case that established the <strong>"reasonableness test"</strong> — conduct is judged against what a prudent and reasonable person would do in the same circumstances.</p>
+        <p><strong>Legal takeaway:</strong> Now used as the moral and legal baseline for measuring AI and automated system liability. When an algorithmic decision causes harm, courts assess whether the system (and its designers) behaved as a reasonable, competent professional would. Relevant to Module 4 (AI Liability &amp; Ethical Standards).</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="subsection-title">🏢 Corporate Scandals &amp; Whistleblowing</div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>The Post Office Horizon IT Scandal</h3>
+        <span class="case-tag ethics">Information Governance</span>
+      </div>
+      <div class="case-card-body">
+        <p>Faulty corporate accounting software (Horizon) was treated as definitive and accurate evidence, leading to the wrongful prosecution and imprisonment of hundreds of innocent subpostmasters over multiple decades due to systemic failures in data governance and accountability.</p>
+        <p><strong>Technical/legal takeaway:</strong> A catastrophic failure of GDPR Principle 4 (Accuracy) — data presented as accurate evidence was corrupted and unreliable. Demonstrates why the <em>Accountability principle</em> (P7) and robust information governance controls are legally and ethically non-negotiable. Relevant to Module 3 (Data Accuracy &amp; Governance).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Facebook &amp; Frances Haugen (The Whistleblower, 2021)</h3>
+        <span class="case-tag ethics">Professional Ethics / BCS &amp; ACM</span>
+      </div>
+      <div class="case-card-body">
+        <p>A former Facebook algorithm specialist leaked confidential internal documents to Congress and the media, exposing that Facebook routinely chose to optimise for profit over public safety — knowingly allowing misinformation to proliferate and worsening harm to youth mental health.</p>
+        <p><strong>Ethical takeaway:</strong> A textbook application of the BCS/ACM whistleblowing escalation protocol — after internal channels produced no change, Haugen escalated externally (regulatory body → media). Illustrates consequentialist ethics: the harm to millions outweighed Facebook's profit interest. Relevant to Module 4 (Whistleblowing &amp; Professional Codes).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>The Amazon Antitrust Paradox</h3>
+        <span class="case-tag ethics">Business Ethics</span>
+      </div>
+      <div class="case-card-body">
+        <p>Amazon faced major regulatory scrutiny after investigations revealed it used the sales data of third-party sellers hosted on its own platform to gain competitive intelligence, then launched its own competing products — exploiting the dual role of marketplace operator and retailer.</p>
+        <p><strong>Ethical takeaway:</strong> Illustrates a stark conflict between corporate self-interest and ethical duties to partners and users. A deontological analysis concludes that Amazon violated a duty of fair dealing; consequentialism notes the net harm to competitive markets. Relevant to Module 4 (Normative Ethics &amp; Business Ethics).</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="subsection-title">🔐 Data Privacy Breaches &amp; Enforcement Actions</div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Strava Fitness App Global Heatmap Incident (2018)</h3>
+        <span class="case-tag breach">Data Minimisation / Aggregation Risk</span>
+      </div>
+      <div class="case-card-body">
+        <p>Strava published a publicly accessible aggregated GPS activity heatmap of all users' exercise routes, which unintentionally revealed the precise locations, perimeters, and patrol patterns of classified and secret military bases worldwide.</p>
+        <p><strong>Technical/legal takeaway:</strong> Demonstrates the <em>aggregated data risk</em> — individually innocuous GPS data, when aggregated and published at scale, creates severe security and privacy violations. Violates GDPR Purpose Limitation (P2) and Data Minimisation (P3) — public heatmaps far exceeded the purpose for which location data was collected. Relevant to Module 3 (Data Privacy &amp; Aggregated Data).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>NHS Scotland Covid Status App — ICO Reprimand</h3>
+        <span class="case-tag breach">UK GDPR Transparency &amp; Consent</span>
+      </div>
+      <div class="case-card-body">
+        <p>The ICO formally reprimanded NHS Scotland because its Covid Status App attempted to share users' facial images and passport details with a third-party identity verification provider using excessively complex, non-transparent, and inadequate privacy information that users could not reasonably understand or act upon.</p>
+        <p><strong>Legal takeaway:</strong> Violated GDPR Principle 1 (Lawfulness, Fairness, and <strong>Transparency</strong>) and the lawful basis requirements for sharing special category data (biometric/identity data). Confirms that transparency obligations are substantive — privacy notices must be genuinely intelligible, not technically compliant but practically opaque. Relevant to Module 3 (UK GDPR Enforcement).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Telegram Cloud Storage &amp; Encryption Misconception</h3>
+        <span class="case-tag breach">Data Security / Encryption</span>
+      </div>
+      <div class="case-card-body">
+        <p>Security researchers highlighted that, contrary to widespread public perception, Telegram does not use end-to-end encryption by default for standard chats — meaning readable copies of users' private messages are stored on Telegram's corporate cloud servers and are accessible to the company.</p>
+        <p><strong>Technical/legal takeaway:</strong> Illustrates a critical violation of user trust and the GDPR Integrity &amp; Confidentiality principle (P6). Default security settings that leave user data unencrypted represent a failure of "privacy by design and by default" (Article 25 UK GDPR). Relevant to Module 3 (Data Security &amp; Cryptography Obligations).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>TikTok Data Access Controversy — US Congressional Hearing</h3>
+        <span class="case-tag breach">Data Minimisation / Governance</span>
+      </div>
+      <div class="case-card-body">
+        <p>TikTok's CEO faced Congressional testimony amid national security concerns over the app's extensive data collection practices, which include capturing keystroke patterns, device identifiers, and tracking users' activity across third-party websites — far exceeding what is necessary for app functionality.</p>
+        <p><strong>Legal takeaway:</strong> A large-scale violation of GDPR Data Minimisation (P3) and Purpose Limitation (P2) — collecting keystroke patterns and cross-site tracking data cannot be justified for a social media app's stated purposes. Raises Data Controller accountability obligations and national security considerations. Relevant to Module 3 (Data Minimisation &amp; Information Governance).</p>
+      </div>
+    </div>
+
+    <hr class="divider">
+    <div class="subsection-title">💻 Cyber-Attacks, Ransomware &amp; Hacktivism</div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Paddington Bear Ransomware Attack</h3>
+        <span class="case-tag hack">CMA S.3 / S.3A Ransomware</span>
+      </div>
+      <div class="case-card-body">
+        <p>A ransomware campaign using a theme built around the Paddington Bear character was deployed to encrypt target systems and extort payment for decryption keys.</p>
+        <p><strong>Legal takeaway:</strong> The deployment of ransomware constitutes a <strong>CMA 1990 S.3</strong> offence (unauthorised act impairing computer operation) and potentially <strong>S.3A</strong> if the tool was created or supplied by another party. Demonstrates how fictional or innocuous theming is used by threat actors to bypass user suspicion (social engineering). Relevant to Module 2 (CMA Offences).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Bybit Cryptocurrency Heist (February 2025)</h3>
+        <span class="case-tag hack">CMA S.1 / Financial Cybercrime</span>
+      </div>
+      <div class="case-card-body">
+        <p>One of the largest cryptocurrency thefts in history, in which threat actors conducted an advanced unauthorised intrusion into the Bybit exchange's systems to steal substantial cryptocurrency holdings.</p>
+        <p><strong>Legal takeaway:</strong> A compound CMA offence — <strong>S.1</strong> (unauthorised access) leading to <strong>S.3</strong> (impairing the system's financial operations). Illustrates how the five attack stages (Recon → Scan → Access → Maintain → Cover) are deployed in sophisticated financial cybercrime. Relevant to Module 2 (CMA Offences &amp; Attack Methodology).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Hacktivist Attack on the Israeli Police Force</h3>
+        <span class="case-tag hack">CMA S.3 / Hacktivism</span>
+      </div>
+      <div class="case-card-body">
+        <p>Hacktivist groups conducted disruptive cyber-attacks targeting the Israeli Police Force's systems, using the attack as a form of political protest and to disrupt government operations.</p>
+        <p><strong>Legal takeaway:</strong> Even politically or ideologically motivated attacks constitute <strong>CMA 1990 S.3</strong> offences (unauthorised acts impairing computer operations). Political motivation provides no legal defence. Depending on the scale of disruption to critical national infrastructure, charges could escalate to <strong>S.3ZA</strong>. Relevant to Module 2 (CMA Offences &amp; Hacktivism).</p>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-card-header">
+        <h3>Recent 2024–2026 Data Misuse Incidents (Headline Summary)</h3>
+        <span class="case-tag breach">GDPR / Controller Accountability</span>
+      </div>
+      <div class="case-card-body">
+        <p>A cluster of high-profile recent incidents highlights the continuing severity of data governance failures: <strong>gambling firms sharing user data with Facebook</strong> without adequate lawful basis; <strong>OpenAI facing data-breach claims</strong>; <strong>TEMU facing app privacy probes</strong> for excessive data collection; <strong>Oracle Health suffering a patient data breach</strong> affecting sensitive health records.</p>
+        <p><strong>Legal takeaway:</strong> Each incident engages Data Controller accountability under UK GDPR — the controller bears primary responsibility for third-party data sharing, breach notification (72-hour rule), and demonstrating lawful basis for processing. Subject to ICO investigation and potential fines up to £17.5M or 4% of global turnover. Relevant to Module 3 (GDPR Enforcement &amp; Data Controller Responsibility).</p>
+      </div>
+    </div>
+
+    <!-- Key Statutes Quick Reference -->
+    <hr class="divider">
+    <div class="subsection-title">📋 Must-Know Statutes — Quick Reference</div>
+
+    <div class="statute-row"><span class="statute-code">CMA 1990</span><span>Computer Misuse Act 1990 (amended 2006 &amp; 2015) — Sections 1, 3, 3ZA, 3A offences; criminal liability for unauthorised access and cyber-attacks</span></div>
+    <div class="statute-row"><span class="statute-code">DPA 2018</span><span>Data Protection Act 2018 — UK implementation and supplement to UK GDPR; establishes ICO enforcement powers</span></div>
+    <div class="statute-row"><span class="statute-code">UK GDPR</span><span>UK General Data Protection Regulation — 7 principles, data subject rights, controller/processor obligations, DPO requirements</span></div>
+    <div class="statute-row"><span class="statute-code">RIPA 2000</span><span>Regulation of Investigatory Powers Act 2000 — governs lawful interception of communications; business exception via TLBP Regs 2000</span></div>
+    <div class="statute-row"><span class="statute-code">CDPA 1988</span><span>Copyright, Designs and Patents Act 1988 — protects software, source code, and creative works; life + 70 years</span></div>
+    <div class="statute-row"><span class="statute-code">TMA 1994</span><span>Trade Marks Act 1994 — brand identity protection; passing off; typosquatting; domain names</span></div>
+    <div class="statute-row"><span class="statute-code">PA 1977</span><span>Patents Act 1977 — technical invention protection; software excluded "as such" unless technical contribution (Aerotel test)</span></div>
+    <div class="statute-row"><span class="statute-code">RDA 1949</span><span>Registered Designs Act 1949 — shape and visual appearance protection; up to 25 years registered; CDPA 1988 for unregistered</span></div>
+    <div class="statute-row"><span class="statute-code">EA 2002</span><span>Employment Act 2002 — statutory minimum disciplinary and grievance procedures; underpins ACAS Code compliance</span></div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:2rem 0 1rem;font-family:var(--sans);font-size:12px;color:#94a3b8;">
+  Cybersecurity Law &amp; Computing Ethics — Elite Revision Series · Exam Date: 9 June 2025<br>
+  All legal statutes, case citations, and technical specifications are retained in full — zero content omitted.
+</div>
+
+</div>
+</body>
+</html>
