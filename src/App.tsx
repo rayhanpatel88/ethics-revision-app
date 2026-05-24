@@ -110,7 +110,13 @@ export default function App() {
       case 'mockexam':
         return <MockExam onAttempt={attemptExamQuestion} />;
       case 'hardmode':
-        return <HardMode />;
+        return (
+          <HardMode
+            progress={progress}
+            onMaster={masterFlashcard}
+            onHard={markFlashcardHard}
+          />
+        );
       case 'traps':
         return <ExaminerTraps />;
       default:

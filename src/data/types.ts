@@ -117,6 +117,14 @@ export interface UserProgress {
   topicsCompleted: string[];
   flashcardsMastered: string[];
   flashcardsHard: string[];
+  spacedRepetition: Record<string, {
+    box: number;
+    intervalDays: number;
+    nextDue: string;
+    lastReviewed: string;
+    lastVerdict: 'mastered' | 'hard' | 'again';
+    reviewCount: number;
+  }>;
   quizScores: Record<string, number>;
   examQuestionsAttempted: string[];
   weeklyScores: Record<Week, number>;

@@ -10,6 +10,7 @@ const DEFAULT_PROGRESS: UserProgress = {
   topicsCompleted: [],
   flashcardsMastered: [],
   flashcardsHard: [],
+  spacedRepetition: {},
   quizScores: {},
   examQuestionsAttempted: [],
   weeklyScores: { week1: 0, week2: 0, week3: 0, week5: 0, week6: 0, week9: 0 },
@@ -52,6 +53,18 @@ export function useProgress() {
         ? p.flashcardsMastered
         : [...p.flashcardsMastered, cardId],
       flashcardsHard: p.flashcardsHard.filter(id => id !== cardId),
+      spacedRepetition: {
+        ...p.spacedRepetition,
+        [cardId]: {
+          box: Math.min((p.spacedRepetition[cardId]?.box || 0) + 1, 5),
+          intervalDays: [1, 2, 4, 7, 14][Math.min((p.spacedRepetition[cardId]?.box || 0), 4)],
+          nextDue: new Date(Date.now() + [1, 2, 4, 7, 14][Math.min((p.spacedRepetition[cardId]?.box || 0), 4)] * 86400000).toISOString(),
+          lastReviewed: new Date().toISOString(),
+          lastVerdict: 'mastered',
+          reviewCount: (p.spacedRepetition[cardId]?.reviewCount || 0) + 1,
+        },
+      },
+      lastStudied: new Date().toISOString(),
     }));
   };
 
@@ -62,6 +75,18 @@ export function useProgress() {
         ? p.flashcardsHard
         : [...p.flashcardsHard, cardId],
       flashcardsMastered: p.flashcardsMastered.filter(id => id !== cardId),
+      spacedRepetition: {
+        ...p.spacedRepetition,
+        [cardId]: {
+          box: 1,
+          intervalDays: 1,
+          nextDue: new Date(Date.now() + 86400000).toISOString(),
+          lastReviewed: new Date().toISOString(),
+          lastVerdict: 'hard',
+          reviewCount: (p.spacedRepetition[cardId]?.reviewCount || 0) + 1,
+        },
+      },
+      lastStudied: new Date().toISOString(),
     }));
   };
 

@@ -3,7 +3,7 @@ import { Zap, Clock, SkipForward, CheckCircle, XCircle, RotateCcw, Trophy, Brain
 import { flashcards } from '../data/flashcards';
 import { expandedFlashcards } from '../data/expandedFlashcards';
 import { adversarialQuestions } from '../data/adversarialQuestions';
-import type { Flashcard } from '../data/types';
+import type { Flashcard, UserProgress } from '../data/types';
 
 type CardMode = 'flashcard' | 'adversarial';
 
@@ -60,11 +60,17 @@ interface Result {
   timeUsed: number;
 }
 
-export default function HardMode() {
+interface Props {
+  progress: UserProgress;
+  onMaster: (id: string) => void;
+  onHard: (id: string) => void;
+}
+
+export default function HardMode({ progress, onMaster, onHard }: Props) {
   const [phase, setPhase] = useState<Phase>('menu');
   const [deckSize, setDeckSize] = useState(20);
   const [onlyHard, setOnlyHard] = useState(false);
-  const [hardIds] = useState<string[]>([]);
+  const hardIds = progress.flashcardsHard;
   const [deck, setDeck] = useState<HardCard[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -112,6 +118,10 @@ export default function HardMode() {
   const advance = (verdict: Verdict) => {
     stopTimer();
     const result: Result = { card: currentCard, verdict, timeUsed: timeUsedRef.current };
+    if (currentCard.mode === 'flashcard') {
+      if (verdict === 'got-it') onMaster(currentCard.id);
+      if (verdict === 'missed' || verdict === 'skipped') onHard(currentCard.id);
+    }
     const newResults = [...results, result];
     setResults(newResults);
     setFlipped(false);

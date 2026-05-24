@@ -27,15 +27,26 @@ const TYPE_COLOURS: Record<string, string> = {
   casestudy: '#8b5cf6', application: '#ff6aa8', mistake: '#ef4444',
 };
 
+function stableShuffleScore(id: string, seed: number) {
+  let hash = seed;
+  for (let i = 0; i < id.length; i += 1) {
+    hash = (hash * 31 + id.charCodeAt(i)) % 1000003;
+  }
+  return hash;
+}
+
 export default function Flashcards({ progress, onMaster, onHard }: Props) {
   const [filterWeek, setFilterWeek] = useState<Week | 'all'>('all');
   const [filterDiff, setFilterDiff] = useState<Difficulty | 'all'>('all');
   const [filterType, setFilterType] = useState<string>('all');
   const [showOnlyHard, setShowOnlyHard] = useState(false);
+  const [showDueOnly, setShowDueOnly] = useState(false);
   const [shuffled, setShuffled] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [today] = useState(() => new Date().setHours(0, 0, 0, 0));
+  const [shuffleSeed, setShuffleSeed] = useState(1);
 
   const filtered = useMemo(() => {
     let cards = flashcards.filter(c => {
@@ -43,22 +54,33 @@ export default function Flashcards({ progress, onMaster, onHard }: Props) {
       if (filterDiff !== 'all' && c.difficulty !== filterDiff) return false;
       if (filterType !== 'all' && c.type !== filterType) return false;
       if (showOnlyHard && !progress.flashcardsHard.includes(c.id)) return false;
+      if (showDueOnly) {
+        const schedule = progress.spacedRepetition[c.id];
+        const isUnseenHighValue = !schedule && c.examRelevance === 'high' && !progress.flashcardsMastered.includes(c.id);
+        const isDue = Boolean(schedule && new Date(schedule.nextDue).getTime() <= today);
+        if (!isUnseenHighValue && !isDue) return false;
+      }
       return true;
     });
     if (shuffled) {
-      cards = [...cards].sort(() => Math.random() - 0.5);
+      cards = [...cards].sort((a, b) => stableShuffleScore(a.id, shuffleSeed) - stableShuffleScore(b.id, shuffleSeed));
     }
     return cards;
-  }, [filterWeek, filterDiff, filterType, showOnlyHard, shuffled]);
+  }, [filterWeek, filterDiff, filterType, showOnlyHard, showDueOnly, shuffled, shuffleSeed, today, progress.flashcardsHard, progress.flashcardsMastered, progress.spacedRepetition]);
 
   const card = filtered[currentIndex];
   const total = filtered.length;
+  const dueCount = flashcards.filter(c => {
+    const schedule = progress.spacedRepetition[c.id];
+    return (schedule && new Date(schedule.nextDue).getTime() <= today) || (!schedule && c.examRelevance === 'high' && !progress.flashcardsMastered.includes(c.id));
+  }).length;
 
   const next = () => { setFlipped(false); setTimeout(() => setCurrentIndex(i => Math.min(i + 1, total - 1)), 0); };
   const prev = () => { setFlipped(false); setTimeout(() => setCurrentIndex(i => Math.max(i - 1, 0)), 0); };
 
   const handleShuffle = () => {
     setShuffled(s => !s);
+    setShuffleSeed(seed => seed + 1);
     setCurrentIndex(0);
     setFlipped(false);
   };
@@ -91,6 +113,9 @@ export default function Flashcards({ progress, onMaster, onHard }: Props) {
           </button>
           <button onClick={() => setShowOnlyHard(h => !h)} style={{ background: showOnlyHard ? 'rgba(239,68,68,0.15)' : '#14091f', border: `1px solid ${showOnlyHard ? 'rgba(239,68,68,0.4)' : '#2a1938'}`, color: showOnlyHard ? '#ef4444' : '#94a3b8', borderRadius: 8, padding: '6px 10px', fontSize: 12 }} className="flex items-center gap-1">
             <Star size={12} /> Hard only
+          </button>
+          <button onClick={() => { setShowDueOnly(d => !d); setCurrentIndex(0); setFlipped(false); }} style={{ background: showDueOnly ? 'rgba(245,158,11,0.15)' : '#14091f', border: `1px solid ${showDueOnly ? 'rgba(245,158,11,0.4)' : '#2a1938'}`, color: showDueOnly ? '#fcd34d' : '#94a3b8', borderRadius: 8, padding: '6px 10px', fontSize: 12 }} className="flex items-center gap-1">
+            <RotateCcw size={12} /> Due ({dueCount})
           </button>
         </div>
       </div>

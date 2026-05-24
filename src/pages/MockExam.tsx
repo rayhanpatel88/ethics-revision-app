@@ -29,10 +29,6 @@ function formatTime(seconds: number) {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
 }
 
-function slugify(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-}
-
 function PrintableQuestionPaper({ exam }: { exam: MockExamType | null }) {
   if (!exam) return null;
 
@@ -272,8 +268,6 @@ export default function MockExam({ onAttempt }: Props) {
   useEffect(() => {
     if (timerActive && timeLeft > 0) {
       timerRef.current = setInterval(() => setTimeLeft(t => t - 1), 1000);
-    } else if (timeLeft === 0 && timerActive) {
-      setTimerActive(false);
     }
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, [timerActive, timeLeft]);
@@ -297,14 +291,9 @@ export default function MockExam({ onAttempt }: Props) {
   };
 
   const downloadQuestionPaper = (exam: MockExamType) => {
-    const previousTitle = document.title;
     setPrintExam(exam);
-    document.title = `${slugify(exam.title)}-question-paper`;
     window.setTimeout(() => {
       window.print();
-      window.setTimeout(() => {
-        document.title = previousTitle;
-      }, 250);
     }, 100);
   };
 
