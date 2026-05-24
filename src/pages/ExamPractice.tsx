@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Clock, Target, CheckCircle, AlertTriangle, ChevronRight, FileText, Star } from 'lucide-react';
+import { Clock, Target, CheckCircle, AlertTriangle, ChevronRight, FileText, Star, Download } from 'lucide-react';
 import { examQuestions } from '../data/examQuestions';
+import type { ExamQuestion } from '../data/types';
 import type { UserProgress } from '../data/types';
 
 interface Props {
@@ -13,27 +14,91 @@ const WEEK_COLORS: Record<string, string> = {
   week5: '#8b5cf6', week6: '#ef4444', week9: '#ff6aa8',
 };
 
+function PrintableSamplePaper({ questions }: { questions: ExamQuestion[] }) {
+  const totalMarks = questions.reduce((sum, q) => sum + q.marks, 0);
+  const totalMinutes = questions.reduce((sum, q) => sum + q.timeMinutes, 0);
+
+  return (
+    <div className="print-paper">
+      <section className="print-cover">
+        <div className="print-kicker">25COP928 Ethics Revision</div>
+        <h1>Sample Exam Practice Paper</h1>
+        <div className="print-summary">
+          <span>{questions.length} questions</span>
+          <span>{totalMarks} practice marks</span>
+          <span>{totalMinutes} minutes suggested</span>
+        </div>
+        <p>Source-paper style questions covering professional ethics, data privacy, information governance, cybersecurity, intellectual property, and workplace ethics.</p>
+        <div className="print-candidate">
+          <span>Candidate name:</span>
+          <span>Student ID:</span>
+          <span>Date:</span>
+        </div>
+      </section>
+
+      <section className="print-instructions">
+        <h2>Instructions</h2>
+        <p>Answer all questions. Use the mark allocation to decide the level of detail required.</p>
+        <p>For short questions, define the key term or law precisely before applying it. For scenario questions, identify the issue, apply the relevant framework, and reach a clear conclusion.</p>
+        <p>Suggested timing is shown by each question. Leave time at the end to check command words, legal references, and whether each answer contains application rather than generic description.</p>
+      </section>
+
+      <section className="print-section">
+        <h2>Questions</h2>
+        {questions.map((question, index) => (
+          <article className="print-question" key={question.id}>
+            <div className="print-question-meta">
+              <span>Question {index + 1}</span>
+              <span>{question.marks} marks</span>
+            </div>
+            <p className="print-question-topic">{question.commandWord} · {question.topic} · {question.week.replace('week', 'Week ')}</p>
+            <p className="print-question-text">{question.question}</p>
+            <div className="print-answer-lines" aria-hidden="true">
+              {Array.from({ length: question.marks <= 5 ? 5 : question.marks <= 8 ? 7 : 10 }).map((_, i) => (
+                <div key={i} />
+              ))}
+            </div>
+          </article>
+        ))}
+      </section>
+    </div>
+  );
+}
+
 export default function ExamPractice({ progress, onAttempt }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
   const [showModel, setShowModel] = useState(false);
 
   const q = examQuestions.find(e => e.id === selected);
 
+  const downloadSamplePaper = () => {
+    window.setTimeout(() => window.print(), 100);
+  };
+
   if (selected && q) {
     const attempted = progress.examQuestionsAttempted.includes(q.id);
     const color = WEEK_COLORS[q.week];
 
     return (
-      <div className="max-w-4xl mx-auto px-4 py-6 space-y-4">
-        <div className="flex items-center gap-3 flex-wrap">
-          <button onClick={() => { setSelected(null); setShowModel(false); }} style={{ color: '#64748b', fontSize: 13 }}>← Back</button>
-          <span style={{ background: `${color}20`, color, border: `1px solid ${color}40`, fontSize: 10, fontWeight: 700 }} className="px-2 py-0.5 rounded-full">
-            {q.week.replace('week', 'Week ')}
-          </span>
-          <span style={{ background: '#2a1938', color: '#94a3b8', fontSize: 10, fontWeight: 700 }} className="px-2 py-0.5 rounded-full uppercase">
-            {q.commandWord}
-          </span>
-        </div>
+      <>
+        <PrintableSamplePaper questions={examQuestions} />
+        <div className="max-w-4xl mx-auto px-4 py-6 space-y-4">
+          <div className="flex items-center gap-3 flex-wrap">
+            <button onClick={() => { setSelected(null); setShowModel(false); }} style={{ color: '#64748b', fontSize: 13 }}>← Back</button>
+            <span style={{ background: `${color}20`, color, border: `1px solid ${color}40`, fontSize: 10, fontWeight: 700 }} className="px-2 py-0.5 rounded-full">
+              {q.week.replace('week', 'Week ')}
+            </span>
+            <span style={{ background: '#2a1938', color: '#94a3b8', fontSize: 10, fontWeight: 700 }} className="px-2 py-0.5 rounded-full uppercase">
+              {q.commandWord}
+            </span>
+            <button
+              onClick={downloadSamplePaper}
+              style={{ marginLeft: 'auto', background: 'rgba(201,167,235,0.1)', border: '1px solid rgba(201,167,235,0.3)', color: '#c9a7eb', borderRadius: 8, padding: '6px 10px', fontSize: 12, fontWeight: 700 }}
+              className="flex items-center gap-1.5"
+            >
+              <Download size={12} /> PDF
+            </button>
+          </div>
 
         {/* Question header */}
         <div style={{ background: '#14091f', border: '1px solid #2a1938', borderRadius: 14 }} className="p-5">
@@ -124,23 +189,35 @@ export default function ExamPractice({ progress, onAttempt }: Props) {
             ))}
           </div>
         )}
-      </div>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-6 space-y-4">
-      <div>
-        <h1 style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 22, letterSpacing: '-0.02em' }}>Sample Exam Practice</h1>
-        <p style={{ color: '#64748b', fontSize: 13 }}>Based on the actual sample exam paper — exact question style and mark allocations</p>
-      </div>
+    <>
+      <PrintableSamplePaper questions={examQuestions} />
+      <div className="max-w-5xl mx-auto px-4 py-6 space-y-4">
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <div>
+            <h1 style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 22, letterSpacing: '-0.02em' }}>Sample Exam Practice</h1>
+            <p style={{ color: '#64748b', fontSize: 13 }}>{examQuestions.length} source-paper questions — exact question style and mark allocations</p>
+          </div>
+          <button
+            onClick={downloadSamplePaper}
+            style={{ background: 'rgba(201,167,235,0.12)', border: '1px solid rgba(201,167,235,0.35)', color: '#d8b4fe', borderRadius: 10, padding: '9px 13px', fontSize: 12, fontWeight: 800 }}
+            className="flex items-center gap-2"
+          >
+            <Download size={14} /> Download PDF
+          </button>
+        </div>
 
-      <div style={{ background: 'rgba(201,167,235,0.06)', border: '1px solid rgba(201,167,235,0.2)', borderRadius: 12 }} className="p-4">
-        <div style={{ color: '#c9a7eb', fontSize: 12, fontWeight: 700, marginBottom: 4 }}>About the Sample Exam</div>
-        <p style={{ color: '#d8b4fe', fontSize: 12, lineHeight: 1.6 }}>
-          The actual exam is 100 marks. These questions are drawn directly from the sample paper style. Questions range from 4–10 marks with mix of Outline, Explain, Identify, Describe, and scenario-based formats. Use the planning prompts and mark schemes to structure your answers.
-        </p>
-      </div>
+        <div style={{ background: 'rgba(201,167,235,0.06)', border: '1px solid rgba(201,167,235,0.2)', borderRadius: 12 }} className="p-4">
+          <div style={{ color: '#c9a7eb', fontSize: 12, fontWeight: 700, marginBottom: 4 }}>About the Sample Exam</div>
+          <p style={{ color: '#d8b4fe', fontSize: 12, lineHeight: 1.6 }}>
+            The actual exam is 100 marks. These questions are drawn directly from the sample paper style. Questions range from 4-10 marks with a mix of Outline, Explain, Identify, Describe, and scenario-based formats. Use the planning prompts and mark schemes to structure your answers.
+          </p>
+        </div>
 
       <div className="space-y-3">
         {examQuestions.map((eq, index) => {
@@ -180,6 +257,7 @@ export default function ExamPractice({ progress, onAttempt }: Props) {
           );
         })}
       </div>
-    </div>
+      </div>
+    </>
   );
 }

@@ -3,7 +3,6 @@ import { topics } from '../data/topics';
 import { flashcards as baseFlashcards } from '../data/flashcards';
 import { expandedFlashcards } from '../data/expandedFlashcards';
 import { examQuestions } from '../data/examQuestions';
-import { mockExams } from '../data/mockExams';
 import { caseStudies } from '../data/caseStudies';
 
 const flashcards = [...baseFlashcards, ...expandedFlashcards];
@@ -41,7 +40,9 @@ function MasteryBar({ value, color, label }: { value: number; color: string; lab
 export default function MasteryMap({ progress }: Props) {
   const totalFlashcards = flashcards.length;
   const totalTopics = topics.length;
-  const totalExamQuestions = examQuestions.length + mockExams.reduce((sum, exam) => sum + exam.questions.length, 0);
+  const sampleExamQuestionIds = new Set(examQuestions.map(q => q.id));
+  const totalExamQuestions = examQuestions.length;
+  const attemptedSampleQuestions = progress.examQuestionsAttempted.filter(id => sampleExamQuestionIds.has(id)).length;
   const flashcardTarget = Math.ceil(totalFlashcards * 0.75);
 
   const overallFlashcardMastery = Math.round((progress.flashcardsMastered.length / totalFlashcards) * 100);
@@ -212,7 +213,7 @@ export default function MasteryMap({ progress }: Props) {
             { label: 'Ethical Theory Application', value: Math.min(100, (progress.flashcardsMastered.filter(id => id.includes('fc-00') || id.includes('fc-01')).length / 10) * 100), desc: 'Utilitarianism, deontology, virtue ethics — can you apply them to scenarios?' },
             { label: 'Legal Framework Knowledge', value: Math.min(100, (progress.flashcardsMastered.filter(id => ['fc-017','fc-018','fc-019','fc-020','fc-021','fc-030','fc-031','fc-032'].some(x => id.includes(x.replace('fc-0','fc-0')))).length / 8) * 100), desc: 'GDPR, CMA 1990, CDPA 1988, RIPA — statutes and their elements' },
             { label: 'Case Study Analysis', value: Math.min(100, (progress.caseStudiesReviewed.length / caseStudies.length) * 100), desc: 'Haugen, Cambridge Analytica, Infopaq, Aerotel, Horizon, Bybit, Sam' },
-            { label: 'Exam Question Technique', value: Math.min(100, (progress.examQuestionsAttempted.length / totalExamQuestions) * 100), desc: 'Command words, mark allocation, answer architecture' },
+            { label: 'Sample Exam Technique', value: Math.min(100, (attemptedSampleQuestions / totalExamQuestions) * 100), desc: 'Command words, mark allocation, answer architecture' },
             { label: 'Quiz Performance', value: avgQuizScore, desc: 'Application of concepts under timed conditions' },
           ].map(skill => (
             <div key={skill.label}>
@@ -257,13 +258,13 @@ export default function MasteryMap({ progress }: Props) {
               <p style={{ color: '#7dd3fc', fontSize: 12 }}>Review all {caseStudies.length} case studies — examiners expect real-world examples in distinction answers</p>
             </div>
           )}
-          {progress.examQuestionsAttempted.length < totalExamQuestions && (
+          {attemptedSampleQuestions < totalExamQuestions && (
             <div className="flex items-start gap-2">
               <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#ff6aa8', marginTop: 6, flexShrink: 0 }} />
-              <p style={{ color: '#7dd3fc', fontSize: 12 }}>Attempt all {totalExamQuestions} exam-practice and mock-paper questions — read the model answers critically</p>
+              <p style={{ color: '#7dd3fc', fontSize: 12 }}>Attempt all {totalExamQuestions} sample exam questions — read the model answers critically, then move to Mock Exams for full papers</p>
             </div>
           )}
-          {progress.topicsCompleted.length === topics.length && avgQuizScore >= 80 && progress.examQuestionsAttempted.length >= totalExamQuestions && (
+          {progress.topicsCompleted.length === topics.length && avgQuizScore >= 80 && attemptedSampleQuestions >= totalExamQuestions && (
             <p style={{ color: '#c9a7eb', fontSize: 13, fontWeight: 700 }}>Excellent coverage achieved. Focus on timed practice and essay structure refinement.</p>
           )}
         </div>

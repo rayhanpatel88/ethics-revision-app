@@ -4,7 +4,6 @@ import { topics } from '../data/topics';
 import { flashcards as baseFlashcards } from '../data/flashcards';
 import { expandedFlashcards } from '../data/expandedFlashcards';
 import { examQuestions } from '../data/examQuestions';
-import { mockExams } from '../data/mockExams';
 import type { Page } from '../components/Nav';
 
 interface Props {
@@ -37,8 +36,9 @@ export default function Dashboard({ progress, readiness, onNavigate }: Props) {
   const totalTopics = topics.length;
   const completedTopics = progress.topicsCompleted.length;
   const flashcards = [...baseFlashcards, ...expandedFlashcards];
-  const totalExamQuestions = examQuestions.length + mockExams.reduce((sum, exam) => sum + exam.questions.length, 0);
-  const attemptedExamQuestions = progress.examQuestionsAttempted.length;
+  const sampleExamQuestionIds = new Set(examQuestions.map(q => q.id));
+  const totalExamQuestions = examQuestions.length;
+  const attemptedExamQuestions = progress.examQuestionsAttempted.filter(id => sampleExamQuestionIds.has(id)).length;
   const mastered = progress.flashcardsMastered.length;
   const totalCards = flashcards.length;
   const quizAttempts = Object.keys(progress.quizScores).length;
@@ -88,7 +88,7 @@ export default function Dashboard({ progress, readiness, onNavigate }: Props) {
           <span>Topics: {completedTopics}/{totalTopics}</span>
           <span>Cards: {mastered}/{totalCards}</span>
           <span>Quiz avg: {avgQuiz > 0 ? `${avgQuiz}%` : '—'}</span>
-          <span>Exam Qs: {attemptedExamQuestions}/{totalExamQuestions}</span>
+          <span>Sample Qs: {attemptedExamQuestions}/{totalExamQuestions}</span>
         </div>
       </div>
 
@@ -98,7 +98,7 @@ export default function Dashboard({ progress, readiness, onNavigate }: Props) {
           { label: 'Topics Done', value: completedTopics, total: totalTopics, icon: CheckCircle, color: '#c9a7eb', page: 'topics' as Page },
           { label: 'Cards Mastered', value: mastered, total: totalCards, icon: Brain, color: '#ff6aa8', page: 'flashcards' as Page },
           { label: 'Quiz Average', value: avgQuiz > 0 ? `${avgQuiz}%` : '—', total: null, icon: Zap, color: '#f59e0b', page: 'quiz' as Page },
-          { label: 'Exam Qs Done', value: attemptedExamQuestions, total: totalExamQuestions, icon: Target, color: '#8b5cf6', page: 'exam' as Page },
+          { label: 'Sample Qs Done', value: attemptedExamQuestions, total: totalExamQuestions, icon: Target, color: '#8b5cf6', page: 'exam' as Page },
         ].map(stat => {
           const Icon = stat.icon;
           return (
