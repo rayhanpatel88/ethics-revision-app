@@ -1,7 +1,7 @@
-import { BookOpen, Brain, Zap, Target, FileText, Layers, AlertTriangle, BookMarked, Calendar, Map, Trophy, FlaskConical, Gauge, Swords, Clock, ShieldAlert, Network } from 'lucide-react';
+import { BookOpen, Brain, Zap, Target, FileText, Layers, AlertTriangle, BookMarked, Calendar, Map, Trophy, FlaskConical, Gauge, Swords, Clock, ShieldAlert, Network, Image as ImageIcon } from 'lucide-react';
 import loughboroughLogo from '../assets/loughborough-university-logo-transparent.png';
 
-export type Page = 'dashboard' | 'mastery' | 'mindmap' | 'topics' | 'flashcards' | 'quiz' | 'scenarios' | 'exam' | 'essays' | 'cases' | 'weakness' | 'strategy' | 'glossary' | 'planner' | 'mockexam' | 'hardmode' | 'traps';
+export type Page = 'dashboard' | 'mastery' | 'mindmap' | 'infographics' | 'topics' | 'flashcards' | 'quiz' | 'scenarios' | 'exam' | 'essays' | 'cases' | 'weakness' | 'strategy' | 'glossary' | 'planner' | 'mockexam' | 'hardmode' | 'traps';
 
 interface NavProps {
   current: Page;
@@ -12,6 +12,7 @@ const navItems: { id: Page; label: string; icon: React.ComponentType<{size?: num
   { id: 'dashboard', label: 'Command Centre', shortLabel: 'Dashboard', icon: Gauge },
   { id: 'mastery', label: 'Mastery Map', shortLabel: 'Mastery', icon: Map },
   { id: 'mindmap', label: 'Mindmap + Podcasts', shortLabel: 'Mindmap', icon: Network },
+  { id: 'infographics', label: 'Infographics', shortLabel: 'Images', icon: ImageIcon },
   { id: 'topics', label: 'Topic Hubs', shortLabel: 'Topics', icon: BookOpen },
   { id: 'flashcards', label: 'Flashcards', shortLabel: 'Cards', icon: Brain },
   { id: 'quiz', label: 'Quiz Engine', shortLabel: 'Quiz', icon: Zap },

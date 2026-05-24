@@ -6,6 +6,7 @@ import { useProgress } from './hooks/useProgress';
 import Dashboard from './pages/Dashboard';
 import MasteryMap from './pages/MasteryMap';
 import MindmapPodcasts from './pages/MindmapPodcasts';
+import Infographics from './pages/Infographics';
 import TopicHubs from './pages/TopicHubs';
 import Flashcards from './pages/Flashcards';
 import Quiz from './pages/Quiz';
@@ -49,6 +50,8 @@ export default function App() {
         return <MasteryMap progress={progress} />;
       case 'mindmap':
         return <MindmapPodcasts />;
+      case 'infographics':
+        return <Infographics />;
       case 'topics':
         return (
           <TopicHubs

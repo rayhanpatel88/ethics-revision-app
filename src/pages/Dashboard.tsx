@@ -1,4 +1,4 @@
-import { Brain, Zap, Target, AlertTriangle, TrendingUp, BookOpen, Trophy, ArrowRight, CheckCircle, Clock, Star, Layers } from 'lucide-react';
+import { Brain, Zap, Target, AlertTriangle, TrendingUp, BookOpen, Trophy, ArrowRight, CheckCircle, Clock, Star, Layers, Image as ImageIcon } from 'lucide-react';
 import type { UserProgress } from '../data/types';
 import { topics } from '../data/topics';
 import { flashcards as baseFlashcards } from '../data/flashcards';
@@ -242,6 +242,7 @@ export default function Dashboard({ progress, readiness, onNavigate }: Props) {
         <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
           {[
             { label: 'Topics', icon: BookOpen, page: 'topics' as Page, color: '#3b82f6' },
+            { label: 'Images', icon: ImageIcon, page: 'infographics' as Page, color: '#38bdf8' },
             { label: 'Cases', icon: Layers, page: 'cases' as Page, color: '#8b5cf6' },
             { label: 'Glossary', icon: Star, page: 'glossary' as Page, color: '#f59e0b' },
             { label: 'Strategy', icon: Trophy, page: 'strategy' as Page, color: '#c9a7eb' },
