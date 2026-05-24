@@ -212,6 +212,23 @@ export default function ExamPractice({ progress, onAttempt }: Props) {
           </button>
         </div>
 
+        <button
+          onClick={downloadSamplePaper}
+          style={{ background: 'linear-gradient(135deg, rgba(75,29,116,0.9), rgba(42,15,68,0.92))', border: '1px solid rgba(201,167,235,0.35)', borderRadius: 12, padding: 16, width: '100%', textAlign: 'left' }}
+          className="flex items-center justify-between gap-3 hover:opacity-95 transition-opacity"
+        >
+          <div className="flex items-center gap-3">
+            <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(201,167,235,0.16)', border: '1px solid rgba(201,167,235,0.28)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Download size={17} style={{ color: '#d8b4fe' }} />
+            </div>
+            <div>
+              <div style={{ color: '#f1f5f9', fontSize: 14, fontWeight: 800 }}>Sample Exam Paper PDF</div>
+              <div style={{ color: '#c4b5fd', fontSize: 12 }}>{examQuestions.length} questions with printable answer space</div>
+            </div>
+          </div>
+          <span style={{ color: '#d8b4fe', fontSize: 12, fontWeight: 800, flexShrink: 0 }}>Open</span>
+        </button>
+
         <div style={{ background: 'rgba(201,167,235,0.06)', border: '1px solid rgba(201,167,235,0.2)', borderRadius: 12 }} className="p-4">
           <div style={{ color: '#c9a7eb', fontSize: 12, fontWeight: 700, marginBottom: 4 }}>About the Sample Exam</div>
           <p style={{ color: '#d8b4fe', fontSize: 12, lineHeight: 1.6 }}>
