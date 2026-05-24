@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Clock, ChevronLeft, ChevronRight, CheckSquare, Eye, EyeOff, AlertTriangle, Trophy, RotateCcw, Download } from 'lucide-react';
+import { Clock, ChevronLeft, ChevronRight, CheckSquare, Eye, EyeOff, AlertTriangle, Trophy, RotateCcw, Download, ExternalLink, FileText } from 'lucide-react';
 import { mockExams } from '../data/mockExams';
 import type { MockExam as MockExamType, MockExamQuestion } from '../data/mockExams';
 
@@ -8,6 +8,8 @@ interface Props {
 }
 
 type Phase = 'select' | 'briefing' | 'exam' | 'review';
+
+const OFFICIAL_SAMPLE_PAPER_SRC = encodeURI('/resources/mock-exams/Sample exam questions.pdf');
 
 const DIFF_COLORS: Record<string, string> = {
   standard: '#c9a7eb',
@@ -312,6 +314,47 @@ export default function MockExam({ onAttempt }: Props) {
           <div>
             <h1 style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 22, letterSpacing: '-0.02em' }}>Mock Exam Simulator</h1>
             <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>{mockExams.length} mock papers — standard, hard, nightmare, source coverage, scenario synthesis, and command-word mastery. Full timer, mark scheme, and model answers.</p>
+          </div>
+
+          <div style={{ background: '#14091f', border: '1px solid rgba(56,189,248,0.35)', borderRadius: 16 }} className="p-5">
+            <div className="flex items-start justify-between gap-3 flex-wrap">
+              <div className="flex items-start gap-3">
+                <div style={{ width: 38, height: 38, borderRadius: 12, background: 'rgba(56,189,248,0.12)', border: '1px solid rgba(56,189,248,0.35)', display: 'grid', placeItems: 'center', flexShrink: 0 }}>
+                  <FileText size={18} style={{ color: '#38bdf8' }} />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span style={{ background: 'rgba(56,189,248,0.12)', color: '#38bdf8', fontSize: 10, fontWeight: 800, padding: '2px 8px', borderRadius: 20, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
+                      Official Sample
+                    </span>
+                    <span style={{ color: '#475569', fontSize: 11 }}>Source PDF</span>
+                  </div>
+                  <h2 style={{ color: '#f1f5f9', fontSize: 16, fontWeight: 700 }}>Sample Exam Questions</h2>
+                  <p style={{ color: '#64748b', fontSize: 12, marginTop: 4, lineHeight: 1.5 }}>
+                    The specific sample exam paper supplied for revision. Use this as the original source-style paper alongside the interactive mock simulator below.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-2 flex-wrap" style={{ flexShrink: 0 }}>
+                <a
+                  href={OFFICIAL_SAMPLE_PAPER_SRC}
+                  download
+                  style={{ background: '#0f0a19', border: '1px solid rgba(56,189,248,0.4)', color: '#38bdf8', borderRadius: 10, padding: '10px 14px', fontSize: 13, fontWeight: 700 }}
+                  className="flex items-center gap-2"
+                >
+                  <Download size={14} /> Download PDF
+                </a>
+                <a
+                  href={OFFICIAL_SAMPLE_PAPER_SRC}
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{ background: 'rgba(56,189,248,0.12)', border: '1px solid rgba(56,189,248,0.4)', color: '#7dd3fc', borderRadius: 10, padding: '10px 14px', fontSize: 13, fontWeight: 700 }}
+                  className="flex items-center gap-2"
+                >
+                  <ExternalLink size={14} /> Open PDF
+                </a>
+              </div>
+            </div>
           </div>
 
           <div className="space-y-4">
