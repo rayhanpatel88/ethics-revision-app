@@ -3,6 +3,7 @@ import { Clock, Target, CheckCircle, AlertTriangle, ChevronRight, FileText, Star
 import { examQuestions } from '../data/examQuestions';
 import type { ExamQuestion } from '../data/types';
 import type { UserProgress } from '../data/types';
+import SolutionMarker from '../components/SolutionMarker';
 
 interface Props {
   progress: UserProgress;
@@ -169,6 +170,15 @@ export default function ExamPractice({ progress, onAttempt }: Props) {
             ))}
           </ul>
         </div>
+
+        <SolutionMarker
+          questionId={q.id}
+          totalMarks={q.marks}
+          markScheme={q.keyPoints}
+          highMarkExtras={q.highMarkExtras}
+          commonMistakes={q.commonMistakes}
+          onMarked={onAttempt}
+        />
 
         {/* Model answer */}
         <button

@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Clock, ChevronLeft, ChevronRight, CheckSquare, Eye, EyeOff, AlertTriangle, Trophy, RotateCcw, Download, ExternalLink, FileText } from 'lucide-react';
 import { mockExams } from '../data/mockExams';
 import type { MockExam as MockExamType, MockExamQuestion } from '../data/mockExams';
+import SolutionMarker from '../components/SolutionMarker';
 
 interface Props {
   onAttempt: (id: string) => void;
@@ -173,6 +174,15 @@ function QuestionView({
         )}
       </div>
 
+      <SolutionMarker
+        questionId={question.id}
+        totalMarks={question.marks}
+        markScheme={question.markScheme}
+        highMarkExtras={[question.strongAnswerWouldAdd, question.ninetyPlusTarget]}
+        commonMistakes={[question.weakAnswerWouldSay]}
+        onMarked={onAttempt}
+      />
+
       {showPrompts && (
         <div style={{ background: 'rgba(245,158,11,0.06)', border: '1px solid rgba(245,158,11,0.2)', borderRadius: 12, padding: 16 }}>
           <div style={{ color: '#fcd34d', fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 10 }}>Planning Prompts</div>
@@ -313,7 +323,7 @@ export default function MockExam({ onAttempt }: Props) {
         <div className="max-w-4xl mx-auto px-4 py-6 space-y-5">
           <div>
             <h1 style={{ color: '#f1f5f9', fontWeight: 800, fontSize: 22, letterSpacing: '-0.02em' }}>Mock Exam Simulator</h1>
-            <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>{mockExams.length} mock papers — standard, hard, nightmare, source coverage, scenario synthesis, and command-word mastery. Full timer, mark scheme, and model answers.</p>
+            <p style={{ color: '#64748b', fontSize: 13, marginTop: 4 }}>{mockExams.length} mock papers — standard, hard, nightmare, source coverage, scenario synthesis, and command-word mastery. Full timer, uploaded-solution marking, mark scheme, and model answers.</p>
           </div>
 
           <div style={{ background: '#14091f', border: '1px solid rgba(56,189,248,0.35)', borderRadius: 16 }} className="p-5">
@@ -387,7 +397,7 @@ export default function MockExam({ onAttempt }: Props) {
                         onClick={() => startExam(exam)}
                         style={{ background: `${color}15`, border: `1px solid ${color}40`, color, borderRadius: 10, padding: '10px 20px', fontSize: 13, fontWeight: 700 }}
                       >
-                        Start Paper
+                        Start & Mark Answers
                       </button>
                     </div>
                   </div>
@@ -395,6 +405,7 @@ export default function MockExam({ onAttempt }: Props) {
                     <span style={{ color: '#38bdf8', fontSize: 11 }}>Section A: {secA} questions</span>
                     <span style={{ color: '#c4b5fd', fontSize: 11 }}>Section B: {secB} questions</span>
                     <span style={{ color: '#d8b4fe', fontSize: 11 }}>Total: {exam.questions.length} questions</span>
+                    <span style={{ color: '#7dd3fc', fontSize: 11 }}>Upload answers for instant marking</span>
                   </div>
                   <div style={{ background: `${color}08`, border: `1px solid ${color}20`, borderRadius: 8, padding: '8px 12px', marginTop: 12 }}>
                     <span style={{ color, fontSize: 11, fontWeight: 600 }}>Exam Tip: </span>
