@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { CheckCircle, ClipboardCheck, FileUp, Target, XCircle } from 'lucide-react';
 import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
 
@@ -124,14 +124,12 @@ export default function SolutionMarker({ questionId, totalMarks, markScheme, hig
   const [fileName, setFileName] = useState('');
   const [fileError, setFileError] = useState('');
   const [isReadingFile, setIsReadingFile] = useState(false);
+  const [isMarking, setIsMarking] = useState(false);
   const [readStatus, setReadStatus] = useState('');
-  const [hasMarked, setHasMarked] = useState(false);
+  const [markStatus, setMarkStatus] = useState('');
+  const [markSource, setMarkSource] = useState<'ai' | 'local' | null>(null);
+  const [result, setResult] = useState<MarkingResult | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-
-  const result = useMemo(() => {
-    if (!hasMarked || answer.trim().length < 12) return null;
-    return evaluateSolution(answer, totalMarks, markScheme, highMarkExtras, commonMistakes);
-  }, [answer, commonMistakes, hasMarked, highMarkExtras, markScheme, totalMarks]);
 
   const runOcr = async (image: File | string) => {
     const { recognize } = await import('tesseract.js');
@@ -219,7 +217,8 @@ export default function SolutionMarker({ questionId, totalMarks, markScheme, hig
         return;
       }
       setAnswer(text);
-      setHasMarked(false);
+      setResult(null);
+      setMarkSource(null);
     } catch {
       setFileError('Could not read that file. Try a clearer upload or paste the answer below.');
     } finally {
@@ -228,13 +227,36 @@ export default function SolutionMarker({ questionId, totalMarks, markScheme, hig
     }
   };
 
-  const markAnswer = () => {
+  const markAnswer = async () => {
     if (answer.trim().length < 12) {
       setFileError('Add your answer first, either by upload or by pasting it here.');
       return;
     }
     setFileError('');
-    setHasMarked(true);
+    setMarkStatus('Asking AI examiner...');
+    setIsMarking(true);
+
+    try {
+      const response = await fetch('/api/mark-solution', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ answer, totalMarks, markScheme, highMarkExtras, commonMistakes }),
+      });
+
+      if (!response.ok) throw new Error('AI marking unavailable');
+
+      const aiResult = await response.json() as MarkingResult;
+      setResult(aiResult);
+      setMarkSource('ai');
+      setMarkStatus('AI marking complete.');
+    } catch {
+      setResult(evaluateSolution(answer, totalMarks, markScheme, highMarkExtras, commonMistakes));
+      setMarkSource('local');
+      setMarkStatus('AI marking was unavailable, so local mark-scheme matching was used.');
+    } finally {
+      setIsMarking(false);
+    }
+
     onMarked?.(questionId);
   };
 
@@ -263,22 +285,23 @@ export default function SolutionMarker({ questionId, totalMarks, markScheme, hig
           </button>
           <button
             onClick={markAnswer}
-            disabled={isReadingFile}
+            disabled={isReadingFile || isMarking}
             style={{ background: 'rgba(201,167,235,0.14)', border: '1px solid rgba(201,167,235,0.38)', color: '#d8b4fe', borderRadius: 8, padding: '8px 12px', fontSize: 12, fontWeight: 800 }}
             className="flex items-center gap-1.5"
           >
-            <ClipboardCheck size={13} /> Mark
+            <ClipboardCheck size={13} /> {isMarking ? 'Marking...' : 'AI Mark'}
           </button>
         </div>
       </div>
 
       {fileName && <div style={{ color: '#94a3b8', fontSize: 11 }}>Loaded: {fileName}</div>}
       {readStatus && <div style={{ color: '#7dd3fc', fontSize: 11 }}>{readStatus}</div>}
+      {markStatus && <div style={{ color: markSource === 'local' ? '#fcd34d' : '#7dd3fc', fontSize: 11 }}>{markStatus}</div>}
       {fileError && <div style={{ color: '#fca5a5', fontSize: 11 }}>{fileError}</div>}
 
       <textarea
         value={answer}
-        onChange={event => { setAnswer(event.target.value); setHasMarked(false); }}
+        onChange={event => { setAnswer(event.target.value); setResult(null); setMarkSource(null); setMarkStatus(''); }}
         placeholder="Paste your answer here..."
         rows={7}
         style={{ width: '100%', background: '#0f0a19', border: '1px solid #2a1938', borderRadius: 10, color: '#e2e8f0', fontSize: 13, lineHeight: 1.6, padding: 12, resize: 'vertical', outline: 'none' }}
@@ -293,7 +316,7 @@ export default function SolutionMarker({ questionId, totalMarks, markScheme, hig
             </div>
             <div style={{ background: '#2a1938', borderRadius: 10, padding: 12, textAlign: 'center' }}>
               <div style={{ color: '#38bdf8', fontSize: 22, fontWeight: 900 }}>{result.percentage}%</div>
-              <div style={{ color: '#64748b', fontSize: 10 }}>estimated</div>
+              <div style={{ color: '#64748b', fontSize: 10 }}>{markSource === 'ai' ? 'AI marked' : 'estimated'}</div>
             </div>
             <div style={{ background: '#2a1938', borderRadius: 10, padding: 12, textAlign: 'center' }}>
               <div style={{ color: '#d8b4fe', fontSize: 13, fontWeight: 800 }}>{result.band}</div>
