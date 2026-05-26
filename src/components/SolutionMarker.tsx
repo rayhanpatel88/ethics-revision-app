@@ -1,5 +1,6 @@
 import { useMemo, useRef, useState } from 'react';
 import { CheckCircle, ClipboardCheck, FileUp, Target, XCircle } from 'lucide-react';
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
 
 interface SolutionMarkerProps {
   questionId: string;
@@ -122,6 +123,8 @@ export default function SolutionMarker({ questionId, totalMarks, markScheme, hig
   const [answer, setAnswer] = useState('');
   const [fileName, setFileName] = useState('');
   const [fileError, setFileError] = useState('');
+  const [isReadingFile, setIsReadingFile] = useState(false);
+  const [readStatus, setReadStatus] = useState('');
   const [hasMarked, setHasMarked] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -130,21 +133,98 @@ export default function SolutionMarker({ questionId, totalMarks, markScheme, hig
     return evaluateSolution(answer, totalMarks, markScheme, highMarkExtras, commonMistakes);
   }, [answer, commonMistakes, hasMarked, highMarkExtras, markScheme, totalMarks]);
 
+  const runOcr = async (image: File | string) => {
+    const { recognize } = await import('tesseract.js');
+    const result = await recognize(image, 'eng', {
+      logger: message => {
+        if (message.status) {
+          const progress = message.progress ? ` ${Math.round(message.progress * 100)}%` : '';
+          setReadStatus(`Reading image text: ${message.status}${progress}`);
+        }
+      },
+    });
+    return result.data.text;
+  };
+
+  const extractPdfText = async (file: File) => {
+    setReadStatus('Reading PDF text...');
+    const { GlobalWorkerOptions, getDocument } = await import('pdfjs-dist');
+    GlobalWorkerOptions.workerSrc = pdfWorker;
+    const data = await file.arrayBuffer();
+    const pdf = await getDocument({ data }).promise;
+    const pageTexts: string[] = [];
+
+    for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
+      const page = await pdf.getPage(pageNumber);
+      const content = await page.getTextContent();
+      const text = content.items
+        .map(item => ('str' in item ? item.str : ''))
+        .join(' ');
+      pageTexts.push(text);
+    }
+
+    const extractedText = pageTexts.join('\n\n').trim();
+    if (extractedText.length >= 30) return extractedText;
+
+    const ocrPages = Math.min(pdf.numPages, 6);
+    const ocrText: string[] = [];
+    for (let pageNumber = 1; pageNumber <= ocrPages; pageNumber += 1) {
+      setReadStatus(`PDF looks scanned. OCR page ${pageNumber}/${ocrPages}...`);
+      const page = await pdf.getPage(pageNumber);
+      const viewport = page.getViewport({ scale: 1.8 });
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      if (!context) continue;
+      canvas.width = Math.floor(viewport.width);
+      canvas.height = Math.floor(viewport.height);
+      await page.render({ canvas, canvasContext: context, viewport }).promise;
+      ocrText.push(await runOcr(canvas.toDataURL('image/png')));
+    }
+
+    if (pdf.numPages > ocrPages) {
+      ocrText.push(`\n[Only the first ${ocrPages} pages were OCR-read. Paste any remaining answer text below.]`);
+    }
+
+    return ocrText.join('\n\n').trim();
+  };
+
+  const extractFileText = async (file: File) => {
+    const type = file.type.toLowerCase();
+    const name = file.name.toLowerCase();
+
+    if (type === 'application/pdf' || name.endsWith('.pdf')) {
+      return extractPdfText(file);
+    }
+
+    if (type.startsWith('image/') || /\.(png|jpe?g|webp|bmp|tiff?)$/.test(name)) {
+      setReadStatus('Starting image OCR...');
+      return runOcr(file);
+    }
+
+    setReadStatus('Reading text file...');
+    return file.text();
+  };
+
   const handleFile = async (file: File | undefined) => {
     if (!file) return;
     setFileError('');
     setFileName(file.name);
+    setReadStatus('');
+    setIsReadingFile(true);
 
     try {
-      const text = await file.text();
+      const text = await extractFileText(file);
       if (text.trim().length < 12) {
-        setFileError('That file did not contain readable text. Paste the answer below instead.');
+        setFileError('That file did not contain enough readable text. Try a clearer image or paste the answer below.');
         return;
       }
       setAnswer(text);
       setHasMarked(false);
     } catch {
-      setFileError('Could not read that file. Paste the answer below instead.');
+      setFileError('Could not read that file. Try a clearer upload or paste the answer below.');
+    } finally {
+      setIsReadingFile(false);
+      setReadStatus('');
     }
   };
 
@@ -169,19 +249,21 @@ export default function SolutionMarker({ questionId, totalMarks, markScheme, hig
           <input
             ref={fileInputRef}
             type="file"
-            accept=".txt,.md,.text,.rtf"
+            accept=".txt,.md,.text,.rtf,.pdf,.png,.jpg,.jpeg,.webp,.bmp,.tif,.tiff,image/*,application/pdf"
             onChange={event => handleFile(event.target.files?.[0])}
             style={{ display: 'none' }}
           />
           <button
             onClick={() => fileInputRef.current?.click()}
+            disabled={isReadingFile}
             style={{ background: 'rgba(56,189,248,0.1)', border: '1px solid rgba(56,189,248,0.35)', color: '#7dd3fc', borderRadius: 8, padding: '8px 12px', fontSize: 12, fontWeight: 700 }}
             className="flex items-center gap-1.5"
           >
-            <FileUp size={13} /> Upload
+            <FileUp size={13} /> {isReadingFile ? 'Reading...' : 'Upload'}
           </button>
           <button
             onClick={markAnswer}
+            disabled={isReadingFile}
             style={{ background: 'rgba(201,167,235,0.14)', border: '1px solid rgba(201,167,235,0.38)', color: '#d8b4fe', borderRadius: 8, padding: '8px 12px', fontSize: 12, fontWeight: 800 }}
             className="flex items-center gap-1.5"
           >
@@ -191,6 +273,7 @@ export default function SolutionMarker({ questionId, totalMarks, markScheme, hig
       </div>
 
       {fileName && <div style={{ color: '#94a3b8', fontSize: 11 }}>Loaded: {fileName}</div>}
+      {readStatus && <div style={{ color: '#7dd3fc', fontSize: 11 }}>{readStatus}</div>}
       {fileError && <div style={{ color: '#fca5a5', fontSize: 11 }}>{fileError}</div>}
 
       <textarea
